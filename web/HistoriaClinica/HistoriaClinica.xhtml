@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>    
+    </h:head>
+    <h:body>
+        <h:form id="frmVentas" >
+            <rich:messages ajaxRendered="true" />
+            <center>
+                <h:outputLabel value="HISTORIA CLINICA PREHOSPITALARIA" style="color: #045491;font-weight: bold;text-decoration: none"/> 						
+                <br/><br/><br/><br/>
+                <rich:panel header="Datos Generales de la historia clinica" style="width: 800px;" id="rpInfo">
+                    <table cellspacing="15" id="tblInfoGeneral">
+                        <tbody>
+                            <tr>
+                        <td>
+                            <h:panelGrid columns="2">
+                                        <h:outputLabel value="Fecha:" styleClass="label"/>
+                                        <rich:calendar  required="false" datePattern="yyyy-MM-dd"  id="fecha" inputSize="10" value="" requiredMessage="Por favor ingrese la fecha."/>
+
+                            </h:panelGrid>
+                        </td>
+                        
+                    </tr>
+                        </tbody>
+                    </table>
+                </rich:panel>
+            </center> 
+
+            <br/><br/><br/>
+            <ui:include src="HCDatosUsuario.xhtml"/>
+            <br/><br/><br/>
+            <!--<ui:include src="RegistroVentasTargetaCredito.xhtml"/>
+            <br/><br/><br/>
+            <ui:include src="RegistroVentasAnticipos.xhtml"/>
+            <br/><br/><br/>
+            <ui:include src="RegistroVentasGastos.xhtml"/>-->
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <h:panelGrid columns="2" id="manejo">
+
+        <rich:panel  header="GENERALES" style="height: 140px;width: 450px;">
+            <h:selectManyCheckbox value="#{historiaClinicaBean.lst}">
+                <f:selectItem itemLabel="LEV" itemValue="LEV" ></f:selectItem>
+                <f:selectItem itemLabel="Lav. Gástrico" itemValue="Lav. Gástrico"></f:selectItem>
+                <f:selectItem itemLabel="RCP" itemValue="RCP"></f:selectItem>
+                <f:selectItem itemLabel="O2" itemValue="O2"></f:selectItem>
+                <f:selectItem itemLabel="Curación" itemValue="Curación"></f:selectItem>
+                <f:selectItem itemLabel="Cateter Ctral" itemValue="Cateter Ctral"></f:selectItem>
+                <f:selectItem itemLabel="Nasogastrica" itemValue="Nasogastrica"></f:selectItem>
+                <f:selectItem itemLabel="Vesical" itemValue="Vesical"></f:selectItem>
+                <f:selectItem itemLabel="Orogastrica" itemValue="Orogastrica"></f:selectItem>
+            </h:selectManyCheckbox> 
+        </rich:panel>
+
+        <rich:panel header="RESPIRATORIOS" style="width: 400px;">
+            <h:selectManyCheckbox>
+                <f:selectItem itemLabel="Aspiración" itemValue="Aspiración" ></f:selectItem>
+                <f:selectItem itemLabel="Inturbación" itemValue="Inturbación"></f:selectItem>
+                <f:selectItem itemLabel="Hood" itemValue="Hood"></f:selectItem>
+                <f:selectItem itemLabel="BVM" itemValue="BVM"></f:selectItem>
+                <f:selectItem itemLabel="Cánula" itemValue="Cánula"></f:selectItem>
+                <f:selectItem itemLabel="Oximetria" itemValue="Oximetria"></f:selectItem>
+                <f:selectItem itemLabel="Nebulización" itemValue="Nebulización"></f:selectItem>
+                <f:selectItem itemLabel="Ventury" itemValue="Ventury"></f:selectItem>
+            </h:selectManyCheckbox> 
+            <br/>
+            <h:panelGrid columns="2">
+                <b><h:outputText value="Ventilación mecanica:"></h:outputText></b>
+                <h:selectManyCheckbox>
+                    <f:selectItem itemLabel="FiO2" itemValue="FiO2"></f:selectItem>
+                    <f:selectItem itemLabel="Volumen" itemValue="Volumen"></f:selectItem>
+                    <f:selectItem itemLabel="Flujo" itemValue="Flujo"></f:selectItem>
+                    <f:selectItem itemLabel="Peep" itemValue="Peep"></f:selectItem>
+                </h:selectManyCheckbox> 
+            </h:panelGrid>
+        </rich:panel>
+
+        <rich:panel  header="CARDIOVASCULARES" style="height:100px; ">
+            <h:selectManyCheckbox>
+                <f:selectItem itemLabel="Monitoreo" itemValue="Monitoreo"></f:selectItem>
+                <f:selectItem itemLabel="Cardioversión" itemValue="Cardioversión"></f:selectItem>
+                <f:selectItem itemLabel="Maniobras Vag" itemValue="Maniobras Vag"></f:selectItem>
+                <f:selectItem itemLabel="Desfibrilación" itemValue="Desfibrilación"></f:selectItem>
+            </h:selectManyCheckbox>    
+
+        </rich:panel>
+
+
+        <rich:panel  header="TRAUMA" style="height: 100px;">
+            <h:selectManyCheckbox>
+                <f:selectItem itemLabel="Sutura" itemValue="Sutura"></f:selectItem>
+                <f:selectItem itemLabel="Kendrick" itemValue="Kendrick"></f:selectItem>
+                <f:selectItem itemLabel="Control hemorragia" itemValue="Control hemorragia"></f:selectItem>
+                <f:selectItem itemLabel="Tabla rígida" itemValue="Tabla rígida"></f:selectItem>
+                <f:selectItem itemLabel="Inmovilización" itemValue="Inmovilización"></f:selectItem>
+                <f:selectItem itemLabel="Collar cervical" itemValue="Collar cervical"></f:selectItem>
+            </h:selectManyCheckbox>   
+
+        </rich:panel>
+
+        <rich:panel  header="LIQUIDOS" style="height: 100px;width:350px;">
+            <h:selectManyCheckbox>
+                <f:selectItem itemLabel="S.S.N" itemValue="S.S.N"></f:selectItem>
+                <f:selectItem itemLabel="DAD 10%" itemValue="DAD 10%"></f:selectItem>
+                <f:selectItem itemLabel="L.Ringer" itemValue="L.Ringer"></f:selectItem>
+                <f:selectItem itemLabel="D.A.D.5%" itemValue="D.A.D.5%"></f:selectItem>
+
+            </h:selectManyCheckbox>   
+
+        </rich:panel>
+
+    </h:panelGrid>
+
+
+
+
+</html>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j">
+    <h:form>
+        <rich:dataTable id="dtImpresionDiagnostica" 
+                        value="#{historiaClinicaBean.impresionDiagnosticaList}"
+                        var="impresionDiagnostica"
+                        rows="7"
+                        style="width: 90%;position: relative;left: 70px;"
+                        rowKeyVar="filaSeleccionada">
+            <f:facet name="header">
+                <rich:columnGroup>
+                    <rich:column >
+                        <h:outputText value="Dx" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="codigo" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="" />
+                    </rich:column>
+                </rich:columnGroup>
+            </f:facet>
+
+            <rich:columnGroup>
+                <rich:column>
+                    <h:inputText id="id-dx" value="#{impresionDiagnostica.descripcion}" required="false" requiredMessage="ingrese el dx" readonly=""/>
+                    <rich:message for="dx" style="color: red"/>
+                </rich:column>
+                <rich:column>
+                    <h:inputText id="id-codigo" value="#{impresionDiagnostica.codigo}" required="false" requiredMessage="ingrese código" readonly=""/>
+                    <rich:message for="codigo" style="color: red"/>
+                </rich:column>
+                <rich:column>
+                    <a4j:commandButton value="Registrar" action="#{historiaClinicaBean.adicionarNuevaFilaImpresionDiagnostica()}" execute="dtImpresionDiagnostica" render="dtImpresionDiagnostica" ></a4j:commandButton>
+                </rich:column>
+            </rich:columnGroup>
+        </rich:dataTable>
+    </h:form> 
+</html>

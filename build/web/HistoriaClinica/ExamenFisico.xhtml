@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  
+    <rich:dataTable id="dtExamenFisico" value="#{historiaClinicaBean.examenFisicoList}"
+                    var="examenFisico"
+                    rowKeyVar="filaSeleccionada">
+        <f:facet name="header">
+            <rich:columnGroup>
+                <rich:column>
+                    <h:outputText value="Hora" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="Tensión arterial" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="F.C." />
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="F.R." />
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="T" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="SPO2" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="PESO" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="GLOSGOW" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="" />
+                </rich:column>
+            </rich:columnGroup>
+        </f:facet>
+
+        <rich:columnGroup>
+            <rich:column>
+                <h:inputText style="width:80px;" id="id-hora" value="#{examenFisico.hora}" required="false" requiredMessage="ingrese la hora" readonly="false" />
+                <rich:message for="id-hora" style="color: red"/>
+            </rich:column>
+            <rich:column>
+                <h:inputText style="width:100px;" id="id-tension" value="#{examenFisico.tensionArterial}" required="false" requiredMessage="ingrese la tensión arterial" readonly="false"/>
+                <rich:message for="id-tension" style="color: red"/>
+            </rich:column>
+            <rich:column>
+                <h:inputText style="width:80px;" id="id-fc" value="#{examenFisico.fc}"  readonly="false" />
+                <rich:message for="id-fc" style="color: red"/>
+            </rich:column>
+            <rich:column>
+                <h:inputText style="width:80px;" id="id-fr" value="#{examenFisico.fr}"  readonly="false" />
+                <rich:message for="id-fr" style="color: red"/>
+            </rich:column>
+            <rich:column>
+                <h:inputText style="width:80px;" id="id-t" value="#{examenFisico.t}"  readonly="false" />
+                <rich:message for="id-t" style="color: red"/>
+            </rich:column>
+            <rich:column>
+                <h:inputText style="width:80px;" id="id-spo" value="#{examenFisico.spo2}"  readonly="false" />
+                <rich:message for="id-spo" style="color: red"/>
+            </rich:column>
+            <rich:column>
+                <h:inputText style="width:80px;" id="id-peso" value="#{examenFisico.peso}"  readonly="false" />
+                <rich:message for="id-peso" style="color: red"/>
+            </rich:column>
+            <rich:column>
+                <h:inputText style="width:100px;" id="id-glasgow" value="#{examenFisico.glasgow}"  readonly="false" />
+                <rich:message for="id-glasgow" style="color: red"/>
+            </rich:column>
+            <rich:column>
+                <a4j:commandButton value="Registrar" action="#{historiaClinicaBean.adicionarNuevaFilaDetalleExamenFisico(filaSeleccionada)}" execute="@this,dtExamenFisico" render="@this,dtExamenFisico" ></a4j:commandButton>
+
+            </rich:column>
+
+        </rich:columnGroup>
+    </rich:dataTable>
+    <br/>
+    <h:panelGrid  id="id_examen_info" columns="5" cellspacing="8">
+        <h:outputLabel value="Estado general:" styleClass="label"/>
+        <h:selectOneMenu  required="false" id="estadoGeneral" value="#{historiaClinicaBean.examenFisico.estadoGeneral}" requiredMessage="Por favor ingrese el tipo de documento.">
+            <f:selectItem itemLabel="Bueno"></f:selectItem>
+            <f:selectItem itemLabel="Regular"></f:selectItem>
+            <f:selectItem itemLabel="Malo"></f:selectItem>
+        </h:selectOneMenu>
+        <h:selectManyCheckbox id="estadoGeneral2" value="#{historiaClinicaBean.examenFisico.estadosFisicos2}">
+            <f:selectItem itemLabel="Conciente" itemValue="conciente"> </f:selectItem>
+            <f:selectItem itemLabel="Alerta" itemValue="alerta"></f:selectItem>
+            <f:selectItem itemLabel="Orientado" itemValue="orientado"></f:selectItem>
+
+        </h:selectManyCheckbox>
+        <h:outputText value="Otro:"></h:outputText>
+        <h:inputText  value=""></h:inputText> 
+    </h:panelGrid>
+
+    <h:panelGrid id="id_examen_infodet" columns="2">
+        <h:outputLabel value="Cabeza y cuello:" styleClass="label"/>
+        <h:inputText style="width: 720px;" required="false" id="cabezaycuello"  value="#{historiaClinicaBean.examenFisico.cabezaCuello}" requiredMessage="Por favor ingrese los datos de cabeza."/>
+        <h:outputLabel  value="Aparato cardiovascular:" styleClass="label"/>
+        <h:inputText style="width: 720px;" required="false" id="apaCardiovascular"  value="#{historiaClinicaBean.examenFisico.aparatoCardiovascular}" requiredMessage="Por favor ingrese los datos de cabeza."/>
+        <h:outputLabel value="Aparato respiratorio:" styleClass="label"/>
+        <h:inputText style="width: 720px;" required="false" id="apaRespiratorio"  value="#{historiaClinicaBean.examenFisico.aparatoRespiratorio}" requiredMessage="Por favor ingrese los datos de cabeza."/>
+
+
+    </h:panelGrid>
+
+</html>

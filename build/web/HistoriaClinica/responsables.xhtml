@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Medico:" styleClass="label"/>
+        <h:inputText style="width: 720px;" required="false" id="id-medico"  value="#{historiaClinicaBean.cita.nombreMedico}" requiredMessage="Por favor ingrese el nombre del medico."/>
+        <h:outputLabel  value="Enfermera:" styleClass="label"/>
+        <h:inputText style="width: 720px;" required="false" id="id-enfermera"  value="#{historiaClinicaBean.cita.enfermeraAuxiliar}" requiredMessage="Por favor ingrese el nombre de la enfermera."/>
+        
+    </h:panelGrid>
+</html>

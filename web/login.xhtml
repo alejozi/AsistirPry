@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j">
+    
+    <h:form> 
+    <rich:panel header="Autenticación" style="width:300px;">
+                   <table>
+                       <tr>
+                           <td>
+                               <h:outputLabel value="Usuario:" styleClass="labelRegistro"></h:outputLabel>
+                           </td>
+                           <td>
+                               <h:inputText id="idUsuario" value="${autenticacionManagedBean.usuario.usuarioLogin}" required="true" requiredMessage="ingrese el nombre de usuario"></h:inputText>
+                           </td>
+                           
+                       </tr>
+                       <tr>
+                           <td colspan="2">
+                               <rich:message for="idUsuario" style="color: red"/>
+                           </td>
+                       </tr>
+                        <tr>
+                           <td>
+                               <h:outputLabel value="Contraseña:" styleClass="labelRegistro"></h:outputLabel>
+                           </td>
+                           <td>
+                               <h:inputSecret id="idContrasena" value="${autenticacionManagedBean.usuario.usuarioPass}" required="true"  requiredMessage="ingrese la contraseña"></h:inputSecret>
+                           </td>
+                           
+                       </tr>
+                       <tr>
+                           <td colspan="2">
+                                 <rich:message for="idContrasena" style="color: red"/>
+                            </td>
+                       </tr>
+                     
+                   </table>
+              <center>
+               <a4j:commandButton value="Ingresar" action="${autenticacionManagedBean.doLogin}" ></a4j:commandButton>
+              </center>
+               </rich:panel>
+         </h:form> 
+  
+</html>
+

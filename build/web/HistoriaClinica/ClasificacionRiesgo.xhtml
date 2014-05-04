@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+    <table id="tblClasiServicio">
+        <tbody>
+            <tr>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Clasificacion Servicio" styleClass="label"/>
+                        <h:selectOneMenu  required="true" id="ClasificacionServicio" value="" requiredMessage="Por favor ingrese la clasificación del servicio.">
+                            <f:selectItem itemLabel="CONSULTA"></f:selectItem>
+                            <f:selectItem itemLabel="TAM"></f:selectItem>
+                            <f:selectItem itemLabel="TAB"></f:selectItem>
+                            <f:selectItem itemLabel="Sencillo"></f:selectItem>
+                            <f:selectItem itemLabel="Doble"></f:selectItem>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Origen" styleClass="label"/>
+                        <h:inputText  required="true" id="origen" value="" requiredMessage="Por favor ingrese el origen."/>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="destino1" styleClass="label"/>
+                        <h:inputText  required="true" id="destino1" value="" requiredMessage="Por favor ingrese el destino1."/>
+                    </h:panelGrid>
+                </td>
+            </tr>    
+            <tr>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="destino2" styleClass="label"/>
+                        <h:inputText  required="true" id="destino2" value="" requiredMessage="Por favor ingrese el destino2."/>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="destino3" styleClass="label"/>
+                        <h:inputText  required="true" id="destino3" value="" requiredMessage="Por favor ingrese el destino3."/>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="destino4" styleClass="label"/>
+                        <h:inputText  required="true" id="destino4" value="" requiredMessage="Por favor ingrese el destino4."/>
+                    </h:panelGrid>
+                </td>
+            </tr>  
+            <tr>  
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="horaDespacho" styleClass="label"/>
+                        <h:inputText  required="true" id="horaDespacho" value="" requiredMessage="Por favor ingrese el numero de documento."/>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="horaLlegada1" styleClass="label"/>
+                        <h:inputText  required="true" id="horaLlegada1" value="" requiredMessage="Por favor ingrese el numero de documento."/>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="horaSalida1" styleClass="label"/>
+                        <h:inputText  required="true" id="horaSalida1" value="" requiredMessage="Por favor ingrese el numero de documento."/>
+                    </h:panelGrid>
+                </td>
+            </tr>
+            <tr>  
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="horaLlegada2" styleClass="label"/>
+                        <h:inputText  required="true" id="horaLlegada2" value="" requiredMessage="Por favor ingrese el numero de documento."/>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="horaSalida2" styleClass="label"/>
+                        <h:inputText  required="true" id="horaSalida2" value="" requiredMessage="Por favor ingrese el numero de documento."/>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="horaLlegada3" styleClass="label"/>
+                        <h:inputText  required="true" id="horaLlegada3" value="" requiredMessage="Por favor ingrese el numero de documento."/>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="horaTerminacion" styleClass="label"/>
+                        <h:inputText  required="true" id="horaTerminacion" value="" requiredMessage="Por favor ingrese el numero de documento."/>
+                    </h:panelGrid>
+                </td>
+            </tr>  
+            <tr>  
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="motivoConsulta" styleClass="label"/>
+                        <h:inputText  required="true" id="motivoConsulta" value="" requiredMessage="Por favor ingrese el numero de documento."/>
+                    </h:panelGrid>
+                </td>
+                <td>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="enfermedadActual" styleClass="label"/>
+                        <h:inputText  required="true" id="enfermedadActual" value="" requiredMessage="Por favor ingrese el numero de documento."/>
+                    </h:panelGrid>
+                </td>
+
+            </tr>
+        </tbody>
+
+
+    </table>
+
+</html>

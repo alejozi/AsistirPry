@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+
+
+    </h:head>
+    <h:body>
+
+        <h:panelGrid columns="2" cellspacing="8" id="id_antecedentes">
+            <h:outputText id="idPatologia" value="Patológicos:"></h:outputText>
+            <h:inputText  value="#{historiaClinicaBean.fkAntecedente.patologicos}" style="width: 720px;"></h:inputText>
+
+            <h:outputText id="idFarma" value="Farmacológios:"></h:outputText>
+            <h:inputText value="#{historiaClinicaBean.fkAntecedente.farmacologicos}" style="width: 720px;"></h:inputText>
+
+            <h:outputText id="idQuiru" value="Quirúrgicos"></h:outputText>
+            <h:inputText value="#{historiaClinicaBean.fkAntecedente.quirurgicos}" style="width: 720px;"></h:inputText>
+            
+             <h:outputText id="idAler" value="Alérgicos:"></h:outputText>
+             <h:inputText value="#{historiaClinicaBean.fkAntecedente.alergicos}" style="width: 720px;"></h:inputText>
+            
+             <h:outputText id="idFami" value="Familiares,otros:"></h:outputText>
+             <h:inputText value="#{historiaClinicaBean.fkAntecedente.familiares}" style="width: 720px;"></h:inputText>
+
+             <h:outputText id="idMena" value="Menarquia:"></h:outputText>
+             <h:panelGrid columns="5">
+                 <h:inputText value="#{historiaClinicaBean.fkAntecedente.menarquia}"></h:inputText>
+                 <h:outputText id="idFur" value="FUR"></h:outputText>
+                 <h:inputText value="#{historiaClinicaBean.fkAntecedente.fur}"></h:inputText>
+                 <h:selectOneRadio value="#{historiaClinicaBean.fkAntecedente.tipoFur}">
+                     <f:selectItem itemLabel="G"></f:selectItem>
+                     <f:selectItem itemLabel="P"></f:selectItem>
+                     <f:selectItem itemLabel="A"></f:selectItem>
+                     <f:selectItem itemLabel="V"></f:selectItem>
+                     <f:selectItem itemLabel="C"></f:selectItem>
+                     <f:selectItem itemLabel="M"></f:selectItem>
+                 </h:selectOneRadio>
+                 
+             </h:panelGrid>
+
+        </h:panelGrid>
+
+
+
+
+    </h:body>
+</html>
+

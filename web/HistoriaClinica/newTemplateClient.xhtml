@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+    <body>
+
+        <ui:composition template="./../template/TemplateHistoriaClinica.xhtml">
+
+            <ui:define name="top">
+              
+                    <table cellspacing="15" id="tblInfoGeneral">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div style="position: relative;left: 20px;">
+                                    <h:graphicImage library="img" name="logoasistir.jpg" height="40%" width="40%"></h:graphicImage>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="Fecha:" styleClass="label"/>
+                                        <rich:calendar  required="false" datePattern="yyyy-MM-dd"  id="fecha_i" inputSize="10" value="#{historiaClinicaBean.cita.fecha}" requiredMessage="Por favor ingrese la fecha."/>
+                                    </h:panelGrid>
+                                </td>
+                                <td>
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="Convenio:" styleClass="label"/>
+                                        <h:inputText id="convenio" value="#{historiaClinicaBean.cita.convenio}"/>
+                                    </h:panelGrid>
+                                </td>
+                                <td>
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="Cód. Servicio:" styleClass="label"/>
+                                        <h:inputText id="codServicio" value="#{historiaClinicaBean.cita.codServicio}"/>
+                                    </h:panelGrid>
+                                </td>
+                                <td>
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="Móvil:" styleClass="label"/>
+                                        <h:inputText id="movil" value="#{historiaClinicaBean.cita.movil}"/>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+
+            </ui:define>
+
+            <ui:define name="left">
+                <ui:include src="menuLateral.xhtml"></ui:include>
+            </ui:define>
+
+            <ui:define name="right">
+                right
+            </ui:define>
+
+            <ui:define name="content">
+                    <rich:panel  id="idDatosP" header="Datos Personal" styleClass="centerPanel">
+                        <ui:include src="DatosPersonales.xhtml"/>    
+                    </rich:panel>
+                    <rich:panel id="idAntecedentes" header="Antecedentes" styleClass="centerPanel">
+                        <ui:include src="Antecedentes.xhtml"></ui:include>   
+                    </rich:panel>
+                    <rich:panel id="idExamen" header="Examen Fisico" styleClass="centerPanel">
+                        <ui:include src="ExamenFisico.xhtml"/>  
+                    </rich:panel>
+                    <rich:panel id="idManejo" header="Manejo y soporte" styleClass="centerPanel">
+                        <ui:include src="ManejoSoporte.xhtml"></ui:include> 
+                    </rich:panel>
+                    <rich:panel id="idMedicamentos" header="Medicamentos administrado" styleClass="centerPanel">
+                        <ui:include src="medicamentosAdministrados.xhtml"></ui:include> 
+                    </rich:panel>
+                    <rich:panel id="idImpresion" header="Impresión diagnostica" styleClass="centerPanel">
+                        <ui:include src="impresionDiagnostica.xhtml"></ui:include> 
+                    </rich:panel>
+                    <rich:panel id="idEpi" header="Epicrisi" styleClass="centerPanel">
+                        <h:inputTextarea style="width: 850px;height: 100px;" value="#{historiaClinicaBean.cita.epicrisis}"></h:inputTextarea>
+                    </rich:panel>
+                    <rich:panel id="idOrden" header="Ordenes médicas" styleClass="centerPanel">
+                        <h:inputTextarea style="width: 850px;height: 100px;" value="#{historiaClinicaBean.cita.ordenesMedicas}"></h:inputTextarea>
+                    </rich:panel>
+                    <rich:panel id="idConsentimienti" header="Concentimiento informado" styleClass="centerPanel">
+                        <h:outputText styleClass="consentimiento" value="Manifiesto que he sido informado a entera satisfaccion sobre mi estado de salud y la necesidad del servicio de consulta domiciliaria o de traslado  a "></h:outputText>  
+                        <h:outputText styleClass="consentimiento" value="otro centro asistencial, asi como las posibles complicaciones que esto conlleva, entre las cuales esta la inestabilidad hemodinámica, ventilatoria y otros  "></h:outputText>  
+                        <h:outputText styleClass="consentimiento" value="impredecibles.  Con base a lo anterior AUTORIZO al personal Médico y Auxiliar de Enfermeria de ASISTIR S.A a realizar el traslado o "></h:outputText>  
+                        <h:outputText styleClass="consentimiento" value="procedimientos que sean necesarios debiendo guardar la reserva necesaria."></h:outputText>  
+                        <h:outputText styleClass="consentimiento" value="Lo anterior de conformidad con la resolución 1995 de 1999 y el decreto 2309 de 2002, He tenido la oportunidad de hacer todas las preguntas pertinentes "></h:outputText>  
+                        <h:outputText styleClass="consentimiento" value="para aclarar mis dudas y se me ha respondido de manera clara y suficiente. "></h:outputText>  
+                    </rich:panel>
+                    <rich:panel id="idResponsables" header="Responsables" styleClass="centerPanel">
+                        <ui:include src="responsables.xhtml"></ui:include>
+                    </rich:panel>
+                    
+               
+                
+                    <a4j:commandButton action="#{historiaClinicaBean.registrarHistoriaClinica()}" execute="tblInfoGeneral,id_datos_personales,id_antecedentes,dtExamenFisico" render="tblInfoGeneral,id_datos_personales,id_antecedentes,dtExamenFisico" value="Guardar"  ></a4j:commandButton>
+               
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+        <rich:dataTable id="dtMedicamentosAdministrados" 
+                        value="#{historiaClinicaBean.medicamentoList}"
+                        var="medicamento"
+                        rows="7"
+                        style="width: 90%;position: relative;left: 70px;"
+                        rowKeyVar="filaSeleccionada">
+            <f:facet name="header">
+                <rich:columnGroup>
+                    <rich:column>
+                        <h:outputText value="Medicamento" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="Via" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="Cantidad" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="" />
+                    </rich:column>
+                </rich:columnGroup>
+            </f:facet>
+
+            <rich:columnGroup>
+                <rich:column>
+                    <h:inputText id="id-medicamento" value="#{medicamento.nombreMedicamento}" required="false" requiredMessage="ingrese el medicamento" readonly=""/>
+                    <rich:message for="id-medicamento" style="color: red"/>
+                </rich:column>
+                <rich:column>
+                    <h:inputText id="id-via" value="#{medicamento.via}" required="false" requiredMessage="ingrese la via de administración" readonly=""/>
+                    <rich:message for="id-via" style="color: red"/>
+                </rich:column>
+                <rich:column>
+                    <h:inputText id="id-cantidad" value="#{medicamento.cantidad}" required="false" requiredMessage="ingrese la cantidad" readonly="" />
+                    <rich:message for="id-cantidad" style="color: red"/>
+                </rich:column>
+                <rich:column>
+                    <a4j:commandButton value="Registrar" action="#{historiaClinicaBean.adicionarNuevaFilaMedicamentos()}" execute="dtMedicamentosAdministrados" render="dtMedicamentosAdministrados" ></a4j:commandButton>
+                </rich:column>
+
+            </rich:columnGroup>
+        </rich:dataTable>
+
+</html>

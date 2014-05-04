@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="AsistirPryPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>co.com.asistir.To.Cita</class>
+    <class>co.com.asistir.To.Acompanante</class>
+    <class>co.com.asistir.To.Ante</class>
+    <class>co.com.asistir.To.ImpresionDiagnostica</class>
+    <class>co.com.asistir.To.Persona</class>
+    <class>co.com.asistir.To.DetalleExamenFisico</class>
+    <class>co.com.asistir.To.ManejoSoportes</class>
+    <class>co.com.asistir.To.ExamenFisico</class>
+    <class>co.com.asistir.To.Medicamento</class>
+    <class>co.com.asistir.To.Ante</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.connection.username" value="asistir"/>
+      <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+      <property name="hibernate.connection.password" value="asistir"/>
+      <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/asistir"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+    </properties>
+  </persistence-unit>
+</persistence>

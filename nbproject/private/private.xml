@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/beans/AutenticacionManagedBean.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Dao/Autenticacion/AutenticacionDaoImp.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/web/WEB-INF/web.xml</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Service/Autenticacion/AutenticacionI.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/To/Usuario.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Dao/Autenticacion/AutenticacionDaoI.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/nbproject/build-impl.xml</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Service/Autenticacion/AutenticacionServiceImplement.java</file>
+        </group>
+    </open-files>
+</project-private>
