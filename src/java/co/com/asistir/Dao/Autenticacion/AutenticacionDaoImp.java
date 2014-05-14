@@ -23,15 +23,17 @@ public class AutenticacionDaoImp extends BaseDaoImplement implements Autenticaci
 
     @Override
     public Usuario esUsuarioRegistrado(String sUsuario) {
-        EntityManager em = JpaEm.getInstance();
-
+        //EntityManager em = JpaEm.getInstance();
+ EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("AsistirPryPU");
+       EntityManager em = emf.createEntityManager();
+        
         try {
             em.getTransaction().begin();
             Usuario usuario = null;
             String sQuery = "select u from Usuario u where u.usuarioLogin =:sUsuario";
             Query query = em.createQuery(sQuery);
             query.setParameter("sUsuario", sUsuario);
-
+            
             List<Usuario> usuarios = query.getResultList();
             em.getTransaction().commit();
 
@@ -58,7 +60,9 @@ public class AutenticacionDaoImp extends BaseDaoImplement implements Autenticaci
 
     public Usuario validarExistenciaUsuario(String sUsuario, String email) {
 
-        EntityManager em = JpaEm.getInstance();
+        //EntityManager em = JpaEm.getInstance();
+        EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("AsistirPryPU");
+       EntityManager em = emf.createEntityManager();
         try {
             if(!em.getTransaction().isActive()){
                 System.out.println("en esta registrada no= " );

@@ -3,14 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/web/Inicio.xhtml</file>
             <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/beans/AutenticacionManagedBean.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/prueba.java</file>
             <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Dao/Autenticacion/AutenticacionDaoImp.java</file>
-            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/web/WEB-INF/web.xml</file>
-            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Service/Autenticacion/AutenticacionI.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/web/ghhh.xhtml</file>
             <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/To/Usuario.java</file>
-            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Dao/Autenticacion/AutenticacionDaoI.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Helper/BaseDaoI.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/web/template/template_menu.xhtml</file>
             <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/nbproject/build-impl.xml</file>
-            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Service/Autenticacion/AutenticacionServiceImplement.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/HistoriaClinicaBean/HistoriaClinicaBean.java</file>
+            <file>file:/Users/hectoridarraga/NetBeansProjects/AsistirPry/src/java/co/com/asistir/Helper/BaseDaoImplement.java</file>
         </group>
     </open-files>
 </project-private>

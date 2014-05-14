@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+    <h:form>
+        <rich:messages ajaxRendered="true"/>
+    
+    <rich:panel id="panelLogin" header="Registrar Usuario"  style="width: 400px;height: 350px;">
+                <table cellspacing="10">
+                    <br></br>
+                    <br></br>
+                    <tr>
+                                    <td>
+                                        <h:outputLabel value="Nombre:" styleClass="labelRegistro"></h:outputLabel>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="Nombre"  styleClass="inputRegistro" value="#{autenticacionManagedBean.usuario.usuarioNombre}" required="true" requiredMessage="Por favor ingrese nombre"></h:inputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel value="Apellido:" styleClass="labelRegistro"></h:outputLabel>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="Contrasena" styleClass="inputRegistro" value="#{autenticacionManagedBean.usuario.usuarioApellido}" required="true" requiredMessage="Por favor ingrese apellidos"></h:inputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel value="Identificacion:" styleClass="labelRegistro"></h:outputLabel>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="Identificacion" styleClass="inputRegistro" value="#{autenticacionManagedBean.usuario.usuarioCedula}" required="true" requiredMessage="Por favor ingrese la identificación"></h:inputText>
+                                    </td>
+                                </tr>
+                                  <tr>
+                                    <td>
+                                        <h:outputLabel value="E-mail:" styleClass="labelRegistro"></h:outputLabel>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="Email" styleClass="inputRegistro" value="#{autenticacionManagedBean.usuario.usuarioEmail}" required="true" requiredMessage="Por favor ingrese el E-mail"></h:inputText>
+                                    </td>
+                                </tr>
+                                  <tr>
+                                    <td>
+                                        <h:outputLabel value="Usuario:" styleClass="labelRegistro"></h:outputLabel>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="Usuario" styleClass="inputRegistro" value="#{autenticacionManagedBean.usuario.usuarioLogin}" required="true" requiredMessage="Por favor ingrese el Usuario"></h:inputText>
+                                    </td>
+                                </tr>
+                                  <tr>
+                                    <td>
+                                        <h:outputLabel value="Password:" styleClass="labelRegistro"></h:outputLabel>
+                                    </td>
+                                    <td>
+                                        <h:inputSecret id="Password" styleClass="inputRegistro" value="#{autenticacionManagedBean.usuario.usuarioPass}" required="true" requiredMessage="Por favor ingrese la contraseña" ></h:inputSecret>
+                                    </td>
+                                </tr>
+                                
+                     </table>
+            <br></br>
+                     <center>
+                         <a4j:commandButton value="Ingresar" style="width:100px;height: 20px;" action="#{autenticacionManagedBean.guardarUsuario()}" execute="panelLogin" ></a4j:commandButton>
+                     </center>
+                            
+              
+         </rich:panel>
+             
+   </h:form>
+</html>

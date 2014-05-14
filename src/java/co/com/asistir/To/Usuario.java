@@ -1,13 +1,13 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.com.asistir.To;
 
+package co.com.asistir.To;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,14 +16,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Dany
+ * @author hectoridarraga
  */
 @Entity
 @Table(name = "usuario")
@@ -36,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByUsuarioEstado", query = "SELECT u FROM Usuario u WHERE u.usuarioEstado = :usuarioEstado"),
     @NamedQuery(name = "Usuario.findByUsuarioNombre", query = "SELECT u FROM Usuario u WHERE u.usuarioNombre = :usuarioNombre"),
     @NamedQuery(name = "Usuario.findByUsuarioApellido", query = "SELECT u FROM Usuario u WHERE u.usuarioApellido = :usuarioApellido"),
-    @NamedQuery(name = "Usuario.findByUsuarioCedula", query = "SELECT u FROM Usuario u WHERE u.usuarioCedula = :usuarioCedula")})
+    @NamedQuery(name = "Usuario.findByUsuarioCedula", query = "SELECT u FROM Usuario u WHERE u.usuarioCedula = :usuarioCedula"),
+    @NamedQuery(name = "Usuario.findByUsuarioEmail", query = "SELECT u FROM Usuario u WHERE u.usuarioEmail = :usuarioEmail")})
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -56,8 +55,6 @@ public class Usuario implements Serializable {
     private String usuarioApellido;
     @Column(name = "usuario_cedula")
     private BigInteger usuarioCedula;
-    //@OneToMany(mappedBy = "fkVentaResponsable")
-    //private List<Venta> ventaList;
     @Column(name = "usuario_email")
     private String usuarioEmail;
 
@@ -124,15 +121,13 @@ public class Usuario implements Serializable {
         this.usuarioCedula = usuarioCedula;
     }
 
-   /*
-    @XmlTransient
-    public List<Venta> getVentaList() {
-        return ventaList;
+    public String getUsuarioEmail() {
+        return usuarioEmail;
     }
 
-    public void setVentaList(List<Venta> ventaList) {
-        this.ventaList = ventaList;
-    }*/
+    public void setUsuarioEmail(String usuarioEmail) {
+        this.usuarioEmail = usuarioEmail;
+    }
 
     @Override
     public int hashCode() {
@@ -156,21 +151,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "co.com.venecia.To.Usuario[ usuarioId=" + usuarioId + " ]";
-    }
-
-    /**
-     * @return the usuarioEmail
-     */
-    public String getUsuarioEmail() {
-        return usuarioEmail;
-    }
-
-    /**
-     * @param usuarioEmail the usuarioEmail to set
-     */
-    public void setUsuarioEmail(String usuarioEmail) {
-        this.usuarioEmail = usuarioEmail;
+        return "co.com.asistir.To.Usuario[ usuarioId=" + usuarioId + " ]";
     }
     
 }

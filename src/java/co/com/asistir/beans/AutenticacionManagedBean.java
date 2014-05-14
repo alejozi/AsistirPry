@@ -65,7 +65,7 @@ public class AutenticacionManagedBean implements Serializable {
                 usuario=usuarioBD;
                 USER_KEY= "auth_user";
                 url = extContext.encodeActionURL(
-                        context.getApplication().getViewHandler().getActionURL(context, "/Ventas.xhtml"));
+                        context.getApplication().getViewHandler().getActionURL(context, "/Inicio.xhtml"));
                 extContext.getSessionMap().put(USER_KEY, usuario);
                 try {
                     extContext.redirect(url);
