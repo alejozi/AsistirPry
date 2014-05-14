@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+     >
+    <head>
+        <title>TODO supply a title</title>
+        <h:outputStylesheet library="css" name="cssLayouts.css"></h:outputStylesheet>
+    </head>
+    <body>
+       <ui:composition template="./template/template_menu.xhtml">
+
+            <ui:define name="top">
+               <ui:include src="./template/Template_encabezado.xhtml"/>
+             </ui:define>
+          
+           <ui:define name="content">
+           
+           
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+               <table>
+                   <tbody>
+                       
+                       <tr>
+                           <td width="10%" ></td>
+                           <td width="40%">
+                                  <ui:include src="RegistroUsuario.xhtml"/>
+                               
+                           </td>
+                           
+                           <td width="35%">                            
+                               <table cellspacing="10">
+                                       <tr>
+                                           <td width="60%">
+                                               <ui:include src="login.xhtml" />
+                                           </td>
+                                           <td width="40%">
+                                              
+                                                <h:graphicImage library="img" name="LoginImage.jpg"></h:graphicImage>
+                                                
+                                           </td>
+                                       </tr>                                  
+                                       </table>
+                            
+                           </td>
+                       </tr>
+                   </tbody>
+               </table>
+             
+           </ui:define>
+       </ui:composition>
+    </body>
+</html>
