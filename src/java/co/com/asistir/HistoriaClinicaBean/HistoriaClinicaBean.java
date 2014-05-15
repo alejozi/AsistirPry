@@ -17,16 +17,13 @@ import co.com.asistir.To.ExamenFisico;
 import co.com.asistir.To.ImpresionDiagnostica;
 import co.com.asistir.To.Medicamento;
 import co.com.asistir.To.Persona;
-import java.io.IOException;
+import com.sun.faces.context.flash.ELFlash;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 /**
  *
@@ -63,12 +60,22 @@ public class HistoriaClinicaBean {
     private List<String> ordenesMedicas;
     // </editor-fold>  
 
+    public void preRender(){
+       lstExamenesRealizados=(ArrayList<ExamenFisico>) ELFlash.getFlash().get("lstE");
+       lstImpresionesDiagnostricasRealizadas=(ArrayList<ImpresionDiagnostica>) ELFlash.getFlash().get("lstI");
+       lstMedicamentosEnviados=(ArrayList<Medicamento>) ELFlash.getFlash().get("lstM");
+       ordenesMedicas=(ArrayList<String>) ELFlash.getFlash().get("lstO");
+       persona=(Persona) ELFlash.getFlash().get("persona");
+       estaPaciente=(Boolean)ELFlash.getFlash().get("boolEsta");
+     
+    }
     /**
      * Creates a new instance of HistoriaClinicaBean
      */
     public HistoriaClinicaBean() {
         cita = new Cita();
         persona = new Persona();
+        persona.setNombres("Probando");
         examenFisico = new ExamenFisico();
         examenFisicoList = new ArrayList<DetalleExamenFisico>();
         medicamentoList = new ArrayList<Medicamento>();
@@ -276,53 +283,8 @@ public class HistoriaClinicaBean {
 
 
 
-
-//        cita.setImpresionDiagnosticaCollection(impresionDiagnosticaList);
-//        cita.setMedicamentoCollection(medicamentoList);
-//        persona.setFkAnte(fkAntecedente);
-//   examenFisico.setDetalleExamenFisicoCollection(examenFisicoList);
-//        cita.setFkPersona(persona);
-//        cita.setFkExamen(examenFisico);
-//        //BaseDaoI b=new BaseDaoImplement();*/
-//
-//        registroHistoriaClinicaService.guardar(cita);
-//        // b.guardar(new Medicamento());
     }
     
-    public void consultarPaciente() {
-        List<Cita> p = getPacienteService().buscarPaciente(cedulaConsulta);
-        if (p.isEmpty()) {
-            setEstaPaciente(false);
-            System.out.println("no se encuentra = ");
-        } else {
-            setEstaPaciente(true);
-            cargarExamenes(p);
-            System.out.println("se encuentra");
-        }
-        try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("HistoriaClinica.xhtml");
-        } catch (IOException ex) {
-            System.out.println("errror = " + ex.getMessage());
-        }
-
-    }
-    
-    public void cargarExamenes(List<Cita> lstCitas) {
-        setLstExamenesRealizados(new ArrayList<ExamenFisico>());
-        setLstMedicamentosEnviados(new ArrayList<Medicamento>());
-        setLstImpresionesDiagnostricasRealizadas(new ArrayList<ImpresionDiagnostica>());
-        setOrdenesMedicas(new ArrayList<String>());
-        persona= lstCitas.get(0).getFkPersona();
-        setAntecentes(persona.getFkAnte());
-        
-        for (Cita citaConsultada : lstCitas) {
-            getLstMedicamentosEnviados().addAll(citaConsultada.getMedicamentoCollection());
-            getLstImpresionesDiagnostricasRealizadas().addAll(citaConsultada.getImpresionDiagnosticaCollection());
-            getLstExamenesRealizados().add(cita.getFkExamen());
-            getOrdenesMedicas().add(citaConsultada.getOrdenesMedicas());
-        }
-    }
-
     /**
      * @return the lst
      */

@@ -8,6 +8,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 
+    <h:head>
+        <f:metadata>
+            <f:event type="preRenderView"
+                     listener="#{historiaClinicaBean.preRender}" />
+        </f:metadata>
+ 
+    </h:head>
     <body>
 
         <ui:composition template="./../template/TemplateHistoriaClinica.xhtml">

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <rich:popupPanel id="popupMedicamentos" modal="true" resizeable="false" onmaskclick="#{rich:component('popupMedicamentos')}.hide()">
+        <f:facet name="header">
+            <h:outputText value="Medicamentos" />
+        </f:facet>
+        <f:facet name="controls">
+            <h:outputLink value="#" onclick="#{rich:component('popupMedicamentos')}.hide();
+                    return false;">
+                X
+            </h:outputLink>
+        </f:facet>
+        <rich:dataTable
+            value="#{historiaClinicaBean.lstMedicamentosEnviados}"
+            var="medica">
+            <f:facet name="header">
+                <rich:columnGroup>
+                    <rich:column>
+                        <h:outputText value="Medicamento" />
+                    </rich:column>
+                    <rich:column rowspan="2">
+                        <h:outputText value="Via" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="Cantidad" />
+                    </rich:column>
+                </rich:columnGroup>
+            </f:facet>
+            <rich:column>
+                <h:outputText value="#{medica.nombreMedicamento}" />
+            </rich:column>
+
+            <rich:column>
+                <h:outputText value="#{medica.via}" />
+            </rich:column>
+
+            <rich:column>
+                <h:outputText value="#{medica.cantidad}" />
+            </rich:column>
+
+
+        </rich:dataTable>
+    </rich:popupPanel>
+
+</html>

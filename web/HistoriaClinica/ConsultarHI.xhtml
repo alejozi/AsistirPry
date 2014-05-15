@@ -29,14 +29,14 @@
                 <rich:panel header="Consultar paciente">
                     <h:panelGrid columns="6">
                         <h:outputLabel value="Cédula:"></h:outputLabel>
-                        <h:inputText id="id-ced" value="#{historiaClinicaBean.cedulaConsulta}" style="width: 200px;" required="true" requiredMessage="Ingrese la identificación del paciente"></h:inputText>
+                        <h:inputText id="id-ced" value="#{consultarPaciente.cedulaConsulta}" style="width: 200px;" required="true" requiredMessage="Ingrese la identificación del paciente"></h:inputText>
                         <rich:message for="id-ced"></rich:message>
                     </h:panelGrid>
                 </rich:panel>
                 <br></br>
                 <br></br>
                 <center>
-                    <a4j:commandButton value="Buscar" action="#{historiaClinicaBean.consultarPaciente}" style="width: 150px;"></a4j:commandButton>
+                    <a4j:commandButton value="Buscar" action="#{consultarPaciente.consultarPaciente}" style="width: 150px;"></a4j:commandButton>
                 </center>
             </ui:define>
 
