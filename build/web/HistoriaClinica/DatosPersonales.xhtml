@@ -23,18 +23,18 @@ and open the template in the editor.
 
         <h:outputLabel value="Tipo Documento:" styleClass="label"/>
         <h:selectOneMenu  required="false" id="tipoDoc" value="#{historiaClinicaBean.persona.tipoDocumento}" requiredMessage="Por favor ingrese el tipo de documento.">
-            <f:selectItem itemLabel="CC"></f:selectItem>
-            <f:selectItem itemLabel="TI"></f:selectItem>
-            <f:selectItem itemLabel="RC"></f:selectItem>
-            <f:selectItem itemLabel="CE"></f:selectItem>
-            <f:selectItem itemLabel="PP"></f:selectItem>
+            <f:selectItem itemLabel="CC" itemValue="CC"></f:selectItem>
+            <f:selectItem itemLabel="TI" itemValue="TI"></f:selectItem>
+            <f:selectItem itemLabel="RC" itemValue="RC"></f:selectItem>
+            <f:selectItem itemLabel="CE" itemValue="CE"></f:selectItem>
+            <f:selectItem itemLabel="PP" itemValue="PP"></f:selectItem>
         </h:selectOneMenu>
         <h:outputLabel value=" Documento:" styleClass="label"/>
         <h:inputText  required="false" id="documento" value="#{historiaClinicaBean.persona.idPersona}" requiredMessage="Por favor ingrese el numero de documento."/>
         <h:outputLabel value="Sexo:" styleClass="label"/>
         <h:selectOneMenu  required="false" id="sex" value="#{historiaClinicaBean.persona.sexo}" requiredMessage="Por favor ingrese el sexo.">
-            <f:selectItem itemLabel="F"></f:selectItem>
-            <f:selectItem itemLabel="M"></f:selectItem>
+            <f:selectItem itemLabel="F" itemValue="F"></f:selectItem>
+            <f:selectItem itemLabel="M" itemValue="M"></f:selectItem>
         </h:selectOneMenu>
         
          <h:outputLabel value="Fecha Nacimiento:" styleClass="label"/>
@@ -50,10 +50,10 @@ and open the template in the editor.
         <h:inputText  required="false" id="ocupacion"  value="#{historiaClinicaBean.persona.ocupacion}" requiredMessage="Por favor ingrese la ocupación."/> 
         <h:outputLabel value="Estado civil" styleClass="label"/>
         <h:selectOneMenu  required="false" id="estadoCivil" value="#{historiaClinicaBean.persona.estadoCivil}" requiredMessage="Por favor ingrese el sexo.">
-            <f:selectItem itemLabel="Soltero"></f:selectItem>
-            <f:selectItem itemLabel="Casado"></f:selectItem>
-            <f:selectItem itemLabel="Viudo"></f:selectItem>
-            <f:selectItem itemLabel="Divorciado"></f:selectItem>
+            <f:selectItem itemLabel="Soltero"  itemValue="Soltero"></f:selectItem>
+            <f:selectItem itemLabel="Casado" itemValue="Casado"></f:selectItem>
+            <f:selectItem itemLabel="Viudo" itemValue="Viudo"></f:selectItem>
+            <f:selectItem itemLabel="Divorciado" itemValue="Divorciado"></f:selectItem>
         </h:selectOneMenu>
         
         <h:outputLabel value="Celular:" styleClass="label"/>
@@ -62,12 +62,12 @@ and open the template in the editor.
         <h:inputText  required="false" id="aseguradora"  value="#{historiaClinicaBean.persona.aseguradora}" requiredMessage="Por favor ingrese la aseguradora."/> 
         <h:outputLabel value="Tipo aseguradora" styleClass="label"/>
         <h:selectOneMenu  required="false" id="tipoAseg" value="#{historiaClinicaBean.persona.tipoAseguradora}" requiredMessage="Tipo aseguradora.">
-            <f:selectItem itemLabel="EPS"></f:selectItem>
-            <f:selectItem itemLabel="ARP"></f:selectItem>
-            <f:selectItem itemLabel="ARS"></f:selectItem>
-            <f:selectItem itemLabel="PREPAGADA"></f:selectItem>
-            <f:selectItem itemLabel="VINC"></f:selectItem>
-            <f:selectItem itemLabel="PARTICULAR"></f:selectItem>
+            <f:selectItem itemLabel="EPS" itemValue="EPS"></f:selectItem>
+            <f:selectItem itemLabel="ARP" itemValue="ARP"></f:selectItem>
+            <f:selectItem itemLabel="ARS" itemValue="ARS"></f:selectItem>
+            <f:selectItem itemLabel="PREPAGADA" itemValue="PREPAGADA"></f:selectItem>
+            <f:selectItem itemLabel="VINC" itemValue="VINC"></f:selectItem>
+            <f:selectItem itemLabel="PARTICULAR" itemValue="PARTICULAR"></f:selectItem>
         </h:selectOneMenu>
     </h:panelGrid>
 

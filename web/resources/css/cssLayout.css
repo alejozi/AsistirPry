@@ -1,11 +1,18 @@
-
 #top {
-    position: relative;
-    top: -10px;
-    left: -20px;
-    background-color: #4A75B5;
-    color: white;
-    width: 1275px;
+    border-top: 8px solid #0E6472;
+    padding-top: 10px;
+    border-bottom: 2px solid #e9e9e9;
+    text-align: center;
+    background:white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    /* border-top: 2px solid #000; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
+    z-index: 1000;
+
 }
 
 #bottom {
@@ -16,8 +23,9 @@
 }
 
 #left {
+    position: relative;
+    top: 100PX;
     float: left;
-    background-color: #ece3a5;
     padding: 5px;
     width: 150px;
 }
@@ -42,21 +50,37 @@
 }
 
 .right_content {
-    background-color: #dddddd;
+    position: relative;
+    top: 100px;
+    /*background-color: #dddddd*/;
     padding: 5px;
     margin: 0px 170px 0px 170px;
 }
 
 #top a:link, #top a:visited {
-  color: white;
-  font-weight : bold;
-  text-decoration: none;
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
 }
 
 #top a:link:hover, #top a:visited:hover  {
-  color: black;
-  font-weight : bold;
-  text-decoration : underline;
+    color: black;
+    font-weight : bold;
+    text-decoration : underline;
 }
 
+.rf-p-hdr{
+    background-image: none !important;
+    background-color: #0E6472 !important;
+}
+
+.rf-p{
+    background-color: white !important;
+}
+
+.rf-dt-hdr-c{
+    background-image: none !important;
+    background-color: #0F7383 !important; 
+    color: white !important;
+}
 

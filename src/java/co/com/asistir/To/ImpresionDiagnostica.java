@@ -43,7 +43,7 @@ public class ImpresionDiagnostica implements Serializable {
     @Column(name = "codigo")
     private String codigo;
     @JoinColumn(name = "fk_cita", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Cita fkCita;
 
     public ImpresionDiagnostica() {

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+    <body>
+
+        <ui:composition template="./../template/TemplateConsultaHI.xhtml">
+
+            <ui:define name="top">
+                <h:graphicImage library="img" name="logoAsistir.jpg" />
+            </ui:define>
+
+            <ui:define name="left">
+                
+            </ui:define>
+
+            <ui:define name="right">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <br></br>
+                <br></br>
+                <br></br>
+                <rich:panel header="Consultar paciente">
+                    <h:panelGrid columns="6">
+                        <h:outputLabel value="Cédula:"></h:outputLabel>
+                        <h:inputText id="id-ced" value="#{historiaClinicaBean.cedulaConsulta}" style="width: 200px;" required="true" requiredMessage="Ingrese la identificación del paciente"></h:inputText>
+                        <rich:message for="id-ced"></rich:message>
+                    </h:panelGrid>
+                </rich:panel>
+                <br></br>
+                <br></br>
+                <center>
+                    <a4j:commandButton value="Buscar" action="#{historiaClinicaBean.consultarPaciente}" style="width: 150px;"></a4j:commandButton>
+                </center>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -8,9 +8,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -80,9 +82,9 @@ public class ExamenFisico implements Serializable {
     private String extremidades;
     @Column(name = "sistema_nervioso")
     private String sistemaNervioso;
-    @OneToMany(mappedBy = "fkExamenFisico")
+    @OneToMany(mappedBy = "fkExamenFisico",fetch = FetchType.EAGER)
     @Cascade({CascadeType.SAVE_UPDATE})
-    private Collection<DetalleExamenFisico> detalleExamenFisicoCollection;
+    private Set<DetalleExamenFisico> detalleExamenFisicoCollection;
     @OneToMany(mappedBy = "fkExamen")
     private Collection<Cita> citaCollection;
     @Transient
@@ -209,11 +211,11 @@ public class ExamenFisico implements Serializable {
     }
 
     @XmlTransient
-    public Collection<DetalleExamenFisico> getDetalleExamenFisicoCollection() {
+    public Set<DetalleExamenFisico> getDetalleExamenFisicoCollection() {
         return detalleExamenFisicoCollection;
     }
 
-    public void setDetalleExamenFisicoCollection(Collection<DetalleExamenFisico> detalleExamenFisicoCollection) {
+    public void setDetalleExamenFisicoCollection(Set<DetalleExamenFisico> detalleExamenFisicoCollection) {
         this.detalleExamenFisicoCollection = detalleExamenFisicoCollection;
     }
 

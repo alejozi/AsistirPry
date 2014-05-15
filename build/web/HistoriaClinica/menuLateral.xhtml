@@ -8,14 +8,19 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:rich="http://richfaces.org/rich"
       xmlns:a4j="http://richfaces.org/a4j">
-    <h:form>
-        <h:panelGrid>
-            <a4j:commandButton value="Examenes fisicos" action="hola"></a4j:commandButton>
-            <a4j:commandButton value="Manejos y soportes"  action="hola"></a4j:commandButton>
-            <a4j:commandButton value="Medicamentos"  action="hola"></a4j:commandButton>
-            <a4j:commandButton value="Impresiones diagnosticas"  action="hola"></a4j:commandButton>
-            <a4j:commandButton value="Epicrisis"  action="hola"></a4j:commandButton>
-            <a4j:commandButton value="Ordenes medicas"  action="hola"></a4j:commandButton>
-        </h:panelGrid>
-    </h:form>
+
+    <rich:panelMenu style="width:200px" itemMode="ajax" groupMode="ajax" groupExpandedLeftIcon="triangleUp"
+                    groupCollapsedLeftIcon="triangleDown" topGroupExpandedRightIcon="chevronUp"
+                    topGroupCollapsedRightIcon="chevronDown" itemLeftIcon="disc">
+        <rich:panelMenuGroup label="Historial clinico">
+            <rich:panelMenuItem label="Medicamentos" name="Medicamentos" />
+            <rich:panelMenuItem label="Examenes fisicos" name="Examenes fisicos" />
+            <rich:panelMenuItem label="Impresiones diagnosticas" name="Impresiones diagnosticas" />
+            <rich:panelMenuItem label="Epicrisis" name="Epicrisis" />
+            <rich:panelMenuItem label="Manejos y soportes" name="Manejos y soportes" />
+            <rich:panelMenuItem label="Ordenes medicas" name="Ordenes medicas" />
+        </rich:panelMenuGroup>
+    </rich:panelMenu>
+
+ 
 </html>

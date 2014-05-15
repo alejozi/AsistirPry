@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <br/>
+    <a4j:outputPanel id="examenFisicoDetGral">
+  
+
+    <h:panelGrid id="id_examen_infodet" columns="2">
+        <h:outputLabel value="Cabeza y cuello:" styleClass="label"/>
+        <h:inputText style="width: 720px;" required="false" id="cabezaycuello"  value="#{historiaClinicaBean.examenFisico.cabezaCuello}" requiredMessage="Por favor ingrese los datos de cabeza."/>
+        <h:outputLabel  value="Aparato cardiovascular:" styleClass="label"/>
+        <h:inputText style="width: 720px;" required="false" id="apaCardiovascular"  value="#{historiaClinicaBean.examenFisico.aparatoCardiovascular}" requiredMessage="Por favor ingrese los datos de cabeza."/>
+        <h:outputLabel value="Aparato respiratorio:" styleClass="label"/>
+        <h:inputText style="width: 720px;" required="false" id="apaRespiratorio"  value="#{historiaClinicaBean.examenFisico.aparatoRespiratorio}" requiredMessage="Por favor ingrese los datos de cabeza."/>
+
+
+    </h:panelGrid>
+    </a4j:outputPanel>
+
+</html>

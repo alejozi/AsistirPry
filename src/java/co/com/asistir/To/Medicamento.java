@@ -46,7 +46,7 @@ public class Medicamento implements Serializable {
     @Column(name = "cantidad")
     private Integer cantidad;
     @JoinColumn(name = "fk_cita", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Cita fkCita;
 
     public Medicamento() {

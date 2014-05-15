@@ -7,10 +7,12 @@ package co.com.asistir.To;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -76,10 +78,10 @@ public class Cita implements Serializable {
     @JoinColumn(name = "fk_examen", referencedColumnName = "id_estado_fisico")
     @ManyToOne
     private ExamenFisico fkExamen;
-    @OneToMany(mappedBy = "fkCita")
-    private Collection<ImpresionDiagnostica> impresionDiagnosticaCollection;
-    @OneToMany(mappedBy = "fkCita")
-    private Collection<Medicamento> medicamentoCollection;
+    @OneToMany(mappedBy = "fkCita",fetch = FetchType.EAGER)
+    private Set<ImpresionDiagnostica> impresionDiagnosticaCollection;
+    @OneToMany(mappedBy = "fkCita", fetch = FetchType.EAGER)
+    private Set<Medicamento> medicamentoCollection;
 
     public Cita() {
     }
@@ -185,20 +187,20 @@ public class Cita implements Serializable {
     }
 
     @XmlTransient
-    public Collection<ImpresionDiagnostica> getImpresionDiagnosticaCollection() {
+    public Set<ImpresionDiagnostica> getImpresionDiagnosticaCollection() {
         return impresionDiagnosticaCollection;
     }
 
-    public void setImpresionDiagnosticaCollection(Collection<ImpresionDiagnostica> impresionDiagnosticaCollection) {
+    public void setImpresionDiagnosticaCollection(Set<ImpresionDiagnostica> impresionDiagnosticaCollection) {
         this.impresionDiagnosticaCollection = impresionDiagnosticaCollection;
     }
 
     @XmlTransient
-    public Collection<Medicamento> getMedicamentoCollection() {
+    public Set<Medicamento> getMedicamentoCollection() {
         return medicamentoCollection;
     }
 
-    public void setMedicamentoCollection(Collection<Medicamento> medicamentoCollection) {
+    public void setMedicamentoCollection(Set<Medicamento> medicamentoCollection) {
         this.medicamentoCollection = medicamentoCollection;
     }
 

@@ -11,7 +11,7 @@ and open the template in the editor.
       xmlns:a4j="http://richfaces.org/a4j"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-  
+    <h:panelGroup id="ef">
     <rich:dataTable id="dtExamenFisico" value="#{historiaClinicaBean.examenFisicoList}"
                     var="examenFisico"
                     rowKeyVar="filaSeleccionada">
@@ -90,19 +90,19 @@ and open the template in the editor.
     <br/>
     <h:panelGrid  id="id_examen_info" columns="5" cellspacing="8">
         <h:outputLabel value="Estado general:" styleClass="label"/>
-        <h:selectOneMenu  required="false" id="estadoGeneral" value="#{historiaClinicaBean.examenFisico.estadoGeneral}" requiredMessage="Por favor ingrese el tipo de documento.">
-            <f:selectItem itemLabel="Bueno"></f:selectItem>
-            <f:selectItem itemLabel="Regular"></f:selectItem>
-            <f:selectItem itemLabel="Malo"></f:selectItem>
+     <h:selectOneMenu  required="false" id="estadoGeneral" value="#{historiaClinicaBean.examenFisico.estadoGeneral}" requiredMessage="Por favor ingrese el tipo de documento.">
+         <f:selectItem itemLabel="Bueno" itemValue="b"></f:selectItem>
+         <f:selectItem itemLabel="Regular" itemValue="r"></f:selectItem>
+         <f:selectItem itemLabel="Malo" itemValue="m"></f:selectItem>
         </h:selectOneMenu>
-        <h:selectManyCheckbox id="estadoGeneral2" value="#{historiaClinicaBean.examenFisico.estadosFisicos2}">
+      <h:selectManyCheckbox id="estadoGeneral2" value="#{historiaClinicaBean.examenFisico.estadosFisicos2}">
             <f:selectItem itemLabel="Conciente" itemValue="conciente"> </f:selectItem>
             <f:selectItem itemLabel="Alerta" itemValue="alerta"></f:selectItem>
             <f:selectItem itemLabel="Orientado" itemValue="orientado"></f:selectItem>
 
         </h:selectManyCheckbox>
-        <h:outputText value="Otro:"></h:outputText>
-        <h:inputText  value=""></h:inputText> 
+      <!--  <h:outputText value="Otro:"></h:outputText>
+        <h:inputText  value="#{historiaClinicaBean.examenFisico.otro}"></h:inputText> -->
     </h:panelGrid>
 
     <h:panelGrid id="id_examen_infodet" columns="2">
@@ -115,5 +115,5 @@ and open the template in the editor.
 
 
     </h:panelGrid>
-
+    </h:panelGroup>
 </html>
