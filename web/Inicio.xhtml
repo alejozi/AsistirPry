@@ -7,52 +7,36 @@
      >
     <head>
         <title>TODO supply a title</title>
-        <h:outputStylesheet library="css" name="cssLayouts.css"></h:outputStylesheet>
     </head>
     <body>
-       <ui:composition template="./template/template_menu.xhtml">
+       <ui:composition template="./template/TemplateConsultaHI.xhtml">
 
             <ui:define name="top">
-               <ui:include src="./template/Template_encabezado.xhtml"/>
-             </ui:define>
+                <h:graphicImage library="img" name="logoAsistir.jpg" />
+            </ui:define>
+
           
-           <ui:define name="content">
-           
-           
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-               <table>
-                   <tbody>
-                       
-                       <tr>
-                           <td width="10%" ></td>
-                           <td width="40%">
-                                  <ui:include src="RegistroUsuario.xhtml"/>
-                               
-                           </td>
-                           
-                           <td width="35%">                            
-                               <table cellspacing="10">
-                                       <tr>
-                                           <td width="60%">
-                                               <ui:include src="login.xhtml" />
-                                           </td>
-                                           <td width="40%">
-                                              
-                                                <h:graphicImage library="img" name="LoginImage.jpg"></h:graphicImage>
-                                                
-                                           </td>
-                                       </tr>                                  
-                                       </table>
-                            
-                           </td>
-                       </tr>
-                   </tbody>
-               </table>
-             
-           </ui:define>
+          <ui:define name="content">
+              <center>
+                  <br/><br/>
+                  <div class="titulo" > Iniciar sesión con una cuenta de Asistir</div>
+                <br/>
+               
+                    <rich:tabPanel switchType="client" style="width: 500px;">
+                        <rich:tab header="Autenticarse" >
+                            <center> 
+                                <ui:include src="login.xhtml" />
+                            </center>
+                        </rich:tab>
+                        <rich:tab header="Registrar Usuario" >
+                            <center>
+                                <ui:include src="RegistroUsuario.xhtml"/>
+                            </center>
+                        </rich:tab>
+                    </rich:tabPanel>
+                </center>
+            </ui:define>
+
        </ui:composition>
     </body>
 </html>

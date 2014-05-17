@@ -65,7 +65,7 @@ public class AutenticacionManagedBean implements Serializable {
                 usuario=usuarioBD;
                 USER_KEY= "auth_user";
                 url = extContext.encodeActionURL(
-                        context.getApplication().getViewHandler().getActionURL(context, "/Inicio.xhtml"));
+                        context.getApplication().getViewHandler().getActionURL(context, "/HistoriaClinica/ConsultarHI.xhtml"));
                 extContext.getSessionMap().put(USER_KEY, usuario);
                 try {
                     extContext.redirect(url);
@@ -73,9 +73,12 @@ public class AutenticacionManagedBean implements Serializable {
                     Logger.getLogger(AutenticacionManagedBean.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "El usuario no existe", ""));
+        }
+            
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "El usuario no existe", ""));
-
         }
     }
 
