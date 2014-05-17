@@ -57,6 +57,7 @@ public class ConsultarPaciente {
 
     public void consultarPaciente() {
         List<Cita> p = getPacienteService().buscarPaciente(cedulaConsulta);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
         if (p.isEmpty()) {
             setEstaPaciente(false);
             System.out.println("no se encuentra = ");
@@ -79,7 +80,6 @@ public class ConsultarPaciente {
         setLstMedicamentosEnviados(new ArrayList<Medicamento>());
         setLstImpresionesDiagnostricasRealizadas(new ArrayList<ImpresionDiagnostica>());
         setOrdenesMedicas(new ArrayList<String>());
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("persona", lstCitas.get(0).getFkPersona());
         setAntecentes(lstCitas.get(0).getFkPersona().getFkAnte());
 
@@ -90,11 +90,11 @@ public class ConsultarPaciente {
             getOrdenesMedicas().add(citaConsultada.getOrdenesMedicas());
         }
 
-         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstE", lstExamenesRealizados);
-         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstI", lstImpresionesDiagnostricasRealizadas);
-         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstM", lstMedicamentosEnviados);
-         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstO", ordenesMedicas);
-         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("key", "S");
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstE", lstExamenesRealizados);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstI", lstImpresionesDiagnostricasRealizadas);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstM", lstMedicamentosEnviados);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstO", ordenesMedicas);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("key", "S");
 
 
     }
@@ -231,6 +231,4 @@ public class ConsultarPaciente {
     public void setPacienteService(PersonaserviceI pacienteService) {
         this.pacienteService = pacienteService;
     }
-
-   
 }

@@ -290,6 +290,11 @@ public class HistoriaClinicaBean {
 
     }
     
+    
+    public void editarDatosPersonales(){
+        System.out.println("Editar ");
+    }
+    
     /**
      * @return the lst
      */

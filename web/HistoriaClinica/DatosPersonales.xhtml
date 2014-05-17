@@ -22,7 +22,8 @@ and open the template in the editor.
         <h:inputText  required="false" id="edad" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.edad}" requiredMessage="Por favor ingrese la edad."/>                         
 
         <h:outputLabel value="Tipo Documento:" styleClass="label"/>
-        <h:selectOneMenu  required="false" readonly="#{historiaClinicaBean.estaPaciente}" id="tipoDoc" value="#{historiaClinicaBean.persona.tipoDocumento}" requiredMessage="Por favor ingrese el tipo de documento.">
+        <h:inputText value="#{historiaClinicaBean.persona.tipoDocumento}" readonly="#{historiaClinicaBean.estaPaciente}" rendered="#{historiaClinicaBean.estaPaciente}"/>
+        <h:selectOneMenu  required="false" rendered="#{!historiaClinicaBean.estaPaciente}" id="tipoDoc" value="#{historiaClinicaBean.persona.tipoDocumento}" requiredMessage="Por favor ingrese el tipo de documento.">
             <f:selectItem itemLabel="CC" itemValue="CC"></f:selectItem>
             <f:selectItem itemLabel="TI" itemValue="TI"></f:selectItem>
             <f:selectItem itemLabel="RC" itemValue="RC"></f:selectItem>
@@ -32,36 +33,40 @@ and open the template in the editor.
         <h:outputLabel value=" Documento:" styleClass="label"/>
         <h:inputText  required="false" readonly="#{historiaClinicaBean.estaPaciente}" id="documento" value="#{historiaClinicaBean.persona.idPersona}" requiredMessage="Por favor ingrese el numero de documento."/>
         <h:outputLabel value="Sexo:" styleClass="label"/>
-        <h:selectOneMenu  required="false" id="sex" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.sexo}" requiredMessage="Por favor ingrese el sexo.">
+        <h:inputText value="#{historiaClinicaBean.persona.sexo}" readonly="#{historiaClinicaBean.estaPaciente}" rendered="#{historiaClinicaBean.estaPaciente}"/>
+        <h:selectOneMenu  required="false" id="sex" rendered="#{!historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.sexo}" requiredMessage="Por favor ingrese el sexo.">
             <f:selectItem itemLabel="F" itemValue="F"></f:selectItem>
             <f:selectItem itemLabel="M" itemValue="M"></f:selectItem>
         </h:selectOneMenu>
-        
-         <h:outputLabel value="Fecha Nacimiento:" styleClass="label"/>
-         <rich:calendar  required="false" datePattern="yyyy-MM-dd" readonly="#{historiaClinicaBean.estaPaciente}"  id="fecha" inputSize="10" value="#{historiaClinicaBean.persona.fechaNac}" requiredMessage="Por favor ingrese la fecha."/>
+
+        <h:outputLabel value="Fecha Nacimiento:" styleClass="label"/>
+        <h:inputText value="#{historiaClinicaBean.persona.fechaNac}" readonly="#{historiaClinicaBean.estaPaciente}" rendered="#{historiaClinicaBean.estaPaciente}"/>
+        <rich:calendar  required="false" datePattern="yyyy-MM-dd" rendered="#{!historiaClinicaBean.estaPaciente}"  id="fecha" inputSize="10" value="#{historiaClinicaBean.persona.fechaNac}" requiredMessage="Por favor ingrese la fecha."/>
         <h:outputLabel value="Dirección:" styleClass="label"/>
         <h:inputText  required="false" id="direccion"  readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.direccion}" requiredMessage="Por favor ingrese la dirección."/> 
         <h:outputLabel value="Télefono:" styleClass="label"/>
         <h:inputText  id="telefono" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.telefono}" /> 
-       
+
         <h:outputLabel value="Ciudad:" styleClass="label"/>
         <h:inputText  required="false" id="ciudad" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.ciudad}" requiredMessage="Por favor ingrese la ciudad."/> 
         <h:outputLabel value="Ocupación:" styleClass="label"/>
         <h:inputText  required="false" id="ocupacion" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.ocupacion}" requiredMessage="Por favor ingrese la ocupación."/> 
         <h:outputLabel value="Estado civil" styleClass="label"/>
-        <h:selectOneMenu  required="false" id="estadoCivil" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.estadoCivil}" requiredMessage="Por favor ingrese el sexo.">
+        <h:inputText value="#{historiaClinicaBean.persona.estadoCivil}" readonly="#{historiaClinicaBean.estaPaciente}" rendered="#{historiaClinicaBean.estaPaciente}"/>
+        <h:selectOneMenu  required="false" id="estadoCivil" rendered="#{!historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.estadoCivil}" requiredMessage="Por favor ingrese el sexo.">
             <f:selectItem itemLabel="Soltero"  itemValue="Soltero"></f:selectItem>
             <f:selectItem itemLabel="Casado" itemValue="Casado"></f:selectItem>
             <f:selectItem itemLabel="Viudo" itemValue="Viudo"></f:selectItem>
             <f:selectItem itemLabel="Divorciado" itemValue="Divorciado"></f:selectItem>
         </h:selectOneMenu>
-        
+
         <h:outputLabel value="Celular:" styleClass="label"/>
         <h:inputText   id="celular" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.celular}" /> 
         <h:outputLabel value="Aseguradora" styleClass="label"/>
         <h:inputText  required="false" readonly="#{historiaClinicaBean.estaPaciente}" id="aseguradora"  value="#{historiaClinicaBean.persona.aseguradora}" requiredMessage="Por favor ingrese la aseguradora."/> 
         <h:outputLabel value="Tipo aseguradora" styleClass="label"/>
-        <h:selectOneMenu  required="false" readonly="#{historiaClinicaBean.estaPaciente}" id="tipoAseg" value="#{historiaClinicaBean.persona.tipoAseguradora}" requiredMessage="Tipo aseguradora.">
+        <h:inputText value="#{historiaClinicaBean.persona.tipoAseguradora}" readonly="#{historiaClinicaBean.estaPaciente}" rendered="#{historiaClinicaBean.estaPaciente}"/>
+        <h:selectOneMenu  required="false" rendered="#{!historiaClinicaBean.estaPaciente}" id="tipoAseg" value="#{historiaClinicaBean.persona.tipoAseguradora}" requiredMessage="Tipo aseguradora.">
             <f:selectItem itemLabel="EPS" itemValue="EPS"></f:selectItem>
             <f:selectItem itemLabel="ARP" itemValue="ARP"></f:selectItem>
             <f:selectItem itemLabel="ARS" itemValue="ARS"></f:selectItem>
@@ -69,6 +74,8 @@ and open the template in the editor.
             <f:selectItem itemLabel="VINC" itemValue="VINC"></f:selectItem>
             <f:selectItem itemLabel="PARTICULAR" itemValue="PARTICULAR"></f:selectItem>
         </h:selectOneMenu>
+        
+        <a4j:commandLink value="Editar" action="#{historiaClinicaBean.editarDatosPersonales}" rendered="#{historiaClinicaBean.estaPaciente}"></a4j:commandLink>
     </h:panelGrid>
 
 
