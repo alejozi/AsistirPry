@@ -27,6 +27,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -38,7 +39,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @ViewScoped
 public class HistoriaClinicaBean {
-    
+
     private Cita cita;
     private Persona persona;
     private List<DetalleExamenFisico> examenFisicoList;
@@ -66,15 +67,18 @@ public class HistoriaClinicaBean {
     private List<String> ordenesMedicas;
     // </editor-fold>  
 
-    public void preRender(){
-       lstExamenesRealizados=(ArrayList<ExamenFisicoConsulta>)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstE");
-       lstImpresionesDiagnostricasRealizadas=(ArrayList<ImpresionDiagnostica>)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstI");
-       lstMedicamentosEnviados=(ArrayList<Medicamento>)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstM");
-       ordenesMedicas=(ArrayList<String>)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstO");
-       persona=(Persona)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona");
-       estaPaciente=(Boolean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("boolEsta");
-       
+    public void preRender() {
+        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona") != null) {
+            lstExamenesRealizados = (ArrayList<ExamenFisicoConsulta>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstE");
+            lstImpresionesDiagnostricasRealizadas = (ArrayList<ImpresionDiagnostica>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstI");
+            lstMedicamentosEnviados = (ArrayList<Medicamento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstM");
+            ordenesMedicas = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstO");
+            persona = (Persona) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona");
+        }
+        estaPaciente = (Boolean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("boolEsta");
+
     }
+
     /**
      * Creates a new instance of HistoriaClinicaBean
      */
@@ -174,22 +178,22 @@ public class HistoriaClinicaBean {
     public void setExamenFisico(ExamenFisico examenFisico) {
         this.examenFisico = examenFisico;
     }
-    
+
     public void inicializarListas() {
         examenFisicoList.add(new DetalleExamenFisico());
         medicamentoList.add(new Medicamento());
         impresionDiagnosticaList.add(new ImpresionDiagnostica());
     }
-    
+
     public void adicionarNuevaFilaDetalleExamenFisico(int filaSeleccionada) {
         //examenFisicoList.get(filaSeleccionada).setHabilitarBoton(true);
         examenFisicoList.add(new DetalleExamenFisico());
     }
-    
+
     public void adicionarNuevaFilaMedicamentos() {
         medicamentoList.add(new Medicamento());
     }
-    
+
     public void adicionarNuevaFilaImpresionDiagnostica() {
         impresionDiagnosticaList.add(new ImpresionDiagnostica());
     }
@@ -264,13 +268,13 @@ public class HistoriaClinicaBean {
     public void setManejoSoportesLiquidosList(List<String> manejoSoportesLiquidosList) {
         this.manejoSoportesLiquidosList = manejoSoportesLiquidosList;
     }
-    
+
     public void registrarHistoriaClinica() {
         BaseDaoI b = new BaseDaoImplement();
         b.guardar(fkAntecedente);
         persona.setFkAnte(fkAntecedente);
         cita.setFkPersona(persona);
-        b.guardar(examenFisico);        
+        b.guardar(examenFisico);
         for (DetalleExamenFisico dt : examenFisicoList) {
             dt.setFkExamenFisico(examenFisico);
             b.guardar(dt);
@@ -289,12 +293,12 @@ public class HistoriaClinicaBean {
 
 
     }
-    
-    
-    public void editarDatosPersonales(){
+
+    public void editarDatosPersonales() {
+        pacienteService.actualizarDatosPersonales(persona);
         System.out.println("Editar ");
     }
-    
+
     /**
      * @return the lst
      */
@@ -401,7 +405,8 @@ public class HistoriaClinicaBean {
     }
 
     /**
-     * @param lstImpresionesDiagnostricasRealizadas the lstImpresionesDiagnostricasRealizadas to set
+     * @param lstImpresionesDiagnostricasRealizadas the
+     * lstImpresionesDiagnostricasRealizadas to set
      */
     public void setLstImpresionesDiagnostricasRealizadas(List<ImpresionDiagnostica> lstImpresionesDiagnostricasRealizadas) {
         this.lstImpresionesDiagnostricasRealizadas = lstImpresionesDiagnostricasRealizadas;

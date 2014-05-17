@@ -24,7 +24,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.context.Flash;
 
 /**
  *
@@ -44,20 +43,24 @@ public class ConsultarPaciente {
     private List<String> ordenesMedicas;
     // </editor-fold> 
     private PersonaserviceI pacienteService;
-    @ManagedProperty("#{historiaClinicaBean}")
-    private HistoriaClinicaBean hc;
-
+   
     /**
      * Creates a new instance of ConsultarPaciente
      */
     public ConsultarPaciente() {
         pacienteService = new PersonaServiceImplement();
-
+        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona") != null) {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("persona");
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("lstI");
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("lstM");
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("lstO");
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("boolEsta");
+            
+        }
     }
 
     public void consultarPaciente() {
         List<Cita> p = getPacienteService().buscarPaciente(cedulaConsulta);
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
         if (p.isEmpty()) {
             setEstaPaciente(false);
             System.out.println("no se encuentra = ");
@@ -94,7 +97,6 @@ public class ConsultarPaciente {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstI", lstImpresionesDiagnostricasRealizadas);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstM", lstMedicamentosEnviados);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstO", ordenesMedicas);
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("key", "S");
 
 
     }
@@ -204,21 +206,7 @@ public class ConsultarPaciente {
         this.ordenesMedicas = ordenesMedicas;
     }
 
-    /**
-     * @return the hc
-     */
-    public HistoriaClinicaBean getHc() {
-        return hc;
-    }
-
-    /**
-     * @param hc the hc to set
-     */
-    public void setHc(HistoriaClinicaBean hc) {
-        this.hc = hc;
-    }
-
-    /**
+  /**
      * @return the pacienteService
      */
     public PersonaserviceI getPacienteService() {

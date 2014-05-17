@@ -75,8 +75,11 @@ and open the template in the editor.
             <f:selectItem itemLabel="PARTICULAR" itemValue="PARTICULAR"></f:selectItem>
         </h:selectOneMenu>
         
-        <a4j:commandLink value="Editar" action="#{historiaClinicaBean.editarDatosPersonales}" rendered="#{historiaClinicaBean.estaPaciente}"></a4j:commandLink>
+        <center>
+            <a4j:commandLink value="Editar" onclick="cargarEditarDatosPersonales();" rendered="#{historiaClinicaBean.estaPaciente}"></a4j:commandLink>
+        </center>
     </h:panelGrid>
 
+  <ui:include src="modalEditarDatosPersonales.xhtml"></ui:include>
 
 </html>

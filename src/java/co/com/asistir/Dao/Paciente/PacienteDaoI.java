@@ -20,4 +20,5 @@ public interface PacienteDaoI {
     
  
     public List<Cita> buscarPaciente(Integer documento);
+    public void actualizarDatosPersonales(Persona persona);
 }

@@ -36,14 +36,7 @@ public class PacienteDaoImp extends BaseDaoImplement implements PacienteDaoI {
             String q="SELECT c FROM Cita c WHERE c.fkPersona = :persona";
             Query query=em.createQuery(q);
             query.setParameter("persona", paciente);
-            /*Query query = em.createNamedQuery("Persona.findByIdPersona");
-            query.setParameter("idPersona", documento);*/
             lstPacientes=query.getResultList();
-            /*if(lstPacientes!=null){
-             if(!lstPacientes.isEmpty()){
-                paciente=lstPacientes.get(0);
-             }
-            }*/
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,4 +47,21 @@ public class PacienteDaoImp extends BaseDaoImplement implements PacienteDaoI {
         return lstPacientes;
 
     }
+    
+    
+    @Override
+      public void actualizarDatosPersonales(Persona persona){
+      EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("AsistirPryPU");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try{
+        em.merge(persona);
+        em.getTransaction().commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+}
+      }
 }

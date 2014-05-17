@@ -16,5 +16,6 @@ import java.util.List;
  */
 public interface PersonaserviceI {
     public List<Cita> buscarPaciente(Integer documento);
+    public void actualizarDatosPersonales(Persona persona);
     
 }

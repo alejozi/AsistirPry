@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <rich:popupPanel id="popupEditarDp" modal="true" resizeable="false" onmaskclick="#{rich:component('popupEditarDp')}.hide()" styleClass="cssEditar">
+        <f:facet name="header">
+            <h:outputText value="Editar datos personales" />
+        </f:facet>
+        <f:facet name="controls">
+            <h:outputLink value="#" onclick="#{rich:component('popupEditarDp')}.hide();
+                    return false;">
+                X
+            </h:outputLink>
+        </f:facet>
+        
+        <h:panelGrid columns="4" cellspacing="5" styleClass="cssEditar">
+        <h:outputLabel value="Dirección:" styleClass="label"/>
+        <h:inputText   value="#{historiaClinicaBean.persona.direccion}" /> 
+        
+        <h:outputLabel value="Télefono:" styleClass="label"/>
+        <h:inputText   value="#{historiaClinicaBean.persona.telefono}" /> 
+
+        <h:outputLabel value="Ciudad:" styleClass="label"/>
+        <h:inputText  value="#{historiaClinicaBean.persona.ciudad}" /> 
+        
+        <h:outputLabel value="Ocupación:" styleClass="label"/>
+        <h:inputText  value="#{historiaClinicaBean.persona.ocupacion}" /> 
+        
+        <h:outputLabel value="Estado civil" styleClass="label"/>
+        <h:selectOneMenu    value="#{historiaClinicaBean.persona.estadoCivil}" >
+            <f:selectItem itemLabel="Soltero"  itemValue="Soltero"></f:selectItem>
+            <f:selectItem itemLabel="Casado" itemValue="Casado"></f:selectItem>
+            <f:selectItem itemLabel="Viudo" itemValue="Viudo"></f:selectItem>
+            <f:selectItem itemLabel="Divorciado" itemValue="Divorciado"></f:selectItem>
+        </h:selectOneMenu>
+
+        <h:outputLabel value="Celular:" styleClass="label"/>
+        <h:inputText    value="#{historiaClinicaBean.persona.celular}" /> 
+        
+        <h:outputLabel value="Aseguradora" styleClass="label"/>
+        <h:inputText    value="#{historiaClinicaBean.persona.aseguradora}" /> 
+        
+        <h:outputLabel value="Tipo aseguradora" styleClass="label"/>
+        <h:selectOneMenu  value="#{historiaClinicaBean.persona.tipoAseguradora}" >
+            <f:selectItem itemLabel="EPS" itemValue="EPS"></f:selectItem>
+            <f:selectItem itemLabel="ARP" itemValue="ARP"></f:selectItem>
+            <f:selectItem itemLabel="ARS" itemValue="ARS"></f:selectItem>
+            <f:selectItem itemLabel="PREPAGADA" itemValue="PREPAGADA"></f:selectItem>
+            <f:selectItem itemLabel="VINC" itemValue="VINC"></f:selectItem>
+            <f:selectItem itemLabel="PARTICULAR" itemValue="PARTICULAR"></f:selectItem>
+        </h:selectOneMenu>
+        
+        </h:panelGrid>
+        <center>
+            <a4j:commandButton value="Editar" action="#{historiaClinicaBean.editarDatosPersonales}"></a4j:commandButton>
+        </center>
+
+    </rich:popupPanel>
+
+</html>
