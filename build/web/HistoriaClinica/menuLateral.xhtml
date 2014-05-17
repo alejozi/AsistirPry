@@ -10,24 +10,24 @@ and open the template in the editor.
       xmlns:a4j="http://richfaces.org/a4j"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-     <h:commandButton value="Call the popup">
-        <rich:componentControl target="popupMedicamentos" operation="show" />
-    </h:commandButton>
     <rich:panelMenu style="width:200px" itemMode="ajax" groupMode="ajax" groupExpandedLeftIcon="triangleUp"
                     groupCollapsedLeftIcon="triangleDown" topGroupExpandedRightIcon="chevronUp"
                     topGroupCollapsedRightIcon="chevronDown" itemLeftIcon="disc"
                     >
         <rich:panelMenuGroup label="Historial clinico">
-            <rich:panelMenuItem label="Medicamentos" name="Medicamentos"  >
+            <rich:panelMenuItem label="Medicamentos" name="Medicamentos" onclick="cargarMedicamentos();">
               </rich:panelMenuItem>
-            <rich:panelMenuItem label="Examenes fisicos" name="Examenes fisicos" />
-            <rich:panelMenuItem label="Impresiones diagnosticas" name="Impresiones diagnosticas" />
+            <rich:panelMenuItem label="Examenes fisicos" name="Examenes fisicos" onclick="cargarExamenes();"/>
+            <rich:panelMenuItem label="Impresiones diagnosticas" name="Impresiones diagnosticas" onclick="cargarImpresiones();" />
             <rich:panelMenuItem label="Epicrisis" name="Epicrisis" />
             <rich:panelMenuItem label="Manejos y soportes" name="Manejos y soportes" />
-            <rich:panelMenuItem label="Ordenes medicas" name="Ordenes medicas" />
+            <rich:panelMenuItem label="Ordenes medicas" name="Ordenes medicas" onclick="cargarOrdenes();"/>
         </rich:panelMenuGroup>
     </rich:panelMenu>
 
     <ui:include src="modalMedicamentos.xhtml"></ui:include>
+    <ui:include src="modalImpresionDiagnostica.xhtml"></ui:include>
+    <ui:include src="modalOrdenesMedicas.xhtml"></ui:include>
+    <ui:include src="modalExamenFisico.xhtml"></ui:include>
  
 </html>

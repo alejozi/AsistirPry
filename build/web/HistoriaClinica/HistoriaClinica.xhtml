@@ -13,7 +13,7 @@
             <f:event type="preRenderView"
                      listener="#{historiaClinicaBean.preRender}" />
         </f:metadata>
- 
+
     </h:head>
     <body>
 
@@ -26,56 +26,40 @@
                         <h:graphicImage library="img" name="logoAsistir.jpg" />
                     </center>
                 </div>
-
-                <!-- <table cellspacing="15" id="tblInfoGeneral">
-                     <tbody>
-                         <tr>
-                             <td>
-                                 <div style="position: relative;left: 20px;">
-                                     <h:graphicImage library="img" name="logoasistir.jpg" height="40%" width="40%"></h:graphicImage>
-                                 </div>
-                             </td>
-                             <td>
-                                 <h:panelGrid columns="2">
-                                     <h:outputLabel value="Fecha:" style="color: white;" />
-                                     <rich:calendar  required="false" datePattern="yyyy-MM-dd"  id="fecha_i" inputSize="10" value="#{historiaClinicaBean.cita.fecha}" requiredMessage="Por favor ingrese la fecha."/>
-                                 </h:panelGrid>
-                             </td>
-                             <td>
-                                 <h:panelGrid columns="2">
-                                     <h:outputLabel value="Convenio:" style="color: white;"/>
-                                     <h:inputText id="convenio" value="#{historiaClinicaBean.cita.convenio}"/>
-                                 </h:panelGrid>
-                             </td>
-                             <td>
-                                 <h:panelGrid columns="2">
-                                     <h:outputLabel value="Cód. Servicio:" style="color: white;"/>
-                                     <h:inputText id="codServicio" value="#{historiaClinicaBean.cita.codServicio}"/>
-                                 </h:panelGrid>
-                             </td>
-                             <td>
-                                 <h:panelGrid columns="2">
-                                     <h:outputLabel value="Móvil:" style="color: white;"/>
-                                     <h:inputText id="movil" value="#{historiaClinicaBean.cita.movil}"/>
-                                 </h:panelGrid>
-                             </td>
-                         </tr>
-                     </tbody>
-                 </table>-->
-
-
-
             </ui:define>
-                     
-               <ui:define name="left">
-                         <ui:include src="menuLateral.xhtml" ></ui:include>
-                </ui:define>
-                
+
+            <ui:define name="left">
+                <br></br>
+                <br></br>
+                <ui:include src="menuLateral.xhtml" ></ui:include>
+            </ui:define>
+
             <ui:define name="right">
                 right
             </ui:define>
 
             <ui:define name="content">
+                <br></br>
+                <br></br>
+                <rich:panel header="Historia Clinica">
+                    <center>
+                        <h:panelGrid columns="8" cellspacing="10">
+                            <h:outputLabel value="Fecha:" style="color: #083941;" />
+                            <rich:calendar  required="false" datePattern="yyyy-MM-dd"  id="fecha_i" inputSize="10" value="#{historiaClinicaBean.cita.fecha}" requiredMessage="Por favor ingrese la fecha."/>
+
+                            <h:outputLabel value="Convenio:" style="color: #083941;"/>
+                            <h:inputText id="convenio" value="#{historiaClinicaBean.cita.convenio}"/>
+
+                            <h:outputLabel value="Cód. Servicio:" style="color: #083941;"/>
+                            <h:inputText id="codServicio" value="#{historiaClinicaBean.cita.codServicio}"/>
+
+                            <h:outputLabel value="Móvil:" style="color: #083941;"/>
+                            <h:inputText id="movil" value="#{historiaClinicaBean.cita.movil}"/>
+
+                        </h:panelGrid>
+                    </center>
+                </rich:panel>
+                <br></br>
                 <rich:panel  id="idDatosP" header="Datos Personal" styleClass="centerPanel" style="color:#035557;">
                     <ui:include src="DatosPersonales.xhtml"/>    
                 </rich:panel>

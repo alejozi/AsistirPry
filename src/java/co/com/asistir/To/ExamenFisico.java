@@ -86,7 +86,7 @@ public class ExamenFisico implements Serializable {
     @Cascade({CascadeType.SAVE_UPDATE})
     private Set<DetalleExamenFisico> detalleExamenFisicoCollection;
     @OneToMany(mappedBy = "fkExamen")
-    private Collection<Cita> citaCollection;
+    private Set<Cita> citaCollection;
     @Transient
      private List<String> estadosFisicos2; 	
 
@@ -210,7 +210,7 @@ public class ExamenFisico implements Serializable {
         this.sistemaNervioso = sistemaNervioso;
     }
 
-    @XmlTransient
+   
     public Set<DetalleExamenFisico> getDetalleExamenFisicoCollection() {
         return detalleExamenFisicoCollection;
     }
@@ -219,12 +219,12 @@ public class ExamenFisico implements Serializable {
         this.detalleExamenFisicoCollection = detalleExamenFisicoCollection;
     }
 
-    @XmlTransient
-    public Collection<Cita> getCitaCollection() {
+  
+    public Set<Cita> getCitaCollection() {
         return citaCollection;
     }
 
-    public void setCitaCollection(Collection<Cita> citaCollection) {
+    public void setCitaCollection(Set<Cita> citaCollection) {
         this.citaCollection = citaCollection;
     }
 

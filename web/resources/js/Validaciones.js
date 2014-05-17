@@ -14,4 +14,27 @@ function esDigito(code) {
     return (code >= 48 && code <= 57);
 }
 
+function cargarMedicamentos() {
+    var idPanelMensajes = $("form").attr("id") + ":popupMedicamentos";
+    RichFaces.$(idPanelMensajes).show();
+}
+
+function cargarImpresiones() {
+    var idPanelMensajes = $("form").attr("id") + ":popupImpresiones";
+    RichFaces.$(idPanelMensajes).show();
+}
+
+
+function cargarOrdenes() {
+    var idPanelMensajes = $("form").attr("id") + ":popupOm";
+    RichFaces.$(idPanelMensajes).show();
+}
+
+
+function cargarExamenes() {
+    var idPanelMensajes = $("form").attr("id") + ":popupEf";
+    RichFaces.$(idPanelMensajes).show();
+}
+
+
 

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <rich:popupPanel id="popupEf" modal="true" resizeable="false" onmaskclick="#{rich:component('popupEf')}.hide()" styleClass="cssexamenes">
+        <f:facet name="header">
+            <h:outputText value="Examenes físicos" />
+        </f:facet>
+        <f:facet name="controls">
+            <h:outputLink value="#" onclick="#{rich:component('popupEf')}.hide();
+                    return false;">
+                X
+            </h:outputLink>
+        </f:facet>
+        <rich:dataTable id="ex" value="#{historiaClinicaBean.lstExamenesRealizados}"
+                        var="ef"
+                        style="width: 100%;"
+                        >
+            <f:facet name="header">
+                <rich:columnGroup>
+                    <rich:column>
+                        <h:outputText value="Hora" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="Tensión arterial" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="F.C." />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="F.R." />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="T" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="SPO2" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="PESO" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="GLOSGOW" />
+                    </rich:column>
+                </rich:columnGroup>
+            </f:facet>
+            <rich:column colspan="8">
+                <rich:collapsibleSubTableToggler for="sbtbl" />
+                <h:outputText value="Estado general:#{ef.estadoGeneral}" />
+            </rich:column>
+            <rich:collapsibleSubTable value="#{ef.detalleExamenFisicoCollection}" var="item" id="sbtbl" expandMode="client">
+                <rich:column>
+                    <h:outputText value="#{item.hora}" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText  value="#{item.tensionArterial}"/>
+                </rich:column>
+                <rich:column>
+                    <h:outputText  value="#{item.fc}"/>
+                </rich:column>
+                <rich:column>
+                    <h:outputText  value="#{item.fr}" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText  value="#{item.t}" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText  value="#{item.spo2}"  />
+                </rich:column>
+                <rich:column>
+                    <h:outputText  value="#{item.peso}" />
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="#{item.glasgow}" />
+                </rich:column>
+            </rich:collapsibleSubTable>
+        </rich:dataTable>
+
+    </rich:popupPanel>
+
+</html>

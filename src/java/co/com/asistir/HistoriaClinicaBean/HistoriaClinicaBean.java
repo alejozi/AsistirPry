@@ -14,16 +14,22 @@ import co.com.asistir.To.Ante;
 import co.com.asistir.To.Cita;
 import co.com.asistir.To.DetalleExamenFisico;
 import co.com.asistir.To.ExamenFisico;
+import co.com.asistir.To.ExamenFisicoConsulta;
 import co.com.asistir.To.ImpresionDiagnostica;
 import co.com.asistir.To.Medicamento;
 import co.com.asistir.To.Persona;
+import co.com.asistir.Util.JsfUtil;
 import com.sun.faces.context.flash.ELFlash;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -53,7 +59,7 @@ public class HistoriaClinicaBean {
     // </editor-fold>  
     // <editor-fold defaultstate="collapsed" desc="Elementos Para Cargar la informacion de la Historia Clinica">
     private boolean estaPaciente = false;
-    private List<ExamenFisico> lstExamenesRealizados;
+    private List<ExamenFisicoConsulta> lstExamenesRealizados;
     private List<Medicamento> lstMedicamentosEnviados;
     private List<ImpresionDiagnostica> lstImpresionesDiagnostricasRealizadas;
     private Ante antecentes;
@@ -61,13 +67,13 @@ public class HistoriaClinicaBean {
     // </editor-fold>  
 
     public void preRender(){
-       lstExamenesRealizados=(ArrayList<ExamenFisico>) ELFlash.getFlash().get("lstE");
-       lstImpresionesDiagnostricasRealizadas=(ArrayList<ImpresionDiagnostica>) ELFlash.getFlash().get("lstI");
-       lstMedicamentosEnviados=(ArrayList<Medicamento>) ELFlash.getFlash().get("lstM");
-       ordenesMedicas=(ArrayList<String>) ELFlash.getFlash().get("lstO");
-       persona=(Persona) ELFlash.getFlash().get("persona");
-       estaPaciente=(Boolean)ELFlash.getFlash().get("boolEsta");
-     
+       lstExamenesRealizados=(ArrayList<ExamenFisicoConsulta>)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstE");
+       lstImpresionesDiagnostricasRealizadas=(ArrayList<ImpresionDiagnostica>)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstI");
+       lstMedicamentosEnviados=(ArrayList<Medicamento>)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstM");
+       ordenesMedicas=(ArrayList<String>)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstO");
+       persona=(Persona)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona");
+       estaPaciente=(Boolean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("boolEsta");
+       
     }
     /**
      * Creates a new instance of HistoriaClinicaBean
@@ -75,7 +81,6 @@ public class HistoriaClinicaBean {
     public HistoriaClinicaBean() {
         cita = new Cita();
         persona = new Persona();
-        persona.setNombres("Probando");
         examenFisico = new ExamenFisico();
         examenFisicoList = new ArrayList<DetalleExamenFisico>();
         medicamentoList = new ArrayList<Medicamento>();
@@ -358,14 +363,14 @@ public class HistoriaClinicaBean {
     /**
      * @return the lstExamenesRealizados
      */
-    public List<ExamenFisico> getLstExamenesRealizados() {
+    public List<ExamenFisicoConsulta> getLstExamenesRealizados() {
         return lstExamenesRealizados;
     }
 
     /**
      * @param lstExamenesRealizados the lstExamenesRealizados to set
      */
-    public void setLstExamenesRealizados(List<ExamenFisico> lstExamenesRealizados) {
+    public void setLstExamenesRealizados(List<ExamenFisicoConsulta> lstExamenesRealizados) {
         this.lstExamenesRealizados = lstExamenesRealizados;
     }
 

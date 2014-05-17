@@ -6,47 +6,37 @@
       xmlns:a4j="http://richfaces.org/a4j"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <rich:popupPanel id="popupMedicamentos" modal="true" resizeable="false" onmaskclick="#{rich:component('popupMedicamentos')}.hide();" styleClass="cssmedicamentos" >
+    <rich:popupPanel id="popupImpresiones" modal="true" resizeable="false" onmaskclick="#{rich:component('popupImpresiones')}.hide()" styleClass="cssimpresion">
         <f:facet name="header">
-            <h:outputText value="Medicamentos" />
+            <h:outputText value="Impresiones Diagnosticas" />
         </f:facet>
         <f:facet name="controls">
-            <h:outputLink value="#" onclick="#{rich:component('popupMedicamentos')}.hide();
+            <h:outputLink value="#" onclick="#{rich:component('popupImpresiones')}.hide();
                     return false;">
                 X
             </h:outputLink>
         </f:facet>
         <rich:dataTable
-            value="#{historiaClinicaBean.lstMedicamentosEnviados}"
-            var="medica"
+            value="#{historiaClinicaBean.lstImpresionesDiagnostricasRealizadas}"
+            var="impresion"
             style="width: 100%">
             <f:facet name="header">
                 <rich:columnGroup>
-                    <rich:column>
-                        <h:outputText value="Medicamento" />
-                    </rich:column>
-                    <rich:column rowspan="2">
-                        <h:outputText value="Via" />
+                    <rich:column >
+                        <h:outputText value="Dx" />
                     </rich:column>
                     <rich:column>
-                        <h:outputText value="Cantidad" />
+                        <h:outputText value="codigo" />
                     </rich:column>
                 </rich:columnGroup>
             </f:facet>
             <rich:column>
-                <h:outputText value="#{medica.nombreMedicamento}" />
+                <h:outputText value="#{impresion.descripcion}" />
             </rich:column>
-
             <rich:column>
-                <h:outputText value="#{medica.via}" />
-            </rich:column>
-
-            <rich:column>
-                <h:outputText value="#{medica.cantidad}" />
-            </rich:column>
-
-
-        </rich:dataTable>
+                <h:outputText value="#{impresionDiagnostica.codigo}"/>
+             </rich:column>
+           </rich:dataTable>
     </rich:popupPanel>
 
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <rich:popupPanel id="popupOm" modal="true" resizeable="false" onmaskclick="#{rich:component('popupOm')}.hide()" styleClass="cssordenes">
+        <f:facet name="header">
+            <h:outputText value="Ordenes médicas" />
+        </f:facet>
+        <f:facet name="controls">
+            <h:outputLink value="#" onclick="#{rich:component('popupOm')}.hide();
+                    return false;">
+                X
+            </h:outputLink>
+        </f:facet>
+        <rich:dataTable
+            value="#{historiaClinicaBean.ordenesMedicas}"
+            var="orden"
+            style="width: 100%;">
+            <f:facet name="header">
+                <rich:columnGroup>
+                    <rich:column >
+                        <h:outputText value="Orden" />
+                    </rich:column>
+                 </rich:columnGroup>
+            </f:facet>
+            <rich:column>
+                <h:outputText value="#{orden}" />
+            </rich:column>
+          </rich:dataTable>
+    </rich:popupPanel>
+
+</html>
