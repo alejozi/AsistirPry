@@ -18,7 +18,7 @@
         </f:facet>
         <rich:dataTable
             value="#{historiaClinicaBean.lstImpresionesDiagnostricasRealizadas}"
-            var="impresion"
+            var="impresion" id="impdia"
             style="width: 100%">
             <f:facet name="header">
                 <rich:columnGroup>
@@ -31,6 +31,10 @@
                 <h:outputText value="#{impresion.descripcion}" />
             </rich:column>
            </rich:dataTable>
+        <br/>
+        <center>
+        <rich:dataScroller for="impdia" maxPages="5" />
+        </center>
     </rich:popupPanel>
 
 </html>

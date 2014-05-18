@@ -19,7 +19,7 @@
         <rich:dataTable
             value="#{historiaClinicaBean.lstMedicamentosEnviados}"
             var="medica"
-            style="width: 100%">
+            style="width: 100%" id="me">
             <f:facet name="header">
                 <rich:columnGroup>
                     <rich:column>
@@ -47,6 +47,10 @@
 
 
         </rich:dataTable>
+        <br/>
+        <center>
+        <rich:dataScroller for="me" maxPages="5" />
+        </center>
     </rich:popupPanel>
 
 </html>

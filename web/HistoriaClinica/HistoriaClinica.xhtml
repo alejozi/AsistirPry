@@ -43,12 +43,13 @@
                 <br></br>
                 <rich:panel header="Historia Clinica">
                     <center>
+                        <rich:messages for="fecha_i" />
                         <h:panelGrid columns="8" cellspacing="10">
                             <h:outputLabel value="Fecha:" style="color: #083941;" />
-                            <rich:calendar  required="false" datePattern="yyyy-MM-dd"  id="fecha_i" inputSize="10" value="#{historiaClinicaBean.cita.fecha}" requiredMessage="Por favor ingrese la fecha."/>
+                            <rich:calendar  required="true" datePattern="yyyy-MM-dd"  id="fecha_i" inputSize="10" value="#{historiaClinicaBean.cita.fecha}" requiredMessage="Por favor ingrese la fecha."/>
 
                             <h:outputLabel value="Convenio:" style="color: #083941;"/>
-                            <h:inputText id="convenio" value="#{historiaClinicaBean.cita.convenio}"/>
+                            <h:inputText id="convenio" value="#{historiaClinicaBean.cita.convenio}" required="true" requiredMessage="Por favor ingrese la fecha."/>
 
                             <h:outputLabel value="Cód. Servicio:" style="color: #083941;"/>
                             <h:inputText id="codServicio" value="#{historiaClinicaBean.cita.codServicio}"/>
@@ -78,8 +79,8 @@
                 <rich:panel id="idImpresion" header="Impresión diagnostica" styleClass="centerPanel">
                     <ui:include src="impresionDiagnostica.xhtml"></ui:include> 
                 </rich:panel>
-                <rich:panel id="idEpi" header="Epicrisi" styleClass="centerPanel">
-                    <h:inputTextarea  id="ep" required="true" requiredMessage="Ingrese" style="width: 850px;height: 100px;" value="#{historiaClinicaBean.cita.epicrisis}"></h:inputTextarea>
+                <rich:panel id="idEpi" header="Epicrisis" styleClass="centerPanel">
+                    <h:inputTextarea  id="ep" required="false" requiredMessage="Ingrese" style="width: 850px;height: 100px;" value="#{historiaClinicaBean.cita.epicrisis}"></h:inputTextarea>
                     <rich:message for="ep"></rich:message>
                 </rich:panel>
                 <rich:panel id="idOrden" header="Ordenes médicas" styleClass="centerPanel">

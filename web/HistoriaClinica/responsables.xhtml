@@ -12,9 +12,9 @@ and open the template in the editor.
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:panelGrid columns="2">
         <h:outputLabel value="Medico:" styleClass="label"/>
-        <h:inputText style="width: 720px;" required="false" id="id-medico"  value="#{historiaClinicaBean.cita.nombreMedico}" requiredMessage="Por favor ingrese el nombre del medico."/>
+        <h:inputText style="width: 720px;" required="true" id="id-medico"  value="#{historiaClinicaBean.cita.nombreMedico}" requiredMessage="Por favor ingrese el nombre del medico."/>
         <h:outputLabel  value="Enfermera:" styleClass="label"/>
         <h:inputText style="width: 720px;" required="false" id="id-enfermera"  value="#{historiaClinicaBean.cita.enfermeraAuxiliar}" requiredMessage="Por favor ingrese el nombre de la enfermera."/>
-        
+        <rich:messages for="id-medico" />
     </h:panelGrid>
 </html>
