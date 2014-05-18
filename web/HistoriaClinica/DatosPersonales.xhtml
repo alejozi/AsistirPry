@@ -15,35 +15,62 @@ and open the template in the editor.
 
     <h:panelGrid columns="6"  cellpadding="8" id="id_datos_personales">
         <h:outputLabel value="Apellidos:" styleClass="label"/>
-        <h:inputText  required="true" id="apellidos" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.apellidos}" requiredMessage="Por favor ingrese los apellidos."/> 
+        <h:panelGroup>
+            <h:inputText  required="true" id="apellidos" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.apellidos}" requiredMessage="Por favor ingrese los apellidos."/> 
+            <rich:message for="apellidos"/>
+        </h:panelGroup>
         <h:outputLabel value="Nombres:" styleClass="label"/>
-        <h:inputText  required="true" id="nombres" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.nombres}" requiredMessage="Por favor ingrese los nombres."/>
+        <h:panelGroup>
+            <h:inputText  required="true" id="nombres" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.nombres}" requiredMessage="Por favor ingrese los nombres."/>
+            <rich:message for="nombres"/>
+        </h:panelGroup>
         <h:outputLabel value="Edad:" styleClass="label"/>
         <h:inputText  required="false" id="edad" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.edad}" requiredMessage="Por favor ingrese la edad."/>                         
 
+
         <h:outputLabel value="Tipo Documento:" styleClass="label"/>
+        <h:panelGroup>
         <h:inputText value="#{historiaClinicaBean.persona.tipoDocumento}" readonly="#{historiaClinicaBean.estaPaciente}" rendered="#{historiaClinicaBean.estaPaciente}"/>
-        <h:selectOneMenu  required="true" rendered="#{!historiaClinicaBean.estaPaciente}" id="tipoDoc" value="#{historiaClinicaBean.persona.tipoDocumento}" requiredMessage="Por favor ingrese el tipo de documento.">
-            <f:selectItem itemLabel="CC" itemValue="CC"></f:selectItem>
-            <f:selectItem itemLabel="TI" itemValue="TI"></f:selectItem>
-            <f:selectItem itemLabel="RC" itemValue="RC"></f:selectItem>
-            <f:selectItem itemLabel="CE" itemValue="CE"></f:selectItem>
-            <f:selectItem itemLabel="PP" itemValue="PP"></f:selectItem>
-        </h:selectOneMenu>
+        
+            <h:selectOneMenu  required="true" rendered="#{!historiaClinicaBean.estaPaciente}" id="tipoDoc" value="#{historiaClinicaBean.persona.tipoDocumento}" requiredMessage="Por favor ingrese el tipo de documento.">
+                <f:selectItem itemLabel="CC" itemValue="CC"></f:selectItem>
+                <f:selectItem itemLabel="TI" itemValue="TI"></f:selectItem>
+                <f:selectItem itemLabel="RC" itemValue="RC"></f:selectItem>
+                <f:selectItem itemLabel="CE" itemValue="CE"></f:selectItem>
+                <f:selectItem itemLabel="PP" itemValue="PP"></f:selectItem>
+            </h:selectOneMenu>
+            <rich:message for="tipoDoc"/>
+        </h:panelGroup>
+
         <h:outputLabel value=" Documento:" styleClass="label"/>
-        <h:inputText  required="false" readonly="#{historiaClinicaBean.estaPaciente}" id="documento" value="#{historiaClinicaBean.persona.idPersona}" requiredMessage="Por favor ingrese el numero de documento."/>
+        <h:panelGroup>
+            <h:inputText  required="true" readonly="#{historiaClinicaBean.estaPaciente}" id="documento" value="#{historiaClinicaBean.persona.idPersona}" requiredMessage="Por favor ingrese el numero de documento."/>
+            <rich:message for="documento"/>
+        </h:panelGroup>
         <h:outputLabel value="Sexo:" styleClass="label"/>
+         <h:panelGroup>
         <h:inputText value="#{historiaClinicaBean.persona.sexo}" readonly="#{historiaClinicaBean.estaPaciente}" rendered="#{historiaClinicaBean.estaPaciente}"/>
-        <h:selectOneMenu  required="false" id="sex" rendered="#{!historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.sexo}" requiredMessage="Por favor ingrese el sexo.">
-            <f:selectItem itemLabel="F" itemValue="F"></f:selectItem>
-            <f:selectItem itemLabel="M" itemValue="M"></f:selectItem>
-        </h:selectOneMenu>
+       
+            <h:selectOneMenu  required="true" id="sex" rendered="#{!historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.sexo}" requiredMessage="Por favor ingrese el sexo.">
+                <f:selectItem itemLabel="F" itemValue="F"></f:selectItem>
+                <f:selectItem itemLabel="M" itemValue="M"></f:selectItem>
+            </h:selectOneMenu>
+            <rich:message for="sex"/>
+        </h:panelGroup> 
 
         <h:outputLabel value="Fecha Nacimiento:" styleClass="label"/>
+        <h:panelGroup>
         <h:inputText value="#{historiaClinicaBean.persona.fechaNac}" readonly="#{historiaClinicaBean.estaPaciente}" rendered="#{historiaClinicaBean.estaPaciente}"/>
+        
         <rich:calendar  required="true" datePattern="yyyy-MM-dd" rendered="#{!historiaClinicaBean.estaPaciente}"  id="fecha" inputSize="10" value="#{historiaClinicaBean.persona.fechaNac}" requiredMessage="Por favor ingrese la fecha."/>
+            <rich:message for="fecha"/>
+        </h:panelGroup>
+        
         <h:outputLabel value="Dirección:" styleClass="label"/>
-        <h:inputText  required="false" id="direccion"  readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.direccion}" requiredMessage="Por favor ingrese la dirección."/> 
+        <h:panelGroup>
+        <h:inputText  required="true" id="direccion"  readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.direccion}" requiredMessage="Por favor ingrese la dirección."/> 
+        <rich:message for="direccion"/>
+        </h:panelGroup>
         <h:outputLabel value="Télefono:" styleClass="label"/>
         <h:inputText  id="telefono" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.telefono}" /> 
 
@@ -63,10 +90,14 @@ and open the template in the editor.
         <h:outputLabel value="Celular:" styleClass="label"/>
         <h:inputText   id="celular" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.celular}" /> 
         <h:outputLabel value="Aseguradora" styleClass="label"/>
+        <h:panelGroup>
         <h:inputText  required="true" readonly="#{historiaClinicaBean.estaPaciente}" id="aseguradora"  value="#{historiaClinicaBean.persona.aseguradora}" requiredMessage="Por favor ingrese la aseguradora."/> 
+        <rich:message for="aseguradora"/>
+        </h:panelGroup>
         <h:outputLabel value="Tipo aseguradora" styleClass="label"/>
+        <h:panelGroup>
         <h:inputText value="#{historiaClinicaBean.persona.tipoAseguradora}" readonly="#{historiaClinicaBean.estaPaciente}" rendered="#{historiaClinicaBean.estaPaciente}"/>
-        <h:selectOneMenu  required="false" rendered="#{!historiaClinicaBean.estaPaciente}" id="tipoAseg" value="#{historiaClinicaBean.persona.tipoAseguradora}" requiredMessage="Tipo aseguradora.">
+        <h:selectOneMenu  required="true" rendered="#{!historiaClinicaBean.estaPaciente}" id="tipoAseg" value="#{historiaClinicaBean.persona.tipoAseguradora}" requiredMessage="Tipo aseguradora.">
             <f:selectItem itemLabel="EPS" itemValue="EPS"></f:selectItem>
             <f:selectItem itemLabel="ARP" itemValue="ARP"></f:selectItem>
             <f:selectItem itemLabel="ARS" itemValue="ARS"></f:selectItem>
@@ -74,13 +105,14 @@ and open the template in the editor.
             <f:selectItem itemLabel="VINC" itemValue="VINC"></f:selectItem>
             <f:selectItem itemLabel="PARTICULAR" itemValue="PARTICULAR"></f:selectItem>
         </h:selectOneMenu>
-        
-      <center>
+            <rich:message for="tipoAseg"/>
+        </h:panelGroup>
+
+        <center>
             <a4j:commandLink value="Editar" onclick="cargarEditarDatosPersonales();" rendered="#{historiaClinicaBean.estaPaciente}"></a4j:commandLink>
         </center>
     </h:panelGrid>
 
-  <ui:include src="modalEditarDatosPersonales.xhtml"></ui:include>
-
+    <ui:include src="modalEditarDatosPersonales.xhtml"></ui:include>
 
 </html>

@@ -16,18 +16,12 @@ import co.com.asistir.To.DetalleExamenFisico;
 import co.com.asistir.To.ExamenFisico;
 import co.com.asistir.To.ExamenFisicoConsulta;
 import co.com.asistir.To.ImpresionDiagnostica;
+import co.com.asistir.To.ManejoSoportes;
 import co.com.asistir.To.Medicamento;
 import co.com.asistir.To.Persona;
-import co.com.asistir.Util.JsfUtil;
-import com.sun.faces.context.flash.ELFlash;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -51,9 +45,14 @@ public class HistoriaClinicaBean {
     private List<String> manejoSoportesTraumaList;
     private List<String> manejoSoportesLiquidosList;
     private ExamenFisico examenFisico;
-    private Set<String> lst = new TreeSet<String>();
     private Ante fkAntecedente = new Ante();
     private Integer cedulaConsulta;
+    private List<String> lst;
+    private List<String> lst1;
+    private List<String> lst2;
+    private List<String> lst3;
+    private List<String> lst4;
+    ManejoSoportes manejoSoporte;
     // <editor-fold defaultstate="collapsed" desc="Services">
     private PersonaserviceI pacienteService;
     RegistroHistoriaClinicaI registroHistoriaClinicaService;
@@ -270,6 +269,7 @@ public class HistoriaClinicaBean {
     }
 
     public void registrarHistoriaClinica() {
+       cargarManejos();
         BaseDaoI b = new BaseDaoImplement();
         b.guardar(fkAntecedente);
         persona.setFkAnte(fkAntecedente);
@@ -281,6 +281,8 @@ public class HistoriaClinicaBean {
         }
         cita.setFkExamen(examenFisico);
         b.guardar(cita);
+        manejoSoporte.setFkCita(cita);
+        b.guardar(manejoSoporte);
         for (Medicamento medicamento : medicamentoList) {
             medicamento.setFkCita(cita);
             b.guardar(medicamento);
@@ -294,23 +296,109 @@ public class HistoriaClinicaBean {
 
     }
 
+    public void cargarManejos() {
+        manejoSoporte = new ManejoSoportes();
+        if (lst != null) {
+            for (String gral : lst) {
+                if (gral.equals("LEV")) {
+                    manejoSoporte.setLev(gral);
+                } else if (gral.equals("Lav. Gástrico")) {
+                    manejoSoporte.setLavGastrica(gral);
+                } else if (gral.equals("RCP")) {
+                    manejoSoporte.setRcp(gral);
+                } else if (gral.equals("O2")) {
+                    manejoSoporte.setO2(gral);
+                } else if (gral.equals("Curación")) {
+                    manejoSoporte.setCuracion(gral);
+                } else if (gral.equals("Cateter Ctral")) {
+                    manejoSoporte.setCateter(gral);
+                } else if (gral.equals("Nasogastrica")) {
+                    manejoSoporte.setNasogastrica(gral);
+                } else if (gral.equals("Vesical")) {
+                    manejoSoporte.setVesical(gral);
+                } else if (gral.equals("Orogastrica")) {
+                    manejoSoporte.setOrogastrica(gral);
+                }
+            }
+        }
+        if (lst1 != null) {
+            for (String respiratorio : lst1) {
+                if (respiratorio.equals("Aspiración")) {
+                    manejoSoporte.setAspiracion(respiratorio);
+                } else if (respiratorio.equals("Intubación")) {
+                    manejoSoporte.setIntubacion(respiratorio);
+                } else if (respiratorio.equals("Hood")) {
+                    manejoSoporte.setHood(respiratorio);
+                } else if (respiratorio.equals("BVM")) {
+                    manejoSoporte.setBvm(respiratorio);
+                } else if (respiratorio.equals("Cánula")) {
+                    manejoSoporte.setCanula(respiratorio);
+                } else if (respiratorio.equals("Oximetria")) {
+                    manejoSoporte.setOximetria(respiratorio);
+                } else if (respiratorio.equals("Nebulización")) {
+                    manejoSoporte.setNebulizacion(respiratorio);
+                } else if (respiratorio.equals("Ventury")) {
+                    manejoSoporte.setVenturi(respiratorio);
+                } else if (respiratorio.equals("FiO2")) {
+                    manejoSoporte.setFio(respiratorio);
+                } else if (respiratorio.equals("Volumen")) {
+                    manejoSoporte.setVolumen(respiratorio);
+                } else if (respiratorio.equals("Flujo")) {
+                    manejoSoporte.setFlujo(respiratorio);
+                } else if (respiratorio.equals("Peep")) {
+                    manejoSoporte.setPep(respiratorio);
+                }
+            }
+        }
+        if (lst2 != null) {
+            for (String cardio : lst2) {
+                if (cardio.equals("Monitoreo")) {
+                    manejoSoporte.setMonitoreo(cardio);
+                } else if (cardio.equals("Cardioversión")) {
+                    manejoSoporte.setCardioversion(cardio);
+                } else if (cardio.equals("Maniobras Vag")) {
+                    manejoSoporte.setManiobras(cardio);
+                } else if (cardio.equals("Desfibrilación")) {
+                    manejoSoporte.setDesfibrilacion(cardio);
+                }
+            }
+        }
+        if (lst3 != null) {
+            for (String trauma : lst3) {
+                if (trauma.equals("Kendrick")) {
+                    manejoSoporte.setKendrick(trauma);
+                } else if (trauma.equals("Sutura")) {
+                    manejoSoporte.setSutura(trauma);
+                } else if (trauma.equals("Control hemorragia")) {
+                    manejoSoporte.setControlHemorragia(trauma);
+                } else if (trauma.equals("Tabla rígida")) {
+                    manejoSoporte.setTablaRigida(trauma);
+                } else if (trauma.equals("Inmovilización")) {
+                    manejoSoporte.setIntubacion(trauma);
+                } else if (trauma.equals("Collar cervical")) {
+                    manejoSoporte.setCollarCervical(trauma);
+                }
+            }
+        }
+
+        if (lst4 != null) {
+            for (String liquido : lst4) {
+                if (liquido.equals("S.S.N")) {
+                    manejoSoporte.setSsn(liquido);
+                } else if (liquido.equals("DAD 10%")) {
+                    manejoSoporte.setDad10(liquido);
+                } else if (liquido.equals("L.Ringer")) {
+                    manejoSoporte.setLRinger(liquido);
+                } else if (liquido.equals("D.A.D.5%")) {
+                    manejoSoporte.setDad5(liquido);
+                }
+            }
+        }
+    }
+
     public void editarDatosPersonales() {
         pacienteService.actualizarDatosPersonales(persona);
         System.out.println("Editar ");
-    }
-
-    /**
-     * @return the lst
-     */
-    public Set<String> getLst() {
-        return lst;
-    }
-
-    /**
-     * @param lst the lst to set
-     */
-    public void setLst(Set<String> lst) {
-        this.lst = lst;
     }
 
     /**
@@ -438,5 +526,105 @@ public class HistoriaClinicaBean {
      */
     public void setOrdenesMedicas(List<String> ordenesMedicas) {
         this.ordenesMedicas = ordenesMedicas;
+    }
+
+    /**
+     * @return the lst
+     */
+    public List<String> getLst() {
+        return lst;
+    }
+
+    /**
+     * @param lst the lst to set
+     */
+    public void setLst(List<String> lst) {
+        this.lst = lst;
+    }
+
+    public void p() {
+        if (lst != null) {
+            for (String pi : lst) {
+                System.out.println(pi);
+            }
+        }
+
+        if (lst1 != null) {
+            for (String pi1 : lst1) {
+                System.out.println(pi1);
+            }
+        }
+        if (lst2 != null) {
+            for (String pi2 : lst) {
+                System.out.println(pi2);
+            }
+        }
+        if (lst3 != null) {
+            for (String pi3 : lst3) {
+                System.out.println(pi3);
+            }
+        }
+        if (lst4 != null) {
+            for (String pi4 : lst4) {
+                System.out.println(pi4);
+            }
+        }
+
+    }
+
+    /**
+     * @return the lst1
+     */
+    public List<String> getLst1() {
+        return lst1;
+    }
+
+    /**
+     * @param lst1 the lst1 to set
+     */
+    public void setLst1(List<String> lst1) {
+        this.lst1 = lst1;
+    }
+
+    /**
+     * @return the lst2
+     */
+    public List<String> getLst2() {
+        return lst2;
+    }
+
+    /**
+     * @param lst2 the lst2 to set
+     */
+    public void setLst2(List<String> lst2) {
+        this.lst2 = lst2;
+    }
+
+    /**
+     * @return the lst3
+     */
+    public List<String> getLst3() {
+        return lst3;
+    }
+
+    /**
+     * @param lst3 the lst3 to set
+     */
+    public void setLst3(List<String> lst3) {
+        this.lst3 = lst3;
+    }
+
+    /**
+     * @return the lst4
+     */
+    public List<String> getLst4() {
+        return lst4;
+    }
+
+    /**
+     * @param lst4 the lst4 to set
+     */
+    public void setLst4(List<String> lst4) {
+        this.lst4 = lst4;
     }
 }

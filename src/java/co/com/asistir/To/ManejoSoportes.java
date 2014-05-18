@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -25,45 +27,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "manejo_soportes")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ManejoSoportes.findAll", query = "SELECT m FROM ManejoSoportes m"),
-    @NamedQuery(name = "ManejoSoportes.findById", query = "SELECT m FROM ManejoSoportes m WHERE m.id = :id"),
-    @NamedQuery(name = "ManejoSoportes.findByFkCita", query = "SELECT m FROM ManejoSoportes m WHERE m.fkCita = :fkCita"),
-    @NamedQuery(name = "ManejoSoportes.findByLev", query = "SELECT m FROM ManejoSoportes m WHERE m.lev = :lev"),
-    @NamedQuery(name = "ManejoSoportes.findByLavGastrica", query = "SELECT m FROM ManejoSoportes m WHERE m.lavGastrica = :lavGastrica"),
-    @NamedQuery(name = "ManejoSoportes.findByRcp", query = "SELECT m FROM ManejoSoportes m WHERE m.rcp = :rcp"),
-    @NamedQuery(name = "ManejoSoportes.findByO2", query = "SELECT m FROM ManejoSoportes m WHERE m.o2 = :o2"),
-    @NamedQuery(name = "ManejoSoportes.findByCuracion", query = "SELECT m FROM ManejoSoportes m WHERE m.curacion = :curacion"),
-    @NamedQuery(name = "ManejoSoportes.findByCateter", query = "SELECT m FROM ManejoSoportes m WHERE m.cateter = :cateter"),
-    @NamedQuery(name = "ManejoSoportes.findByNasogastrica", query = "SELECT m FROM ManejoSoportes m WHERE m.nasogastrica = :nasogastrica"),
-    @NamedQuery(name = "ManejoSoportes.findByVesical", query = "SELECT m FROM ManejoSoportes m WHERE m.vesical = :vesical"),
-    @NamedQuery(name = "ManejoSoportes.findByOrogastrica", query = "SELECT m FROM ManejoSoportes m WHERE m.orogastrica = :orogastrica"),
-    @NamedQuery(name = "ManejoSoportes.findByAspiracion", query = "SELECT m FROM ManejoSoportes m WHERE m.aspiracion = :aspiracion"),
-    @NamedQuery(name = "ManejoSoportes.findByIntubacion", query = "SELECT m FROM ManejoSoportes m WHERE m.intubacion = :intubacion"),
-    @NamedQuery(name = "ManejoSoportes.findByHood", query = "SELECT m FROM ManejoSoportes m WHERE m.hood = :hood"),
-    @NamedQuery(name = "ManejoSoportes.findByBvm", query = "SELECT m FROM ManejoSoportes m WHERE m.bvm = :bvm"),
-    @NamedQuery(name = "ManejoSoportes.findByCanula", query = "SELECT m FROM ManejoSoportes m WHERE m.canula = :canula"),
-    @NamedQuery(name = "ManejoSoportes.findByOximetria", query = "SELECT m FROM ManejoSoportes m WHERE m.oximetria = :oximetria"),
-    @NamedQuery(name = "ManejoSoportes.findByNebulizacion", query = "SELECT m FROM ManejoSoportes m WHERE m.nebulizacion = :nebulizacion"),
-    @NamedQuery(name = "ManejoSoportes.findByVenturi", query = "SELECT m FROM ManejoSoportes m WHERE m.venturi = :venturi"),
-    @NamedQuery(name = "ManejoSoportes.findByFio", query = "SELECT m FROM ManejoSoportes m WHERE m.fio = :fio"),
-    @NamedQuery(name = "ManejoSoportes.findByVolumen", query = "SELECT m FROM ManejoSoportes m WHERE m.volumen = :volumen"),
-    @NamedQuery(name = "ManejoSoportes.findByFlujo", query = "SELECT m FROM ManejoSoportes m WHERE m.flujo = :flujo"),
-    @NamedQuery(name = "ManejoSoportes.findByPep", query = "SELECT m FROM ManejoSoportes m WHERE m.pep = :pep"),
-    @NamedQuery(name = "ManejoSoportes.findByMonitoreo", query = "SELECT m FROM ManejoSoportes m WHERE m.monitoreo = :monitoreo"),
-    @NamedQuery(name = "ManejoSoportes.findByCardioversion", query = "SELECT m FROM ManejoSoportes m WHERE m.cardioversion = :cardioversion"),
-    @NamedQuery(name = "ManejoSoportes.findByManiobras", query = "SELECT m FROM ManejoSoportes m WHERE m.maniobras = :maniobras"),
-    @NamedQuery(name = "ManejoSoportes.findByDesfibrilacion", query = "SELECT m FROM ManejoSoportes m WHERE m.desfibrilacion = :desfibrilacion"),
-    @NamedQuery(name = "ManejoSoportes.findBySutura", query = "SELECT m FROM ManejoSoportes m WHERE m.sutura = :sutura"),
-    @NamedQuery(name = "ManejoSoportes.findByControlHemorragia", query = "SELECT m FROM ManejoSoportes m WHERE m.controlHemorragia = :controlHemorragia"),
-    @NamedQuery(name = "ManejoSoportes.findByKendrick", query = "SELECT m FROM ManejoSoportes m WHERE m.kendrick = :kendrick"),
-    @NamedQuery(name = "ManejoSoportes.findByTablaRigida", query = "SELECT m FROM ManejoSoportes m WHERE m.tablaRigida = :tablaRigida"),
-    @NamedQuery(name = "ManejoSoportes.findByCollarCervical", query = "SELECT m FROM ManejoSoportes m WHERE m.collarCervical = :collarCervical"),
-    @NamedQuery(name = "ManejoSoportes.findBySsn", query = "SELECT m FROM ManejoSoportes m WHERE m.ssn = :ssn"),
-    @NamedQuery(name = "ManejoSoportes.findByLRinger", query = "SELECT m FROM ManejoSoportes m WHERE m.lRinger = :lRinger"),
-    @NamedQuery(name = "ManejoSoportes.findByDad5", query = "SELECT m FROM ManejoSoportes m WHERE m.dad5 = :dad5"),
-    @NamedQuery(name = "ManejoSoportes.findByDad10", query = "SELECT m FROM ManejoSoportes m WHERE m.dad10 = :dad10")})
 public class ManejoSoportes implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -71,8 +34,6 @@ public class ManejoSoportes implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "fk_cita")
-    private Integer fkCita;
     @Column(name = "lev")
     private String lev;
     @Column(name = "lav_gastrica")
@@ -143,6 +104,10 @@ public class ManejoSoportes implements Serializable {
     private String dad10;
     @OneToMany(mappedBy = "fkSoporte")
     private Collection<Cita> citaCollection;
+    @JoinColumn(name = "fk_cita", referencedColumnName = "id")
+    @ManyToOne
+    private Cita fkCita;
+
 
     public ManejoSoportes() {
     }
@@ -159,13 +124,7 @@ public class ManejoSoportes implements Serializable {
         this.id = id;
     }
 
-    public Integer getFkCita() {
-        return fkCita;
-    }
-
-    public void setFkCita(Integer fkCita) {
-        this.fkCita = fkCita;
-    }
+    
 
     public String getLev() {
         return lev;
@@ -471,6 +430,20 @@ public class ManejoSoportes implements Serializable {
     @Override
     public String toString() {
         return "com.co.asistir.To.ManejoSoportes[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the fkCita
+     */
+    public Cita getFkCita() {
+        return fkCita;
+    }
+
+    /**
+     * @param fkCita the fkCita to set
+     */
+    public void setFkCita(Cita fkCita) {
+        this.fkCita = fkCita;
     }
     
 }

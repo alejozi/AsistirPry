@@ -82,6 +82,8 @@ public class Cita implements Serializable {
     private Set<ImpresionDiagnostica> impresionDiagnosticaCollection;
     @OneToMany(mappedBy = "fkCita", fetch = FetchType.EAGER)
     private Set<Medicamento> medicamentoCollection;
+    @OneToMany(mappedBy = "fkCita", fetch = FetchType.EAGER)
+    private Set<ManejoSoportes> manejoSoportesSet;
 
     public Cita() {
     }
@@ -227,6 +229,20 @@ public class Cita implements Serializable {
     @Override
     public String toString() {
         return "com.co.asistir.To.Cita[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the manejoSoportesSet
+     */
+    public Set<ManejoSoportes> getManejoSoportesSet() {
+        return manejoSoportesSet;
+    }
+
+    /**
+     * @param manejoSoportesSet the manejoSoportesSet to set
+     */
+    public void setManejoSoportesSet(Set<ManejoSoportes> manejoSoportesSet) {
+        this.manejoSoportesSet = manejoSoportesSet;
     }
     
 }
