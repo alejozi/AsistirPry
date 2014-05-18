@@ -33,15 +33,14 @@ and open the template in the editor.
 
             <rich:columnGroup>
                 <rich:column>
-                    <h:inputText id="id-dx" value="#{impresionDiagnostica.descripcion}" required="false" requiredMessage="ingrese el dx" readonly=""/>
-                    <rich:message for="dx" style="color: red"/>
+                    <rich:select enableManualInput="true" rendered="#{!impresionDiagnostica.estaActivo}" defaultLabel="start typing for select" value="#{impresionDiagnostica.descripcion}">
+                        <f:selectItems value="#{historiaClinicaBean.lstCie10}" itemLabel="#{cie10.descripcion}" itemValue="#{cie10.cod}-#{cie10.descripcion}" var="cie10"/>
+                    </rich:select>
+                    <h:outputText value="#{impresionDiagnostica.descripcion}" rendered="#{impresionDiagnostica.estaActivo}">
+                    </h:outputText>
                 </rich:column>
                 <rich:column>
-                    <h:inputText id="id-codigo" value="#{impresionDiagnostica.codigo}" required="false" requiredMessage="ingrese código" readonly=""/>
-                    <rich:message for="codigo" style="color: red"/>
-                </rich:column>
-                <rich:column>
-                    <a4j:commandButton value="Registrar" action="#{historiaClinicaBean.adicionarNuevaFilaImpresionDiagnostica()}" execute="dtImpresionDiagnostica" render="dtImpresionDiagnostica" ></a4j:commandButton>
+                    <a4j:commandButton value="Registrar" action="#{historiaClinicaBean.adicionarNuevaFilaImpresionDiagnostica(filaSeleccionada)}" execute="@this,dtImpresionDiagnostica" render="@this,dtImpresionDiagnostica" disabled="#{impresionDiagnostica.estaActivo}"></a4j:commandButton>
                 </rich:column>
             </rich:columnGroup>
         </rich:dataTable>

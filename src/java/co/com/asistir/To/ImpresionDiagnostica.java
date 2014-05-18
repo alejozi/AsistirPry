@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -30,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ImpresionDiagnostica.findAll", query = "SELECT i FROM ImpresionDiagnostica i"),
     @NamedQuery(name = "ImpresionDiagnostica.findById", query = "SELECT i FROM ImpresionDiagnostica i WHERE i.id = :id"),
     @NamedQuery(name = "ImpresionDiagnostica.findByDescripcion", query = "SELECT i FROM ImpresionDiagnostica i WHERE i.descripcion = :descripcion"),
-    @NamedQuery(name = "ImpresionDiagnostica.findByCodigo", query = "SELECT i FROM ImpresionDiagnostica i WHERE i.codigo = :codigo")})
+})
 public class ImpresionDiagnostica implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,11 +41,11 @@ public class ImpresionDiagnostica implements Serializable {
     private Integer id;
     @Column(name = "descripcion")
     private String descripcion;
-    @Column(name = "codigo")
-    private String codigo;
     @JoinColumn(name = "fk_cita", referencedColumnName = "id")
     @ManyToOne
     private Cita fkCita;
+    @Transient
+    private boolean estaActivo;
 
     public ImpresionDiagnostica() {
     }
@@ -69,13 +70,6 @@ public class ImpresionDiagnostica implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
 
     public Cita getFkCita() {
         return fkCita;
@@ -108,6 +102,20 @@ public class ImpresionDiagnostica implements Serializable {
     @Override
     public String toString() {
         return "com.co.asistir.To.ImpresionDiagnostica[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the estaActivo
+     */
+    public boolean isEstaActivo() {
+        return estaActivo;
+    }
+
+    /**
+     * @param estaActivo the estaActivo to set
+     */
+    public void setEstaActivo(boolean estaActivo) {
+        this.estaActivo = estaActivo;
     }
     
 }
