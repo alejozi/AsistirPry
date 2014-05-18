@@ -74,11 +74,11 @@ public class AutenticacionManagedBean implements Serializable {
                 }
             }
             else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "El usuario no existe", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nombre de usuario y/o contraseña invalidos", ""));
         }
             
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "El usuario no existe", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nombre de usuario y/o contraseña invalidos", ""));
         }
     }
 

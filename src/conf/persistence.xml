@@ -12,6 +12,7 @@
     <class>co.com.asistir.To.Medicamento</class>
     <class>co.com.asistir.To.Persona</class>
     <class>co.com.asistir.To.Usuario</class>
+    <class>co.com.asistir.To.Cie10</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/asistir"/>
