@@ -32,11 +32,17 @@
                 <f:selectItem itemLabel="Oximetria" itemValue="Oximetria"></f:selectItem>
                 <f:selectItem itemLabel="Nebulización" itemValue="Nebulización"></f:selectItem>
                 <f:selectItem itemLabel="Ventury" itemValue="Ventury"></f:selectItem>
+            </h:selectManyCheckbox> 
+            <br/>
+            <h:panelGrid columns="2">
+                <b><h:outputText value="Ventilación mecanica:"></h:outputText></b>
+                <h:selectManyCheckbox value="#{historiaClinicaBean.lst1}">
                 <f:selectItem itemLabel="FiO2" itemValue="FiO2"></f:selectItem>
                 <f:selectItem itemLabel="Volumen" itemValue="Volumen"></f:selectItem>
                 <f:selectItem itemLabel="Flujo" itemValue="Flujo"></f:selectItem>
                 <f:selectItem itemLabel="Peep" itemValue="Peep"></f:selectItem>
             </h:selectManyCheckbox> 
+            </h:panelGrid>
         </rich:panel>
 
         <rich:panel  header="CARDIOVASCULARES" style="height:100px; ">
