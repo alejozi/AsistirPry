@@ -6,30 +6,30 @@
       xmlns:a4j="http://richfaces.org/a4j"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <rich:popupPanel id="popupMs" modal="true" resizeable="false" onmaskclick="#{rich:component('popupMs')}.hide()" width="400" height="350">
+    <rich:popupPanel id="popupEpi" modal="true" resizeable="false" onmaskclick="#{rich:component('popupEpi')}.hide()" width="400" height="350">
         <f:facet name="header">
-            <h:outputText value="Manejos y soportes " />
+            <h:outputText value="Epicrisis" />
         </f:facet>
         <f:facet name="controls">
-            <h:outputLink value="#" onclick="#{rich:component('popupMs')}.hide();
+            <h:outputLink value="#" onclick="#{rich:component('popupEpi')}.hide();
                     return false;">
                 X
             </h:outputLink>
         </f:facet>
 
-        <rich:dataTable id="ma" value="#{historiaClinicaBean.lstManejos}"
-                        var="manejo"
+        <rich:dataTable id="epi" value="#{historiaClinicaBean.lstEpicrisis}"
+                        var="epi"
                         style="width: 100%;"
                         >
             <f:facet name="header">
                 <rich:columnGroup>
                     <rich:column>
-                        <h:outputText value="Manejos" />
+                        <h:outputText value="Epicrisis" />
                     </rich:column>
                 </rich:columnGroup>
             </f:facet>
             <rich:column>
-                <h:outputText value="#{manejo}" />
+                <h:outputText value="#{epi}" />
             </rich:column>
         </rich:dataTable>
 

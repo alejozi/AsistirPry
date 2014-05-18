@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class ExamenFisicoConsulta {
     
-    private Character estadoGeneral;    
+    private String estadoGeneral;    
     private Character conciente;
     private Character alerta;
     private Character orientado;
@@ -30,7 +30,14 @@ public class ExamenFisicoConsulta {
 
     
 
-    public ExamenFisicoConsulta(Character estadoGeneral, Character conciente, Character alerta, Character orientado, Character otro, String cabezaCuello, String aparatoCardiovascular, String aparatoRespiratorio, String abdomen, String urogenital, String ginecobtetrico, String extremidades, String sistemaNervioso) {
+    public ExamenFisicoConsulta(Character eg, Character conciente, Character alerta, Character orientado, Character otro, String cabezaCuello, String aparatoCardiovascular, String aparatoRespiratorio, String abdomen, String urogenital, String ginecobtetrico, String extremidades, String sistemaNervioso) {
+        if(eg=='b'){
+        estadoGeneral="Bueno";
+        }else if(eg=='r'){
+        estadoGeneral="Regular";
+        }else{
+        estadoGeneral="Malo";
+        }
         this.estadoGeneral = estadoGeneral;
         this.conciente = conciente;
         this.alerta = alerta;
@@ -49,14 +56,14 @@ public class ExamenFisicoConsulta {
     /**
      * @return the estadoGeneral
      */
-    public Character getEstadoGeneral() {
+    public String getEstadoGeneral() {
         return estadoGeneral;
     }
 
     /**
      * @param estadoGeneral the estadoGeneral to set
      */
-    public void setEstadoGeneral(Character estadoGeneral) {
+    public void setEstadoGeneral(String estadoGeneral) {
         this.estadoGeneral = estadoGeneral;
     }
 

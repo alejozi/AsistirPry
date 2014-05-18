@@ -74,6 +74,8 @@ public class HistoriaClinicaBean {
     private List<ImpresionDiagnostica> lstImpresionesDiagnostricasRealizadas;
     private Ante antecentes;
     private List<String> ordenesMedicas;
+    private List<String> lstEpicrisis;
+    private List<String> lstManejos;
     private List<Cie10> lstCie10;
     private Cie10I cie10Service;
     // </editor-fold>  
@@ -85,6 +87,9 @@ public class HistoriaClinicaBean {
             lstMedicamentosEnviados = (ArrayList<Medicamento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstM");
             ordenesMedicas = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstO");
             persona = (Persona) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona");
+            lstEpicrisis = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstEpi");
+            lstManejos = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstManejo");
+
         }
         estaPaciente = (Boolean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("boolEsta");
 
@@ -211,7 +216,7 @@ public class HistoriaClinicaBean {
     public void adicionarNuevaFilaImpresionDiagnostica(int filaSeleccionada) {
         impresionDiagnosticaList.add(new ImpresionDiagnostica());
         impresionDiagnosticaList.get(filaSeleccionada).setEstaActivo(true);
-        
+
     }
 
     /**
@@ -286,27 +291,38 @@ public class HistoriaClinicaBean {
     }
 
     public void registrarHistoriaClinica() {
-       cargarManejos();
+        cargarManejos();
+        try{
         BaseDaoI b = new BaseDaoImplement();
         b.guardar(fkAntecedente);
         persona.setFkAnte(fkAntecedente);
         cita.setFkPersona(persona);
         b.guardar(examenFisico);
         for (DetalleExamenFisico dt : examenFisicoList) {
-            dt.setFkExamenFisico(examenFisico);
-            b.guardar(dt);
+            if (dt.getHora() != null) {
+                dt.setFkExamenFisico(examenFisico);
+                b.guardar(dt);
+            }
         }
         cita.setFkExamen(examenFisico);
         b.guardar(cita);
         manejoSoporte.setFkCita(cita);
         b.guardar(manejoSoporte);
         for (Medicamento medicamento : medicamentoList) {
-            medicamento.setFkCita(cita);
-            b.guardar(medicamento);
+            if (medicamento.getNombreMedicamento() != null) {
+                medicamento.setFkCita(cita);
+                b.guardar(medicamento);
+            }
         }
         for (ImpresionDiagnostica imp : impresionDiagnosticaList) {
-            imp.setFkCita(cita);
-            b.guardar(imp);
+            if (imp.getDescripcion() != null) {
+                imp.setFkCita(cita);
+                b.guardar(imp);
+            }
+        }
+        }catch(Exception e){
+        e.printStackTrace();
+        
         }
 
 
@@ -390,8 +406,8 @@ public class HistoriaClinicaBean {
                     manejoSoporte.setControlHemorragia(trauma);
                 } else if (trauma.equals("Tabla rígida")) {
                     manejoSoporte.setTablaRigida(trauma);
-                } else if (trauma.equals("Inmovilización")) {
-                    manejoSoporte.setIntubacion(trauma);
+//                } else if (trauma.equals("Inmovilización")) {
+//                    manejoSoporte.setI(trauma);
                 } else if (trauma.equals("Collar cervical")) {
                     manejoSoporte.setCollarCervical(trauma);
                 }
@@ -417,12 +433,12 @@ public class HistoriaClinicaBean {
         pacienteService.actualizarDatosPersonales(persona);
         System.out.println("Editar ");
     }
-    
-     public void consultarCie10(){
+
+    public void consultarCie10() {
         lstCie10 = cie10Service.listarCie10();
     }
 
-       /**
+    /**
      * @return the lstCie10
      */
     public List<Cie10> getLstCie10() {
@@ -435,7 +451,7 @@ public class HistoriaClinicaBean {
     public void setLstCie10(List<Cie10> lstCie10) {
         this.lstCie10 = lstCie10;
     }
-    
+
     /**
      * @return the fkAntecedente
      */
@@ -661,5 +677,33 @@ public class HistoriaClinicaBean {
      */
     public void setLst4(List<String> lst4) {
         this.lst4 = lst4;
+    }
+
+    /**
+     * @return the lstEpicrisis
+     */
+    public List<String> getLstEpicrisis() {
+        return lstEpicrisis;
+    }
+
+    /**
+     * @param lstEpicrisis the lstEpicrisis to set
+     */
+    public void setLstEpicrisis(List<String> lstEpicrisis) {
+        this.lstEpicrisis = lstEpicrisis;
+    }
+
+    /**
+     * @return the lstManejos
+     */
+    public List<String> getLstManejos() {
+        return lstManejos;
+    }
+
+    /**
+     * @param lstManejos the lstManejos to set
+     */
+    public void setLstManejos(List<String> lstManejos) {
+        this.lstManejos = lstManejos;
     }
 }

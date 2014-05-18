@@ -30,6 +30,19 @@ function cargarOrdenes() {
     RichFaces.$(idPanelMensajes).show();
 }
 
+function cargarManejos() {
+    var idPanelMensajes = $("form").attr("id") + ":popupMs";
+    RichFaces.$(idPanelMensajes).show();
+
+}
+
+
+function cargarEpicrisis() {
+    var idPanelMensajes = $("form").attr("id") + ":popupEpi";
+    RichFaces.$(idPanelMensajes).show();
+
+}
+
 function cargarExamenes() {
     var idPanelMensajes = $("form").attr("id") + ":popupEf";
     RichFaces.$(idPanelMensajes).show();

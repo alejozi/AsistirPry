@@ -12,6 +12,7 @@ import co.com.asistir.To.DetalleExamenFisico;
 import co.com.asistir.To.ExamenFisico;
 import co.com.asistir.To.ExamenFisicoConsulta;
 import co.com.asistir.To.ImpresionDiagnostica;
+import co.com.asistir.To.ManejoSoportes;
 import co.com.asistir.To.Medicamento;
 import co.com.asistir.Util.JsfUtil;
 import com.sun.faces.context.flash.ELFlash;
@@ -41,9 +42,11 @@ public class ConsultarPaciente {
     private List<ImpresionDiagnostica> lstImpresionesDiagnostricasRealizadas;
     private Ante antecentes;
     private List<String> ordenesMedicas;
+    private List<String> epicrisis;
+    private List<String> lstManejos;
     // </editor-fold> 
     private PersonaserviceI pacienteService;
-   
+
     /**
      * Creates a new instance of ConsultarPaciente
      */
@@ -55,7 +58,9 @@ public class ConsultarPaciente {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("lstM");
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("lstO");
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("boolEsta");
-            
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("lstEpi");
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("lstManejo");
+
         }
     }
 
@@ -83,6 +88,10 @@ public class ConsultarPaciente {
         setLstMedicamentosEnviados(new ArrayList<Medicamento>());
         setLstImpresionesDiagnostricasRealizadas(new ArrayList<ImpresionDiagnostica>());
         setOrdenesMedicas(new ArrayList<String>());
+        setEpicrisis(new ArrayList<String>());
+        setLstManejos(new ArrayList<String>());
+
+
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("persona", lstCitas.get(0).getFkPersona());
         setAntecentes(lstCitas.get(0).getFkPersona().getFkAnte());
 
@@ -91,14 +100,170 @@ public class ConsultarPaciente {
             getLstImpresionesDiagnostricasRealizadas().addAll(citaConsultada.getImpresionDiagnosticaCollection());
             getLstExamenesRealizados().add(cargarE(citaConsultada.getFkExamen()));
             getOrdenesMedicas().add(citaConsultada.getOrdenesMedicas());
+            getEpicrisis().add(citaConsultada.getEpicrisis());
+            getLstManejos().addAll(cargarM(new ArrayList<ManejoSoportes>(citaConsultada.getManejoSoportesSet())));
         }
 
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstE", lstExamenesRealizados);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstI", lstImpresionesDiagnostricasRealizadas);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstM", lstMedicamentosEnviados);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstO", ordenesMedicas);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstEpi", epicrisis);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstManejo", lstManejos);
 
 
+    }
+
+    public List<String> cargarM(List<ManejoSoportes> lstMane) {
+        List<String> manejos = new ArrayList<String>();
+
+        for (ManejoSoportes manejoSoporte : lstMane) {
+            StringBuilder ms = new StringBuilder();
+          
+            if (manejoSoporte.getLev()!=null) {
+                ms.append(manejoSoporte.getLev());
+                ms.append(",");
+            }
+            if (manejoSoporte.getLavGastrica()!=null) {
+                ms.append(manejoSoporte.getLavGastrica());
+                ms.append(",");
+            }
+            if (manejoSoporte.getRcp()!=null) {
+                ms.append(manejoSoporte.getRcp());
+                ms.append(",");
+            }
+            if (manejoSoporte.getO2()!=null) {
+                ms.append(manejoSoporte.getO2());
+                ms.append(",");
+            }
+            if (manejoSoporte.getCuracion()!=null) {
+                ms.append(manejoSoporte.getCuracion());
+                ms.append(",");
+            }
+            if (manejoSoporte.getCateter()!=null) {
+                ms.append(manejoSoporte.getCateter());
+                ms.append(",");
+            }
+            if (manejoSoporte.getNasogastrica()!=null) {
+                ms.append(manejoSoporte.getNasogastrica());
+                ms.append(",");
+            }
+            if (manejoSoporte.getVesical()!=null) {
+                ms.append(manejoSoporte.getVesical());
+                ms.append(",");
+            }
+            if (manejoSoporte.getOrogastrica()!=null) {
+                ms.append(manejoSoporte.getOrogastrica());
+                ms.append(",");
+            }
+            if (manejoSoporte.getAspiracion()!=null) {
+                ms.append(manejoSoporte.getAspiracion());
+                ms.append(",");
+            }
+            if (manejoSoporte.getIntubacion()!=null) {
+                ms.append(manejoSoporte.getIntubacion());
+                ms.append(",");
+            }
+            if (manejoSoporte.getHood()!=null) {
+                ms.append(manejoSoporte.getHood());
+                ms.append(",");
+            }
+            if (manejoSoporte.getBvm()!=null) {
+                ms.append(manejoSoporte.getBvm());
+                ms.append(",");
+            }
+            if (manejoSoporte.getCanula()!=null) {
+                ms.append(manejoSoporte.getCanula());
+                ms.append(",");
+            }
+            if (manejoSoporte.getOximetria()!=null) {
+                ms.append(manejoSoporte.getOximetria());
+                ms.append(",");
+            }
+            if (manejoSoporte.getNebulizacion()!=null) {
+                ms.append(manejoSoporte.getNebulizacion());
+                ms.append(",");
+            }
+            if (manejoSoporte.getVenturi()!=null) {
+                ms.append(manejoSoporte.getVenturi());
+                ms.append(",");
+            }
+            if (manejoSoporte.getFio()!=null) {
+                ms.append(manejoSoporte.getFio());
+                ms.append(",");
+            }
+            if (manejoSoporte.getVolumen()!=null) {
+                ms.append(manejoSoporte.getVolumen());
+                ms.append(",");
+            }
+            if (manejoSoporte.getFlujo()!=null) {
+                ms.append(manejoSoporte.getFlujo());
+                ms.append(",");
+            }
+            if (manejoSoporte.getPep()!=null) {
+                ms.append(manejoSoporte.getPep());
+                ms.append(",");
+            }
+            if (manejoSoporte.getMonitoreo()!=null) {
+                ms.append(manejoSoporte.getMonitoreo());
+                ms.append(",");
+            }
+            if (manejoSoporte.getCardioversion()!=null) {
+                ms.append(manejoSoporte.getCardioversion());
+                ms.append(",");
+            }
+            if (manejoSoporte.getManiobras()!=null) {
+                ms.append(manejoSoporte.getManiobras());
+                ms.append(",");
+            }
+            if (manejoSoporte.getDesfibrilacion()!=null) {
+                ms.append(manejoSoporte.getDesfibrilacion());
+                ms.append(",");
+            }
+            if (manejoSoporte.getKendrick()!=null) {
+                ms.append(manejoSoporte.getKendrick());
+                ms.append(",");
+            }
+            if (manejoSoporte.getSutura()!=null) {
+                ms.append(manejoSoporte.getSutura());
+                ms.append(",");
+            }
+            if (manejoSoporte.getControlHemorragia()!=null) {
+                ms.append(manejoSoporte.getControlHemorragia());
+                ms.append(",");
+            }
+            if (manejoSoporte.getTablaRigida()!=null) {
+                ms.append(manejoSoporte.getTablaRigida());
+                ms.append(",");
+            }
+//            if (!manejoSoporte.getInmovilizacion().isEmpty()) {
+//                ms.append(manejoSoporte.getInmovilizacion()
+//                ());
+//             ms.append(",");
+//            }
+            if (manejoSoporte.getCollarCervical()!=null) {
+                ms.append(manejoSoporte.getCollarCervical());
+                ms.append(",");
+            }
+            if (manejoSoporte.getSsn()!=null) {
+                ms.append(manejoSoporte.getSsn());
+                ms.append(",");
+            }
+            if (manejoSoporte.getDad10()!=null) {
+                ms.append(manejoSoporte.getDad10());
+                ms.append(",");
+            }
+            if (manejoSoporte.getLRinger()!=null) {
+                ms.append(manejoSoporte.getLRinger());
+                ms.append(",");
+            }
+            if (manejoSoporte.getDad5()!=null) {
+                ms.append(manejoSoporte.getDad5());
+                ms.append(",");
+            }
+            manejos.add(ms.toString());
+        }
+ return  manejos;
     }
 
     public ExamenFisicoConsulta cargarE(ExamenFisico examenFisico) {
@@ -206,7 +371,7 @@ public class ConsultarPaciente {
         this.ordenesMedicas = ordenesMedicas;
     }
 
-  /**
+    /**
      * @return the pacienteService
      */
     public PersonaserviceI getPacienteService() {
@@ -218,5 +383,33 @@ public class ConsultarPaciente {
      */
     public void setPacienteService(PersonaserviceI pacienteService) {
         this.pacienteService = pacienteService;
+    }
+
+    /**
+     * @return the epicrisis
+     */
+    public List<String> getEpicrisis() {
+        return epicrisis;
+    }
+
+    /**
+     * @param epicrisis the epicrisis to set
+     */
+    public void setEpicrisis(List<String> epicrisis) {
+        this.epicrisis = epicrisis;
+    }
+
+    /**
+     * @return the lstManejos
+     */
+    public List<String> getLstManejos() {
+        return lstManejos;
+    }
+
+    /**
+     * @param lstManejos the lstManejos to set
+     */
+    public void setLstManejos(List<String> lstManejos) {
+        this.lstManejos = lstManejos;
     }
 }

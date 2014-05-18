@@ -20,8 +20,8 @@ and open the template in the editor.
               </rich:panelMenuItem>
             <rich:panelMenuItem label="Examenes fisicos" name="Examenes fisicos" onclick="cargarExamenes();"/>
             <rich:panelMenuItem label="Impresiones diagnosticas" name="Impresiones diagnosticas" onclick="cargarImpresiones();" />
-            <rich:panelMenuItem label="Epicrisis" name="Epicrisis" />
-            <rich:panelMenuItem label="Manejos y soportes" name="Manejos y soportes" />
+            <rich:panelMenuItem label="Epicrisis" name="Epicrisis" onclick="cargarEpicrisis();" />
+            <rich:panelMenuItem label="Manejos y soportes" name="Manejos y soportes" onclick="cargarManejos();"/>
             <rich:panelMenuItem label="Ordenes medicas" name="Ordenes medicas" onclick="cargarOrdenes();"/>
         </rich:panelMenuGroup>
     </rich:panelMenu>
@@ -30,5 +30,7 @@ and open the template in the editor.
     <ui:include src="modalImpresionDiagnostica.xhtml"></ui:include>
     <ui:include src="modalOrdenesMedicas.xhtml"></ui:include>
     <ui:include src="modalExamenFisico.xhtml"></ui:include>
+    <ui:include src="modalManejoSoporte.xhtml"></ui:include>
+    <ui:include src="modalManejoEpicrisis.xhtml"></ui:include>
  
 </html>
