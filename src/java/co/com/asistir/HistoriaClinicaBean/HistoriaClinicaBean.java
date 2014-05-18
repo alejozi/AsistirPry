@@ -32,6 +32,7 @@ import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PreDestroy;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -320,6 +321,8 @@ public class HistoriaClinicaBean {
                 b.guardar(imp);
             }
         }
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "La informacón se guardio con éxito", ""));
+        
         }catch(Exception e){
         e.printStackTrace();
         
