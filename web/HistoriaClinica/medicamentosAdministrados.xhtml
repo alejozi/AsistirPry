@@ -36,19 +36,19 @@ and open the template in the editor.
 
             <rich:columnGroup>
                 <rich:column>
-                    <h:inputText id="id-medicamento" value="#{medicamento.nombreMedicamento}" required="false" requiredMessage="ingrese el medicamento" readonly=""/>
+                    <h:inputText id="id-medicamento" value="#{medicamento.nombreMedicamento}" required="false" requiredMessage="ingrese el medicamento" readonly="#{medicamento.habilitarBoton}"/>
                     <rich:message for="id-medicamento" style="color: red"/>
                 </rich:column>
                 <rich:column>
-                    <h:inputText id="id-via" value="#{medicamento.via}" required="false" requiredMessage="ingrese la via de administración" readonly=""/>
+                    <h:inputText id="id-via" value="#{medicamento.via}" required="false" requiredMessage="ingrese la via de administración" readonly="#{medicamento.habilitarBoton}"/>
                     <rich:message for="id-via" style="color: red"/>
                 </rich:column>
                 <rich:column>
-                    <h:inputText id="id-cantidad" value="#{medicamento.cantidad}" required="false" requiredMessage="ingrese la cantidad" readonly="" />
+                    <h:inputText id="id-cantidad" value="#{medicamento.cantidad}" required="false" requiredMessage="ingrese la cantidad" readonly="#{medicamento.habilitarBoton}" />
                     <rich:message for="id-cantidad" style="color: red"/>
                 </rich:column>
                 <rich:column>
-                    <a4j:commandButton value="Registrar" action="#{historiaClinicaBean.adicionarNuevaFilaMedicamentos()}" execute="dtMedicamentosAdministrados" render="dtMedicamentosAdministrados" ></a4j:commandButton>
+                    <a4j:commandButton value="Registrar" action="#{historiaClinicaBean.adicionarNuevaFilaMedicamentos(filaSeleccionada)}" execute="dtMedicamentosAdministrados" render="dtMedicamentosAdministrados" disabled="#{medicamento.habilitarBoton}"></a4j:commandButton>
                 </rich:column>
 
             </rich:columnGroup>

@@ -49,39 +49,39 @@ and open the template in the editor.
 
         <rich:columnGroup>
             <rich:column>
-                <h:inputText style="width:80px;" id="id-hora" value="#{examenFisico.hora}" required="false" requiredMessage="ingrese la hora" readonly="false" />
+                <h:inputText style="width:80px;" id="id-hora" value="#{examenFisico.hora}" required="false" requiredMessage="ingrese la hora" readonly="#{examenFisico.habilitarBoton}" />
                 <rich:message for="id-hora" style="color: red"/>
             </rich:column>
             <rich:column>
-                <h:inputText style="width:100px;" id="id-tension" value="#{examenFisico.tensionArterial}" required="false" requiredMessage="ingrese la tensión arterial" readonly="false"/>
+                <h:inputText style="width:100px;" id="id-tension" value="#{examenFisico.tensionArterial}" required="false" requiredMessage="ingrese la tensión arterial" readonly="#{examenFisico.habilitarBoton}"/>
                 <rich:message for="id-tension" style="color: red"/>
             </rich:column>
             <rich:column>
-                <h:inputText style="width:80px;" id="id-fc" value="#{examenFisico.fc}"  readonly="false" />
+                <h:inputText style="width:80px;" id="id-fc" value="#{examenFisico.fc}"  readonly="#{examenFisico.habilitarBoton}" />
                 <rich:message for="id-fc" style="color: red"/>
             </rich:column>
             <rich:column>
-                <h:inputText style="width:80px;" id="id-fr" value="#{examenFisico.fr}"  readonly="false" />
+                <h:inputText style="width:80px;" id="id-fr" value="#{examenFisico.fr}"  readonly="#{examenFisico.habilitarBoton}" />
                 <rich:message for="id-fr" style="color: red"/>
             </rich:column>
             <rich:column>
-                <h:inputText style="width:80px;" id="id-t" value="#{examenFisico.t}"  readonly="false" />
+                <h:inputText style="width:80px;" id="id-t" value="#{examenFisico.t}"  readonly="#{examenFisico.habilitarBoton}" />
                 <rich:message for="id-t" style="color: red"/>
             </rich:column>
             <rich:column>
-                <h:inputText style="width:80px;" id="id-spo" value="#{examenFisico.spo2}"  readonly="false" />
+                <h:inputText style="width:80px;" id="id-spo" value="#{examenFisico.spo2}"  readonly="#{examenFisico.habilitarBoton}" />
                 <rich:message for="id-spo" style="color: red"/>
             </rich:column>
             <rich:column>
-                <h:inputText style="width:80px;" id="id-peso" value="#{examenFisico.peso}"  readonly="false" />
+                <h:inputText style="width:80px;" id="id-peso" value="#{examenFisico.peso}"  readonly="#{examenFisico.habilitarBoton}" />
                 <rich:message for="id-peso" style="color: red"/>
             </rich:column>
             <rich:column>
-                <h:inputText style="width:100px;" id="id-glasgow" value="#{examenFisico.glasgow}"  readonly="false" />
+                <h:inputText style="width:100px;" id="id-glasgow" value="#{examenFisico.glasgow}"  readonly="#{examenFisico.habilitarBoton}" />
                 <rich:message for="id-glasgow" style="color: red"/>
             </rich:column>
             <rich:column>
-                <a4j:commandButton value="Registrar" action="#{historiaClinicaBean.adicionarNuevaFilaDetalleExamenFisico(filaSeleccionada)}" execute="@this,dtExamenFisico" render="@this,dtExamenFisico" ></a4j:commandButton>
+                <a4j:commandButton value="Registrar" action="#{historiaClinicaBean.adicionarNuevaFilaDetalleExamenFisico(filaSeleccionada)}" execute="@this,dtExamenFisico" render="@this,dtExamenFisico" disabled="#{examenFisico.habilitarBoton}"></a4j:commandButton>
 
             </rich:column>
 

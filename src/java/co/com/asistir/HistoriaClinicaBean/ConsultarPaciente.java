@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -411,5 +413,15 @@ public class ConsultarPaciente {
      */
     public void setLstManejos(List<String> lstManejos) {
         this.lstManejos = lstManejos;
+    }
+    
+    public void salir(){
+     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("Inicio.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(ConsultarPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }

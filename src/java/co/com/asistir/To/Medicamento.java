@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -48,6 +49,8 @@ public class Medicamento implements Serializable {
     @JoinColumn(name = "fk_cita", referencedColumnName = "id")
     @ManyToOne
     private Cita fkCita;
+    @Transient
+    private boolean habilitarBoton;
 
     public Medicamento() {
     }
@@ -119,6 +122,20 @@ public class Medicamento implements Serializable {
     @Override
     public String toString() {
         return "com.co.asistir.To.Medicamento[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the habilitarBoton
+     */
+    public boolean isHabilitarBoton() {
+        return habilitarBoton;
+    }
+
+    /**
+     * @param habilitarBoton the habilitarBoton to set
+     */
+    public void setHabilitarBoton(boolean habilitarBoton) {
+        this.habilitarBoton = habilitarBoton;
     }
     
 }

@@ -206,12 +206,13 @@ public class HistoriaClinicaBean {
     }
 
     public void adicionarNuevaFilaDetalleExamenFisico(int filaSeleccionada) {
-        //examenFisicoList.get(filaSeleccionada).setHabilitarBoton(true);
+        examenFisicoList.get(filaSeleccionada).setHabilitarBoton(true);
         examenFisicoList.add(new DetalleExamenFisico());
     }
 
-    public void adicionarNuevaFilaMedicamentos() {
+    public void adicionarNuevaFilaMedicamentos(int filaSeleccionada) {
         medicamentoList.add(new Medicamento());
+        medicamentoList.get(filaSeleccionada).setHabilitarBoton(true);
     }
 
     public void adicionarNuevaFilaImpresionDiagnostica(int filaSeleccionada) {
@@ -300,7 +301,7 @@ public class HistoriaClinicaBean {
         cita.setFkPersona(persona);
         b.guardar(examenFisico);
         for (DetalleExamenFisico dt : examenFisicoList) {
-            if (dt.getHora() != null) {
+            if (dt.getHora() != 0) {
                 dt.setFkExamenFisico(examenFisico);
                 b.guardar(dt);
             }
@@ -310,7 +311,7 @@ public class HistoriaClinicaBean {
         manejoSoporte.setFkCita(cita);
         b.guardar(manejoSoporte);
         for (Medicamento medicamento : medicamentoList) {
-            if (medicamento.getNombreMedicamento() != null) {
+            if (!medicamento.getNombreMedicamento().equals("")) {
                 medicamento.setFkCita(cita);
                 b.guardar(medicamento);
             }
@@ -325,6 +326,7 @@ public class HistoriaClinicaBean {
         
         }catch(Exception e){
         e.printStackTrace();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "no se pudo guardar la información, por favor intente mas tarde.", ""));
         
         }
 
@@ -708,5 +710,16 @@ public class HistoriaClinicaBean {
      */
     public void setLstManejos(List<String> lstManejos) {
         this.lstManejos = lstManejos;
+    }
+    
+    
+    public void salir(){
+     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
+       try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("Inicio.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(ConsultarPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }
