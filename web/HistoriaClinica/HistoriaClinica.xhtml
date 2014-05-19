@@ -21,13 +21,12 @@
 
             <ui:define name="top">
 
-                <div>
-                    <center>
-                        <h:graphicImage library="img" name="logoAsistir.jpg" />
-                    </center>
-                    
-                    <h:commandLink value="Salir" styleClass="logout" action="#{consultarPaciente.salir}" immediate="true"></h:commandLink>
-                 </div>
+
+                <center>
+                    <h:graphicImage library="img" name="logoAsistir.jpg" />
+                </center>                    
+                <h:commandLink value="Salir" styleClass="logout" action="#{consultarPaciente.salir}" immediate="true"></h:commandLink>
+
             </ui:define>
 
             <ui:define name="left">
@@ -49,8 +48,8 @@
                         <h:panelGrid columns="8" cellspacing="10">
                             <h:outputLabel value="Fecha:" style="color: #083941;" />
                             <h:panelGroup>
-                            <rich:calendar  required="true" datePattern="yyyy-MM-dd"  id="fecha_i" inputSize="10" value="#{historiaClinicaBean.cita.fecha}" requiredMessage="Por favor ingrese la fecha."/>
-                            <rich:message for="fecha_i"></rich:message>
+                                <rich:calendar  required="true" datePattern="yyyy-MM-dd"  id="fecha_i" inputSize="10" value="#{historiaClinicaBean.cita.fecha}" requiredMessage="Por favor ingrese la fecha."/>
+                                <rich:message for="fecha_i"></rich:message>
                             </h:panelGroup>
                             <h:outputLabel value="Convenio:" style="color: #083941;"/>
                             <h:inputText id="convenio" value="#{historiaClinicaBean.cita.convenio}" required="true" requiredMessage="Por favor ingrese la fecha."/>
@@ -75,8 +74,8 @@
                     <ui:include src="ExamenFisico.xhtml"/>  
                 </rich:panel>
                 <rich:panel id="idManejo" header="Manejo y soporte" styleClass="centerPanel">
-                   <ui:include src="ManejoSoporte.xhtml"></ui:include>
-                 </rich:panel>
+                    <ui:include src="ManejoSoporte.xhtml"></ui:include>
+                </rich:panel>
                 <rich:panel id="idMedicamentos" header="Medicamentos administrado" styleClass="centerPanel">
                     <ui:include src="medicamentosAdministrados.xhtml"></ui:include> 
                 </rich:panel>
