@@ -16,6 +16,7 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/asistir"/>
+      <!--<property name="hibernate.connection.url" value="jdbc:postgresql://postgres-asistirhealth.jelastic.servint.net/asistir"/>-->
       <property name="javax.persistence.jdbc.password" value="asistir"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.user" value="asistir"/>

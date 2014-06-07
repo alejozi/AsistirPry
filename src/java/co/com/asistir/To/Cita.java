@@ -70,7 +70,7 @@ public class Cita implements Serializable {
     @Column(name = "enfermera_auxiliar")
     private String enfermeraAuxiliar;
     @JoinColumn(name = "fk_persona", referencedColumnName = "id_persona")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Persona fkPersona;
     @JoinColumn(name = "fk_soporte", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL)

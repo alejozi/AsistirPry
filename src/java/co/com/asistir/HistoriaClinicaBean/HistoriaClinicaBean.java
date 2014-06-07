@@ -296,8 +296,11 @@ public class HistoriaClinicaBean {
         cargarManejos();
         try{
         BaseDaoI b = new BaseDaoImplement();
+        if(!estaPaciente){
         b.guardar(fkAntecedente);
         persona.setFkAnte(fkAntecedente);
+        b.guardar(persona);
+        }
         cita.setFkPersona(persona);
         b.guardar(examenFisico);
         for (DetalleExamenFisico dt : examenFisicoList) {

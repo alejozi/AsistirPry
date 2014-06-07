@@ -14,15 +14,25 @@ and open the template in the editor.
 
 
     <h:panelGrid columns="6"  cellpadding="8" id="id_datos_personales">
-        <h:outputLabel value="Apellidos:" styleClass="label"/>
+        <h:outputLabel value="Apellido1:" styleClass="label"/>
         <h:panelGroup>
-            <h:inputText  required="true" id="apellidos" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.apellidos}" requiredMessage="Por favor ingrese los apellidos."/> 
-            <rich:message for="apellidos"/>
+            <h:inputText  required="true" id="apellido1" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.apellido1}" requiredMessage="Por favor ingrese los apellidos."/> 
+            <rich:message for="apellido1"/>
         </h:panelGroup>
-        <h:outputLabel value="Nombres:" styleClass="label"/>
+        <h:outputLabel value="Apellido 2:" styleClass="label"/>
         <h:panelGroup>
-            <h:inputText  required="true" id="nombres" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.nombres}" requiredMessage="Por favor ingrese los nombres."/>
-            <rich:message for="nombres"/>
+            <h:inputText  required="false" id="apellido2" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.apellido2}" requiredMessage="Por favor ingrese los apellidos."/> 
+            <rich:message for="apellido2"/>
+        </h:panelGroup>
+        <h:outputLabel value="Nombres1" styleClass="label"/>
+        <h:panelGroup>
+            <h:inputText  required="true" id="nombre1" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.nombre1}" requiredMessage="Por favor ingrese los nombres."/>
+            <rich:message for="nombre1"/>
+        </h:panelGroup>
+        <h:outputLabel value="Nombre2" styleClass="label"/>
+        <h:panelGroup>
+            <h:inputText  required="false" id="nombre2" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.nombre2}" requiredMessage="Por favor ingrese los nombres."/>
+            <rich:message for="nombre2"/>
         </h:panelGroup>
         <h:outputLabel value="Edad:" styleClass="label"/>
         <h:inputText  required="false" id="edad" readonly="#{historiaClinicaBean.estaPaciente}" value="#{historiaClinicaBean.persona.edad}" requiredMessage="Por favor ingrese la edad."/>                         

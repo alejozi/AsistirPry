@@ -15,7 +15,7 @@
                 <f:selectItem itemLabel="RCP" itemValue="RCP"></f:selectItem>
                 <f:selectItem itemLabel="O2" itemValue="O2"></f:selectItem>
                 <f:selectItem itemLabel="Curación" itemValue="Curación"></f:selectItem>
-                <f:selectItem itemLabel="Cateter Ctral" itemValue="Cateter Ctral"></f:selectItem>
+                <!--<f:selectItem itemLabel="Cateter Ctral" itemValue="Cateter Ctral"></f:selectItem>-->
                 <f:selectItem itemLabel="Nasogastrica" itemValue="Nasogastrica"></f:selectItem>
                 <f:selectItem itemLabel="Vesical" itemValue="Vesical"></f:selectItem>
                 <f:selectItem itemLabel="Orogastrica" itemValue="Orogastrica"></f:selectItem>
@@ -25,9 +25,9 @@
         <rich:panel header="RESPIRATORIOS" style="width: 400px;">
             <h:selectManyCheckbox value="#{historiaClinicaBean.lst1}">
                 <f:selectItem itemLabel="Aspiración" itemValue="Aspiración" ></f:selectItem>
-                <f:selectItem itemLabel="Intubación" itemValue="Intubación"></f:selectItem>
+               <!-- <f:selectItem itemLabel="Intubación" itemValue="Intubación"></f:selectItem>
                 <f:selectItem itemLabel="Hood" itemValue="Hood"></f:selectItem>
-                <f:selectItem itemLabel="BVM" itemValue="BVM"></f:selectItem>
+                <f:selectItem itemLabel="BVM" itemValue="BVM"></f:selectItem>-->
                 <f:selectItem itemLabel="Cánula" itemValue="Cánula"></f:selectItem>
                 <f:selectItem itemLabel="Oximetria" itemValue="Oximetria"></f:selectItem>
                 <f:selectItem itemLabel="Nebulización" itemValue="Nebulización"></f:selectItem>
@@ -40,7 +40,7 @@
                 <f:selectItem itemLabel="FiO2" itemValue="FiO2"></f:selectItem>
                 <f:selectItem itemLabel="Volumen" itemValue="Volumen"></f:selectItem>
                 <f:selectItem itemLabel="Flujo" itemValue="Flujo"></f:selectItem>
-                <f:selectItem itemLabel="Peep" itemValue="Peep"></f:selectItem>
+                <!--<f:selectItem itemLabel="Peep" itemValue="Peep"></f:selectItem>-->
             </h:selectManyCheckbox> 
             </h:panelGrid>
         </rich:panel>
@@ -55,8 +55,8 @@
 
         </rich:panel>
 
-
-        <rich:panel  header="TRAUMA" style="height: 100px;">
+        <!--Se quita todo el panel por petición del cliente del archivo de ObservacionesHC-->
+        <!--<rich:panel  header="TRAUMA" style="height: 100px;">
             <h:selectManyCheckbox value="#{historiaClinicaBean.lst3}">
                 <f:selectItem itemLabel="Sutura" itemValue="Sutura"></f:selectItem>
                 <f:selectItem itemLabel="Kendrick" itemValue="Kendrick"></f:selectItem>
@@ -66,7 +66,7 @@
                 <f:selectItem itemLabel="Collar cervical" itemValue="Collar cervical"></f:selectItem>
             </h:selectManyCheckbox>   
 
-        </rich:panel>
+        </rich:panel>-->
 
         <rich:panel  header="LIQUIDOS" style="height: 100px;width:350px;">
             <h:selectManyCheckbox value="#{historiaClinicaBean.lst4}">

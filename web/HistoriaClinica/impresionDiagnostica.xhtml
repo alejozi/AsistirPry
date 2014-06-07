@@ -30,8 +30,8 @@ and open the template in the editor.
 
             <rich:columnGroup>
                 <rich:column>
-                    <rich:select enableManualInput="true" rendered="#{!impresionDiagnostica.estaActivo}" defaultLabel="seleccione la enfermedad" value="#{impresionDiagnostica.descripcion}">
-                        <f:selectItems value="#{historiaClinicaBean.lstCie10}" itemLabel="#{cie10.descripcion}" itemValue="#{cie10.cod}-#{cie10.descripcion}" var="cie10"/>
+                    <rich:select enableManualInput="true" rendered="#{!impresionDiagnostica.estaActivo}" defaultLabel="seleccione la enfermedad" value="#{impresionDiagnostica.descripcion}" style="size: 300px;">
+                        <f:selectItems value="#{historiaClinicaBean.lstCie10}" itemLabel="#{cie10.cod}-#{cie10.descripcion}" itemValue="#{cie10.cod}-#{cie10.descripcion}" var="cie10"/>
                     </rich:select>
                     <h:outputText value="#{impresionDiagnostica.descripcion}" rendered="#{impresionDiagnostica.estaActivo}">
                     </h:outputText>
