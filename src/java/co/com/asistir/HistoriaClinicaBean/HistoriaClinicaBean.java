@@ -206,18 +206,30 @@ public class HistoriaClinicaBean {
     }
 
     public void adicionarNuevaFilaDetalleExamenFisico(int filaSeleccionada) {
-        examenFisicoList.get(filaSeleccionada).setHabilitarBoton(true);
-        examenFisicoList.add(new DetalleExamenFisico());
+        if (examenFisicoList.get(filaSeleccionada).getHora() != 0) {
+            examenFisicoList.get(filaSeleccionada).setHabilitarBoton(true);
+            examenFisicoList.add(new DetalleExamenFisico());
+        }else{
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ingrese la información del examen físico.", ""));
+        }
     }
 
     public void adicionarNuevaFilaMedicamentos(int filaSeleccionada) {
-        medicamentoList.add(new Medicamento());
-        medicamentoList.get(filaSeleccionada).setHabilitarBoton(true);
+        if (!medicamentoList.get(filaSeleccionada).getNombreMedicamento().equals("")) {
+            medicamentoList.add(new Medicamento());
+            medicamentoList.get(filaSeleccionada).setHabilitarBoton(true);
+        }else{
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ingrese la información del mediamento.", ""));
+        }
     }
 
     public void adicionarNuevaFilaImpresionDiagnostica(int filaSeleccionada) {
+        if(!impresionDiagnosticaList.get(filaSeleccionada).getDescripcion().equals("")){
         impresionDiagnosticaList.add(new ImpresionDiagnostica());
         impresionDiagnosticaList.get(filaSeleccionada).setEstaActivo(true);
+        }else{
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ingrese la información de la impresión diagnostica.", ""));
+        }
 
     }
 
@@ -294,43 +306,40 @@ public class HistoriaClinicaBean {
 
     public void registrarHistoriaClinica() {
         cargarManejos();
-        try{
-        BaseDaoI b = new BaseDaoImplement();
-        if(!estaPaciente){
-        b.guardar(fkAntecedente);
-        persona.setFkAnte(fkAntecedente);
-        b.guardar(persona);
-        }
-        cita.setFkPersona(persona);
-        b.guardar(examenFisico);
-        for (DetalleExamenFisico dt : examenFisicoList) {
-            if (dt.getHora() != 0) {
-                dt.setFkExamenFisico(examenFisico);
-                b.guardar(dt);
+        try {
+            BaseDaoI b = new BaseDaoImplement();
+            b.guardar(fkAntecedente);
+            persona.setFkAnte(fkAntecedente);
+            cita.setFkPersona(persona);
+            b.guardar(examenFisico);
+            for (DetalleExamenFisico dt : examenFisicoList) {
+                if (dt.getHora() != 0) {
+                    dt.setFkExamenFisico(examenFisico);
+                    b.guardar(dt);
+                }
             }
-        }
-        cita.setFkExamen(examenFisico);
-        b.guardar(cita);
-        manejoSoporte.setFkCita(cita);
-        b.guardar(manejoSoporte);
-        for (Medicamento medicamento : medicamentoList) {
-            if (!medicamento.getNombreMedicamento().equals("")) {
-                medicamento.setFkCita(cita);
-                b.guardar(medicamento);
+            cita.setFkExamen(examenFisico);
+            b.guardar(cita);
+            manejoSoporte.setFkCita(cita);
+            b.guardar(manejoSoporte);
+            for (Medicamento medicamento : medicamentoList) {
+                if (!medicamento.getNombreMedicamento().equals("")) {
+                    medicamento.setFkCita(cita);
+                    b.guardar(medicamento);
+                }
             }
-        }
-        for (ImpresionDiagnostica imp : impresionDiagnosticaList) {
-            if (imp.getDescripcion() != null) {
-                imp.setFkCita(cita);
-                b.guardar(imp);
+            for (ImpresionDiagnostica imp : impresionDiagnosticaList) {
+                if (imp.getDescripcion() != null) {
+                    imp.setFkCita(cita);
+                    b.guardar(imp);
+                }
             }
-        }
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "La informacón se guardio con éxito", ""));
-        
-        }catch(Exception e){
-        e.printStackTrace();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "no se pudo guardar la información, por favor intente mas tarde.", ""));
-        
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "La informacón se guardio con éxito", ""));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "no se pudo guardar la información, por favor intente mas tarde.", ""));
+
         }
 
 
@@ -714,11 +723,10 @@ public class HistoriaClinicaBean {
     public void setLstManejos(List<String> lstManejos) {
         this.lstManejos = lstManejos;
     }
-    
-    
-    public void salir(){
-     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
-       try {
+
+    public void salir() {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
+        try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("Inicio.xhtml");
         } catch (IOException ex) {
             Logger.getLogger(ConsultarPaciente.class.getName()).log(Level.SEVERE, null, ex);
