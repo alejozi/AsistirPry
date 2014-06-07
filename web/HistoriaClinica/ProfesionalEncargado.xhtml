@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich">
+
+    <h:panelGrid columns="2" cellspacing="10" id="id-profesional-acargo">
+        <h:outputLabel value="Nombre completo del profesional:" styleClass="label" />
+        <h:panelGroup>
+            <h:inputText required="true" id="id-nombre-p" value="#{historiaClinicaBean.profesional.nombre}" style="width: 720px;" requiredMessage="Ingrese el nombre del profesional a cargo"></h:inputText>
+            <rich:message for="id-nombre-p"/>
+        </h:panelGroup>
+        <h:outputLabel value="Fecha inclusión en el programa:"/>
+        <h:panelGroup>
+            <rich:calendar  required="true" datePattern="yyyy-MM-dd"  id="id-fecha-inclusion" inputSize="10" value="#{historiaClinicaBean.profesional.fechaInclusion}" requiredMessage="Por favor ingrese la fecha de inclusión." style="width: 720px;"/>
+            <rich:message for="id-fecha-inclusion"></rich:message>
+        </h:panelGroup>
+        <h:outputLabel value="Motivo inclusión:"/>
+        <h:panelGroup>
+        <h:inputText id="id-motivo" value="#{historiaClinicaBean.profesional.motivoInclusion}" style="width: 720px;" required="true" requiredMessage="Ingrese el motivo de la inclusión"></h:inputText>
+            <rich:message for="id-motivo"/>        
+        </h:panelGroup>
+        <h:outputLabel value="Nombre del  cuidador principal:"/>
+        <h:panelGroup>
+            <h:inputText id="id-nom-cui" value="#{historiaClinicaBean.profesional.cuidadorPrincipal}" style="width: 720px;"></h:inputText>
+        <rich:message for="id-nom-cui"/>   
+        </h:panelGroup>
+    </h:panelGrid>
+</html>

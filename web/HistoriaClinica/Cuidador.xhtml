@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGrid columns="2" cellspacing="10" id="id-cuidador_panel">
+        <h:outputLabel value="Higiene:" styleClass="label"/>
+        <h:selectOneRadio value="#{historiaClinicaBean.cuidador.higiene}">
+                <f:selectItem itemLabel="SI" itemValue="true"></f:selectItem>
+                <f:selectItem itemLabel="NO" itemValue="false"></f:selectItem>
+            </h:selectOneRadio>
+        
+       <h:outputLabel value="Alimentación:" styleClass="label"/>
+       <h:selectOneRadio value="#{historiaClinicaBean.cuidador.alimentacion}">
+                <f:selectItem itemLabel="SI" itemValue="true"></f:selectItem>
+                <f:selectItem itemLabel="NO" itemValue="false"></f:selectItem>
+            </h:selectOneRadio>
+       
+       <h:outputLabel value="Movilización y cambios posturales:" styleClass="label"/>
+       <h:selectOneRadio value="#{historiaClinicaBean.cuidador.movilizacion}">
+                <f:selectItem itemLabel="SI" itemValue="true"></f:selectItem>
+                <f:selectItem itemLabel="NO" itemValue="false"></f:selectItem>
+            </h:selectOneRadio>
+       
+       <h:outputLabel value="Administración de medicamentos farmacológicos:" styleClass="label"/>
+       <h:selectOneRadio value="#{historiaClinicaBean.cuidador.adminMedicamento}">
+                <f:selectItem itemLabel="SI" itemValue="true"></f:selectItem>
+                <f:selectItem itemLabel="NO" itemValue="false"></f:selectItem>
+            </h:selectOneRadio>
+       
+       <h:outputLabel value="Observaciones:" styleClass="label"/>
+       <h:inputTextarea value="#{historiaClinicaBean.cuidador.observaciones}"></h:inputTextarea>   
+    
+    </h:panelGrid>
+</html>

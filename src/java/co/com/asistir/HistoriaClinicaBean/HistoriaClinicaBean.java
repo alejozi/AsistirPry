@@ -15,13 +15,17 @@ import co.com.asistir.Service.Paciente.PersonaserviceI;
 import co.com.asistir.To.Ante;
 import co.com.asistir.To.Cie10;
 import co.com.asistir.To.Cita;
+import co.com.asistir.To.Cuidador;
 import co.com.asistir.To.DetalleExamenFisico;
 import co.com.asistir.To.ExamenFisico;
 import co.com.asistir.To.ExamenFisicoConsulta;
 import co.com.asistir.To.ImpresionDiagnostica;
 import co.com.asistir.To.ManejoSoportes;
 import co.com.asistir.To.Medicamento;
+import co.com.asistir.To.PatronCognitivo;
+import co.com.asistir.To.PatronSueno;
 import co.com.asistir.To.Persona;
+import co.com.asistir.To.ProfesionalEncargado;
 import co.com.asistir.Util.JsfUtil;
 import com.sun.faces.context.flash.ELFlash;
 import java.io.IOException;
@@ -64,6 +68,10 @@ public class HistoriaClinicaBean {
     private List<String> lst3;
     private List<String> lst4;
     ManejoSoportes manejoSoporte;
+    private ProfesionalEncargado profesional;
+    private PatronSueno patronSueno;
+    private PatronCognitivo patronCog;
+    private Cuidador cuidador;
     // <editor-fold defaultstate="collapsed" desc="Services">
     private PersonaserviceI pacienteService;
     RegistroHistoriaClinicaI registroHistoriaClinicaService;
@@ -103,6 +111,10 @@ public class HistoriaClinicaBean {
         cita = new Cita();
         persona = new Persona();
         examenFisico = new ExamenFisico();
+        profesional = new ProfesionalEncargado();
+        patronSueno = new PatronSueno();
+        patronCog = new PatronCognitivo();
+        cuidador = new Cuidador();
         examenFisicoList = new ArrayList<DetalleExamenFisico>();
         medicamentoList = new ArrayList<Medicamento>();
         impresionDiagnosticaList = new ArrayList<ImpresionDiagnostica>();
@@ -209,8 +221,8 @@ public class HistoriaClinicaBean {
         if (examenFisicoList.get(filaSeleccionada).getHora() != 0) {
             examenFisicoList.get(filaSeleccionada).setHabilitarBoton(true);
             examenFisicoList.add(new DetalleExamenFisico());
-        }else{
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ingrese la información del examen físico.", ""));
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ingrese la información del examen físico.", ""));
         }
     }
 
@@ -218,17 +230,17 @@ public class HistoriaClinicaBean {
         if (!medicamentoList.get(filaSeleccionada).getNombreMedicamento().equals("")) {
             medicamentoList.add(new Medicamento());
             medicamentoList.get(filaSeleccionada).setHabilitarBoton(true);
-        }else{
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ingrese la información del mediamento.", ""));
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ingrese la información del mediamento.", ""));
         }
     }
 
     public void adicionarNuevaFilaImpresionDiagnostica(int filaSeleccionada) {
-        if(!impresionDiagnosticaList.get(filaSeleccionada).getDescripcion().equals("")){
-        impresionDiagnosticaList.add(new ImpresionDiagnostica());
-        impresionDiagnosticaList.get(filaSeleccionada).setEstaActivo(true);
-        }else{
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ingrese la información de la impresión diagnostica.", ""));
+        if (!impresionDiagnosticaList.get(filaSeleccionada).getDescripcion().equals("")) {
+            impresionDiagnosticaList.add(new ImpresionDiagnostica());
+            impresionDiagnosticaList.get(filaSeleccionada).setEstaActivo(true);
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ingrese la información de la impresión diagnostica.", ""));
         }
 
     }
@@ -732,5 +744,61 @@ public class HistoriaClinicaBean {
             Logger.getLogger(ConsultarPaciente.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    /**
+     * @return the profesional
+     */
+    public ProfesionalEncargado getProfesional() {
+        return profesional;
+    }
+
+    /**
+     * @param profesional the profesional to set
+     */
+    public void setProfesional(ProfesionalEncargado profesional) {
+        this.profesional = profesional;
+    }
+
+    /**
+     * @return the patronSueno
+     */
+    public PatronSueno getPatronSueno() {
+        return patronSueno;
+    }
+
+    /**
+     * @param patronSueno the patronSueno to set
+     */
+    public void setPatronSueno(PatronSueno patronSueno) {
+        this.patronSueno = patronSueno;
+    }
+
+    /**
+     * @return the patronCog
+     */
+    public PatronCognitivo getPatronCog() {
+        return patronCog;
+    }
+
+    /**
+     * @param patronCog the patronCog to set
+     */
+    public void setPatronCog(PatronCognitivo patronCog) {
+        this.patronCog = patronCog;
+    }
+
+    /**
+     * @return the cuidador
+     */
+    public Cuidador getCuidador() {
+        return cuidador;
+    }
+
+    /**
+     * @param cuidador the cuidador to set
+     */
+    public void setCuidador(Cuidador cuidador) {
+        this.cuidador = cuidador;
     }
 }

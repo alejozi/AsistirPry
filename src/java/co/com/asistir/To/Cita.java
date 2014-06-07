@@ -5,7 +5,6 @@
 package co.com.asistir.To;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -78,6 +77,18 @@ public class Cita implements Serializable {
     @JoinColumn(name = "fk_examen", referencedColumnName = "id_estado_fisico")
     @ManyToOne
     private ExamenFisico fkExamen;
+    @JoinColumn(name = "fk_profesional", referencedColumnName = "id")
+    @ManyToOne
+    private ProfesionalEncargado fkProfesional;
+    @JoinColumn(name = "fk_aleracion_sueno", referencedColumnName = "id")
+    @ManyToOne
+    private PatronSueno fkAleracionSueno;
+    @JoinColumn(name = "fk_patron_cognitivo", referencedColumnName = "id")
+    @ManyToOne
+    private PatronCognitivo fkPatronCognitivo;
+     @JoinColumn(name = "fk_cuidador", referencedColumnName = "ids")
+    @ManyToOne
+    private Cuidador fkCuidador;
     @OneToMany(mappedBy = "fkCita",fetch = FetchType.EAGER)
     private Set<ImpresionDiagnostica> impresionDiagnosticaCollection;
     @OneToMany(mappedBy = "fkCita", fetch = FetchType.EAGER)
@@ -243,6 +254,62 @@ public class Cita implements Serializable {
      */
     public void setManejoSoportesSet(Set<ManejoSoportes> manejoSoportesSet) {
         this.manejoSoportesSet = manejoSoportesSet;
+    }
+
+    /**
+     * @return the fkProfesional
+     */
+    public ProfesionalEncargado getFkProfesional() {
+        return fkProfesional;
+    }
+
+    /**
+     * @param fkProfesional the fkProfesional to set
+     */
+    public void setFkProfesional(ProfesionalEncargado fkProfesional) {
+        this.fkProfesional = fkProfesional;
+    }
+
+    /**
+     * @return the fkAleracionSueno
+     */
+    public PatronSueno getFkAleracionSueno() {
+        return fkAleracionSueno;
+    }
+
+    /**
+     * @param fkAleracionSueno the fkAleracionSueno to set
+     */
+    public void setFkAleracionSueno(PatronSueno fkAleracionSueno) {
+        this.fkAleracionSueno = fkAleracionSueno;
+    }
+
+    /**
+     * @return the fkPatronCognitivo
+     */
+    public PatronCognitivo getFkPatronCognitivo() {
+        return fkPatronCognitivo;
+    }
+
+    /**
+     * @param fkPatronCognitivo the fkPatronCognitivo to set
+     */
+    public void setFkPatronCognitivo(PatronCognitivo fkPatronCognitivo) {
+        this.fkPatronCognitivo = fkPatronCognitivo;
+    }
+
+    /**
+     * @return the fkCuidador
+     */
+    public Cuidador getFkCuidador() {
+        return fkCuidador;
+    }
+
+    /**
+     * @param fkCuidador the fkCuidador to set
+     */
+    public void setFkCuidador(Cuidador fkCuidador) {
+        this.fkCuidador = fkCuidador;
     }
     
 }

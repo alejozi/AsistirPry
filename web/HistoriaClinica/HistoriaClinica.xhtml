@@ -82,6 +82,19 @@
                 <rich:panel id="idImpresion" header="Impresión diagnostica" styleClass="centerPanel">
                     <ui:include src="impresionDiagnostica.xhtml"></ui:include> 
                 </rich:panel>
+                        <rich:panel id="idProfesional" header="Profesional a cargo" styleClass="centerPanel">
+                    <ui:include src="ProfesionalEncargado.xhtml"></ui:include> 
+                </rich:panel>
+                <rich:panel id="idPatronS" header="Patron de sueño y descanso" styleClass="centerPanel">
+                    <ui:include src="PatronDescanso.xhtml"></ui:include>
+                </rich:panel>
+                <rich:panel id="idPatronCog" header="Patron cognitivo/perceptual" styleClass="centerPanel">
+                    <ui:include src="PatronCognitivo.xhtml"></ui:include>
+                </rich:panel>
+                <rich:panel id="idCuidador" header="Cuidador" styleClass="centerPanel">
+                    <ui:include src="Cuidador.xhtml"></ui:include>
+                </rich:panel>
+        
                 <rich:panel id="idEpi" header="Epicrisis" styleClass="centerPanel">
                     <h:inputTextarea  id="ep" required="false" requiredMessage="Ingrese" style="width: 850px;height: 100px;" value="#{historiaClinicaBean.cita.epicrisis}"></h:inputTextarea>
                     <rich:message for="ep"></rich:message>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGrid columns="4" cellspacing="10" id="id-patron-descanso">
+        <h:outputLabel value="Alteración del sueño:" styleClass="label"/>
+        <h:selectOneRadio value="#{historiaClinicaBean.patronSueno.altercionSueno}">
+                <f:selectItem itemLabel="SI" itemValue="true"></f:selectItem>
+                <f:selectItem itemLabel="NO" itemValue="false"></f:selectItem>
+            </h:selectOneRadio>
+        <h:outputLabel value="Tipo:"/>
+        <h:inputText id="id-tipo-alt-sueno" value="#{historiaClinicaBean.patronSueno.tipoAlteracion}" ></h:inputText>
+      </h:panelGrid>
+</html>
