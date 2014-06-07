@@ -68,13 +68,15 @@ public class ConsultarPaciente {
 
     public void consultarPaciente() {
         List<Cita> p = getPacienteService().buscarPaciente(cedulaConsulta);
-        if (p.isEmpty()) {
-            setEstaPaciente(false);
-            System.out.println("no se encuentra = ");
-        } else {
-            setEstaPaciente(true);
-            cargarExamenes(p);
-            System.out.println("se encuentra");
+        if(p!=null){       
+            if (p.isEmpty()) {
+                setEstaPaciente(false);
+                System.out.println("no se encuentra = ");
+            } else {
+                setEstaPaciente(true);
+                cargarExamenes(p);
+                System.out.println("se encuentra");
+            }
         }
         try {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("boolEsta", estaPaciente);
