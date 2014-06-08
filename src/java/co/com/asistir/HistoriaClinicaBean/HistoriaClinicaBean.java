@@ -322,6 +322,7 @@ public class HistoriaClinicaBean {
             BaseDaoI b = new BaseDaoImplement();
             b.guardar(fkAntecedente);
             persona.setFkAnte(fkAntecedente);
+            b.guardar(persona);
             cita.setFkPersona(persona);
             b.guardar(examenFisico);
             for (DetalleExamenFisico dt : examenFisicoList) {
@@ -330,17 +331,18 @@ public class HistoriaClinicaBean {
                     b.guardar(dt);
                 }
             }
-            cita.setFkExamen(examenFisico);
-            b.guardar(cita);
-            b.guardar(patronSueno);
+            //b.guardar(patronSueno);
             b.guardar(profesional);
             b.guardar(patronCog);
             b.guardar(cuidador);
+            cita.setFkExamen(examenFisico);
             cita.setFkCuidador(cuidador);
             cita.setFkPatronCognitivo(patronCog);
             cita.setFkProfesional(profesional);
-            cita.setFkAleracionSueno(patronSueno);
-            manejoSoporte.setFkCita(cita);
+           // cita.setFkAleracionSueno(patronSueno);
+            b.guardar(cita);
+           
+             manejoSoporte.setFkCita(cita);
             b.guardar(manejoSoporte);
             for (Medicamento medicamento : medicamentoList) {
                 if (!medicamento.getNombreMedicamento().equals("")) {
