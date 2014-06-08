@@ -332,6 +332,14 @@ public class HistoriaClinicaBean {
             }
             cita.setFkExamen(examenFisico);
             b.guardar(cita);
+            b.guardar(patronSueno);
+            b.guardar(profesional);
+            b.guardar(patronCog);
+            b.guardar(cuidador);
+            cita.setFkCuidador(cuidador);
+            cita.setFkPatronCognitivo(patronCog);
+            cita.setFkProfesional(profesional);
+            cita.setFkAleracionSueno(patronSueno);
             manejoSoporte.setFkCita(cita);
             b.guardar(manejoSoporte);
             for (Medicamento medicamento : medicamentoList) {
