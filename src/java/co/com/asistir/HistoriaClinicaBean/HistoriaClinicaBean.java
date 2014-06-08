@@ -22,8 +22,12 @@ import co.com.asistir.To.ExamenFisicoConsulta;
 import co.com.asistir.To.ImpresionDiagnostica;
 import co.com.asistir.To.ManejoSoportes;
 import co.com.asistir.To.Medicamento;
+import co.com.asistir.To.NutricionalMetabolico;
+import co.com.asistir.To.PatronActividadEjercicio;
 import co.com.asistir.To.PatronCognitivo;
+import co.com.asistir.To.PatronEliminacion;
 import co.com.asistir.To.PatronSueno;
+import co.com.asistir.To.PatronesFuncionales;
 import co.com.asistir.To.Persona;
 import co.com.asistir.To.ProfesionalEncargado;
 import co.com.asistir.Util.JsfUtil;
@@ -72,6 +76,10 @@ public class HistoriaClinicaBean {
     private PatronSueno patronSueno;
     private PatronCognitivo patronCog;
     private Cuidador cuidador;
+    private NutricionalMetabolico nutricionalMetabolico;
+    private PatronActividadEjercicio actividadEjercicio;
+    private PatronEliminacion eliminacion;
+    private PatronesFuncionales funcionales;
     // <editor-fold defaultstate="collapsed" desc="Services">
     private PersonaserviceI pacienteService;
     RegistroHistoriaClinicaI registroHistoriaClinicaService;
@@ -125,6 +133,10 @@ public class HistoriaClinicaBean {
         lstCie10 = new ArrayList<Cie10>();
         cie10Service = new Cie10ServiceImplement();
         consultarCie10();
+        nutricionalMetabolico=new NutricionalMetabolico();
+        actividadEjercicio= new PatronActividadEjercicio();
+        eliminacion=new PatronEliminacion();
+        funcionales= new PatronesFuncionales();
     }
 
     /**
@@ -336,10 +348,19 @@ public class HistoriaClinicaBean {
             b.guardar(profesional);
             b.guardar(patronCog);
             b.guardar(cuidador);
+            b.guardar(getNutricionalMetabolico());
+            b.guardar(getActividadEjercicio());
+            b.guardar(getEliminacion());
+            b.guardar(getFuncionales());
             cita.setFkCuidador(cuidador);
             cita.setFkPatronCognitivo(patronCog);
             cita.setFkProfesional(profesional);
             cita.setFkAleracionSueno(patronSueno);
+            cita.setFkNutricionalMetabolica(getNutricionalMetabolico());
+            cita.setFkPatronActividadEjercicio(getActividadEjercicio());
+            cita.setFkPatronEliminacion(getEliminacion());
+            cita.setFkPatronesFuncionales(getFuncionales());
+            
             manejoSoporte.setFkCita(cita);
             b.guardar(manejoSoporte);
             for (Medicamento medicamento : medicamentoList) {
@@ -808,5 +829,61 @@ public class HistoriaClinicaBean {
      */
     public void setCuidador(Cuidador cuidador) {
         this.cuidador = cuidador;
+    }
+
+    /**
+     * @return the nutricionalMetabolico
+     */
+    public NutricionalMetabolico getNutricionalMetabolico() {
+        return nutricionalMetabolico;
+    }
+
+    /**
+     * @param nutricionalMetabolico the nutricionalMetabolico to set
+     */
+    public void setNutricionalMetabolico(NutricionalMetabolico nutricionalMetabolico) {
+        this.nutricionalMetabolico = nutricionalMetabolico;
+    }
+
+    /**
+     * @return the actividadEjercicio
+     */
+    public PatronActividadEjercicio getActividadEjercicio() {
+        return actividadEjercicio;
+    }
+
+    /**
+     * @param actividadEjercicio the actividadEjercicio to set
+     */
+    public void setActividadEjercicio(PatronActividadEjercicio actividadEjercicio) {
+        this.actividadEjercicio = actividadEjercicio;
+    }
+
+    /**
+     * @return the eliminacion
+     */
+    public PatronEliminacion getEliminacion() {
+        return eliminacion;
+    }
+
+    /**
+     * @param eliminacion the eliminacion to set
+     */
+    public void setEliminacion(PatronEliminacion eliminacion) {
+        this.eliminacion = eliminacion;
+    }
+
+    /**
+     * @return the funcionales
+     */
+    public PatronesFuncionales getFuncionales() {
+        return funcionales;
+    }
+
+    /**
+     * @param funcionales the funcionales to set
+     */
+    public void setFuncionales(PatronesFuncionales funcionales) {
+        this.funcionales = funcionales;
     }
 }
