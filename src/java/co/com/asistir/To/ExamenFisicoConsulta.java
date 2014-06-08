@@ -31,6 +31,7 @@ public class ExamenFisicoConsulta {
     
 
     public ExamenFisicoConsulta(Character eg, Character conciente, Character alerta, Character orientado, Character otro, String cabezaCuello, String aparatoCardiovascular, String aparatoRespiratorio, String abdomen, String urogenital, String ginecobtetrico, String extremidades, String sistemaNervioso) {
+       if(eg!=null){
         if(eg=='b'){
         estadoGeneral="Bueno";
         }else if(eg=='r'){
@@ -38,7 +39,7 @@ public class ExamenFisicoConsulta {
         }else{
         estadoGeneral="Malo";
         }
-        this.estadoGeneral = estadoGeneral;
+       }
         this.conciente = conciente;
         this.alerta = alerta;
         this.orientado = orientado;

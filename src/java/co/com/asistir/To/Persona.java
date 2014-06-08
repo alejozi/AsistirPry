@@ -7,6 +7,7 @@
 package co.com.asistir.To;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -89,6 +91,8 @@ public class Persona implements Serializable {
     @JoinColumn(name = "fk_ante", referencedColumnName = "id_antecedentes")
     @ManyToOne
     private Ante fkAnte;
+     @OneToMany(mappedBy = "fkPersona")
+    private Collection<Cita> citaCollection;
 
     public Persona() {
     }
@@ -264,6 +268,20 @@ public class Persona implements Serializable {
     @Override
     public String toString() {
         return "co.com.asistir.To.Persona[ idPersona=" + idPersona + " ]";
+    }
+
+    /**
+     * @return the citaCollection
+     */
+    public Collection<Cita> getCitaCollection() {
+        return citaCollection;
+    }
+
+    /**
+     * @param citaCollection the citaCollection to set
+     */
+    public void setCitaCollection(Collection<Cita> citaCollection) {
+        this.citaCollection = citaCollection;
     }
     
 }
