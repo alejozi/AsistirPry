@@ -4,6 +4,7 @@
  */
 package co.com.asistir.HistoriaClinicaBean;
 
+import co.com.asistir.Consulta.ConsultaCita;
 import co.com.asistir.Helper.BaseDaoI;
 import co.com.asistir.Helper.BaseDaoImplement;
 import co.com.asistir.Service.Cie10.Cie10I;
@@ -22,24 +23,15 @@ import co.com.asistir.To.ExamenFisicoConsulta;
 import co.com.asistir.To.ImpresionDiagnostica;
 import co.com.asistir.To.ManejoSoportes;
 import co.com.asistir.To.Medicamento;
-import co.com.asistir.To.NutricionalMetabolico;
-import co.com.asistir.To.PatronActividadEjercicio;
 import co.com.asistir.To.PatronCognitivo;
-import co.com.asistir.To.PatronEliminacion;
-import co.com.asistir.To.PatronSueno;
-import co.com.asistir.To.PatronesFuncionales;
+import co.com.asistir.To.PatronDescanso;
 import co.com.asistir.To.Persona;
 import co.com.asistir.To.ProfesionalEncargado;
-import co.com.asistir.Util.JsfUtil;
-import com.sun.faces.context.flash.ELFlash;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -73,13 +65,9 @@ public class HistoriaClinicaBean {
     private List<String> lst4;
     ManejoSoportes manejoSoporte;
     private ProfesionalEncargado profesional;
-    private PatronSueno patronSueno;
+    private PatronDescanso patronSueno;
     private PatronCognitivo patronCog;
     private Cuidador cuidador;
-    private NutricionalMetabolico nutricionalMetabolico;
-    private PatronActividadEjercicio actividadEjercicio;
-    private PatronEliminacion eliminacion;
-    private PatronesFuncionales funcionales;
     // <editor-fold defaultstate="collapsed" desc="Services">
     private PersonaserviceI pacienteService;
     RegistroHistoriaClinicaI registroHistoriaClinicaService;
@@ -96,17 +84,20 @@ public class HistoriaClinicaBean {
     private List<Cie10> lstCie10;
     private Cie10I cie10Service;
     // </editor-fold>  
-
+    private List<ConsultaCita> lstCitasConsulta=new ArrayList<ConsultaCita>();
+        
     public void preRender() {
         if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona") != null) {
-            lstExamenesRealizados = (ArrayList<ExamenFisicoConsulta>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstE");
-            lstImpresionesDiagnostricasRealizadas = (ArrayList<ImpresionDiagnostica>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstI");
-            lstMedicamentosEnviados = (ArrayList<Medicamento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstM");
-            ordenesMedicas = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstO");
+//            lstExamenesRealizados = (ArrayList<ExamenFisicoConsulta>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstE");
+//            lstImpresionesDiagnostricasRealizadas = (ArrayList<ImpresionDiagnostica>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstI");
+//            lstMedicamentosEnviados = (ArrayList<Medicamento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstM");
+//            ordenesMedicas = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstO");
+//            persona = (Persona) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona");
+//            lstEpicrisis = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstEpi");
+//            lstManejos = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstManejo");
             persona = (Persona) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona");
-            lstEpicrisis = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstEpi");
-            lstManejos = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstManejo");
-
+            setLstCitasConsulta((List<ConsultaCita>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstCita"));
+            System.out.println("LstCitas = " + getLstCitasConsulta());
         }
         estaPaciente = (Boolean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("boolEsta");
 
@@ -120,7 +111,7 @@ public class HistoriaClinicaBean {
         persona = new Persona();
         examenFisico = new ExamenFisico();
         profesional = new ProfesionalEncargado();
-        patronSueno = new PatronSueno();
+        patronSueno = new PatronDescanso();
         patronCog = new PatronCognitivo();
         cuidador = new Cuidador();
         examenFisicoList = new ArrayList<DetalleExamenFisico>();
@@ -133,10 +124,6 @@ public class HistoriaClinicaBean {
         lstCie10 = new ArrayList<Cie10>();
         cie10Service = new Cie10ServiceImplement();
         consultarCie10();
-        nutricionalMetabolico=new NutricionalMetabolico();
-        actividadEjercicio= new PatronActividadEjercicio();
-        eliminacion=new PatronEliminacion();
-        funcionales= new PatronesFuncionales();
     }
 
     /**
@@ -343,7 +330,7 @@ public class HistoriaClinicaBean {
                     b.guardar(dt);
                 }
             }
-            //b.guardar(patronSueno);
+            b.guardar(patronSueno);
             b.guardar(profesional);
             b.guardar(patronCog);
             b.guardar(cuidador);
@@ -351,10 +338,10 @@ public class HistoriaClinicaBean {
             cita.setFkCuidador(cuidador);
             cita.setFkPatronCognitivo(patronCog);
             cita.setFkProfesional(profesional);
-           // cita.setFkAleracionSueno(patronSueno);
+            cita.setFkAleracionDescanso(patronSueno);
             b.guardar(cita);
-           
-             manejoSoporte.setFkCita(cita);
+
+            manejoSoporte.setFkCita(cita);
             b.guardar(manejoSoporte);
             for (Medicamento medicamento : medicamentoList) {
                 if (!medicamento.getNombreMedicamento().equals("")) {
@@ -785,14 +772,14 @@ public class HistoriaClinicaBean {
     /**
      * @return the patronSueno
      */
-    public PatronSueno getPatronSueno() {
+    public PatronDescanso getPatronSueno() {
         return patronSueno;
     }
 
     /**
      * @param patronSueno the patronSueno to set
      */
-    public void setPatronSueno(PatronSueno patronSueno) {
+    public void setPatronSueno(PatronDescanso patronSueno) {
         this.patronSueno = patronSueno;
     }
 
@@ -825,58 +812,16 @@ public class HistoriaClinicaBean {
     }
 
     /**
-     * @return the nutricionalMetabolico
+     * @return the lstCitasConsulta
      */
-    public NutricionalMetabolico getNutricionalMetabolico() {
-        return nutricionalMetabolico;
+    public List<ConsultaCita> getLstCitasConsulta() {
+        return lstCitasConsulta;
     }
 
     /**
-     * @param nutricionalMetabolico the nutricionalMetabolico to set
+     * @param lstCitasConsulta the lstCitasConsulta to set
      */
-    public void setNutricionalMetabolico(NutricionalMetabolico nutricionalMetabolico) {
-        this.nutricionalMetabolico = nutricionalMetabolico;
-    }
-
-    /**
-     * @return the actividadEjercicio
-     */
-    public PatronActividadEjercicio getActividadEjercicio() {
-        return actividadEjercicio;
-    }
-
-    /**
-     * @param actividadEjercicio the actividadEjercicio to set
-     */
-    public void setActividadEjercicio(PatronActividadEjercicio actividadEjercicio) {
-        this.actividadEjercicio = actividadEjercicio;
-    }
-
-    /**
-     * @return the eliminacion
-     */
-    public PatronEliminacion getEliminacion() {
-        return eliminacion;
-    }
-
-    /**
-     * @param eliminacion the eliminacion to set
-     */
-    public void setEliminacion(PatronEliminacion eliminacion) {
-        this.eliminacion = eliminacion;
-    }
-
-    /**
-     * @return the funcionales
-     */
-    public PatronesFuncionales getFuncionales() {
-        return funcionales;
-    }
-
-    /**
-     * @param funcionales the funcionales to set
-     */
-    public void setFuncionales(PatronesFuncionales funcionales) {
-        this.funcionales = funcionales;
+    public void setLstCitasConsulta(List<ConsultaCita> lstCitasConsulta) {
+        this.lstCitasConsulta = lstCitasConsulta;
     }
 }

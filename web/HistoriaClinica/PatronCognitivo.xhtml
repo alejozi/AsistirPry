@@ -9,22 +9,22 @@ and open the template in the editor.
       xmlns:rich="http://richfaces.org/rich"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <h:panelGrid columns="4" cellspacing="10" id="id-patron-cognitivo">
+    <h:panelGrid columns="4" cellspacing="10" id="id-patron-g">
         <h:outputLabel value="Alteración visuales:" styleClass="label"/>
-        <h:selectOneRadio value="#{historiaClinicaBean.patronSueno.altercionSueno}">
+        <h:selectOneRadio value="#{historiaClinicaBean.patronCog.alteracionVisual}">
                 <f:selectItem itemLabel="SI" itemValue="true"></f:selectItem>
                 <f:selectItem itemLabel="NO" itemValue="false"></f:selectItem>
             </h:selectOneRadio>
         <h:outputLabel value="Tipo:"/>
-        <h:inputText id="id-tipo-alt-visual" value="#{historiaClinicaBean.patronSueno.tipoAlteracion}" ></h:inputText>
+        <h:inputText  value="#{historiaClinicaBean.patronCog.tipoAlteracionVisual}" ></h:inputText>
      
        <h:outputLabel value="Alteración auditivas:" styleClass="label"/>
-        <h:selectOneRadio value="#{historiaClinicaBean.patronSueno.altercionSueno}">
+       <h:selectOneRadio value="#{historiaClinicaBean.patronCog.alteracionAuditiva}">
                 <f:selectItem itemLabel="SI" itemValue="true"></f:selectItem>
                 <f:selectItem itemLabel="NO" itemValue="false"></f:selectItem>
             </h:selectOneRadio>
         <h:outputLabel value="Tipo:"/>
-        <h:inputText id="id-tipo-alt-auditivo" value="#{historiaClinicaBean.patronSueno.tipoAlteracion}" ></h:inputText>
+        <h:inputText value="#{historiaClinicaBean.patronCog.tipoAlteracionAuditiva}" ></h:inputText>
      
     
     </h:panelGrid>

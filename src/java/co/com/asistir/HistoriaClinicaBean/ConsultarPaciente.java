@@ -4,27 +4,27 @@
  */
 package co.com.asistir.HistoriaClinicaBean;
 
+import co.com.asistir.Consulta.ConsultaCita;
 import co.com.asistir.Service.Paciente.PersonaServiceImplement;
 import co.com.asistir.Service.Paciente.PersonaserviceI;
 import co.com.asistir.To.Ante;
 import co.com.asistir.To.Cita;
+import co.com.asistir.To.Cuidador;
 import co.com.asistir.To.DetalleExamenFisico;
 import co.com.asistir.To.ExamenFisico;
 import co.com.asistir.To.ExamenFisicoConsulta;
 import co.com.asistir.To.ImpresionDiagnostica;
 import co.com.asistir.To.ManejoSoportes;
 import co.com.asistir.To.Medicamento;
-import co.com.asistir.Util.JsfUtil;
-import com.sun.faces.context.flash.ELFlash;
+import co.com.asistir.To.PatronCognitivo;
+import co.com.asistir.To.PatronDescanso;
+import co.com.asistir.To.ProfesionalEncargado;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -46,6 +46,10 @@ public class ConsultarPaciente {
     private List<String> ordenesMedicas;
     private List<String> epicrisis;
     private List<String> lstManejos;
+    List<PatronCognitivo> lstPatronesCognitivos;
+    List<PatronDescanso> lstPatronDescanso;
+    List<ProfesionalEncargado> lstProfesionalEncargado;
+    List<Cuidador> lstCuidador;
     // </editor-fold> 
     private PersonaserviceI pacienteService;
 
@@ -88,32 +92,56 @@ public class ConsultarPaciente {
     }
 
     public void cargarExamenes(List<Cita> lstCitas) {
-        setLstExamenesRealizados(new ArrayList<ExamenFisicoConsulta>());
-        setLstMedicamentosEnviados(new ArrayList<Medicamento>());
-        setLstImpresionesDiagnostricasRealizadas(new ArrayList<ImpresionDiagnostica>());
-        setOrdenesMedicas(new ArrayList<String>());
-        setEpicrisis(new ArrayList<String>());
-        setLstManejos(new ArrayList<String>());
+        List<ConsultaCita> lstCitasConsulta=new ArrayList<ConsultaCita>();
+        
+//        setLstExamenesRealizados(new ArrayList<ExamenFisicoConsulta>());
+//        setLstMedicamentosEnviados(new ArrayList<Medicamento>());
+//        setLstImpresionesDiagnostricasRealizadas(new ArrayList<ImpresionDiagnostica>());
+//        setOrdenesMedicas(new ArrayList<String>());
+//        setEpicrisis(new ArrayList<String>());
+//        setLstManejos(new ArrayList<String>());
 
 
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("persona", lstCitas.get(0).getFkPersona());
         setAntecentes(lstCitas.get(0).getFkPersona().getFkAnte());
 
         for (Cita citaConsultada : lstCitas) {
-            getLstMedicamentosEnviados().addAll(citaConsultada.getMedicamentoCollection());
+            ConsultaCita consultaCita=new ConsultaCita();
+            consultaCita.setFecha(citaConsultada.getFecha());
+            consultaCita.setConvenio(citaConsultada.getConvenio());
+            consultaCita.setEpicrisis(citaConsultada.getEpicrisis());
+            consultaCita.setOrdenesMedicas(citaConsultada.getOrdenesMedicas());
+            consultaCita.setNombreMedico(citaConsultada.getNombreMedico());
+            consultaCita.setEnfermeraAuxiliar(citaConsultada.getEnfermeraAuxiliar());
+            consultaCita.setConsultaManejoSoporte(cargarM(new ArrayList<ManejoSoportes>(citaConsultada.getManejoSoportesSet())));
+            consultaCita.setExamenFisicoConsulta(cargarE(citaConsultada.getFkExamen()));
+            consultaCita.setLstMedicamentosEnviados(citaConsultada.getMedicamentoCollection());
+            consultaCita.setLstImpresionesDiagnostricasRealizadas(citaConsultada.getImpresionDiagnosticaCollection());
+            consultaCita.setAntecentes(citaConsultada.getFkPersona().getFkAnte());
+            consultaCita.setCuidador(citaConsultada.getFkCuidador());
+            consultaCita.setPatronCognitivo(citaConsultada.getFkPatronCognitivo());
+            consultaCita.setPatrinDescanso(citaConsultada.getFkAleracionDescanso());
+            consultaCita.setProfesional( citaConsultada.getFkProfesional());
+            lstCitasConsulta.add(consultaCita);
+           
+           /* getLstMedicamentosEnviados().addAll(citaConsultada.getMedicamentoCollection());
             getLstImpresionesDiagnostricasRealizadas().addAll(citaConsultada.getImpresionDiagnosticaCollection());
             getLstExamenesRealizados().add(cargarE(citaConsultada.getFkExamen()));
             getOrdenesMedicas().add(citaConsultada.getOrdenesMedicas());
             getEpicrisis().add(citaConsultada.getEpicrisis());
-            getLstManejos().addAll(cargarM(new ArrayList<ManejoSoportes>(citaConsultada.getManejoSoportesSet())));
+            getLstManejos().addAll(cargarM(new ArrayList<ManejoSoportes>(citaConsultada.getManejoSoportesSet())));*/
         }
+        
+        
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstCita", lstCitasConsulta);
+        
 
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstE", lstExamenesRealizados);
+      /*  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstE", lstExamenesRealizados);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstI", lstImpresionesDiagnostricasRealizadas);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstM", lstMedicamentosEnviados);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstO", ordenesMedicas);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstEpi", epicrisis);
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstManejo", lstManejos);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstManejo", lstManejos);*/
 
 
     }

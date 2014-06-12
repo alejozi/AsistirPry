@@ -80,9 +80,6 @@ public class Cita implements Serializable {
     @JoinColumn(name = "fk_profesional", referencedColumnName = "id")
     @ManyToOne
     private ProfesionalEncargado fkProfesional;
-    @JoinColumn(name = "fk_aleracion_sueno", referencedColumnName = "id")
-    @ManyToOne
-    private PatronSueno fkAleracionSueno;
     @JoinColumn(name = "fk_patron_cognitivo", referencedColumnName = "id")
     @ManyToOne
     private PatronCognitivo fkPatronCognitivo;
@@ -95,6 +92,10 @@ public class Cita implements Serializable {
     private Set<Medicamento> medicamentoCollection;
     @OneToMany(mappedBy = "fkCita", fetch = FetchType.EAGER)
     private Set<ManejoSoportes> manejoSoportesSet;
+    @JoinColumn(name = "fk_aleracion_descanso", referencedColumnName = "id")
+    @ManyToOne
+    private PatronDescanso fkAleracionDescanso;
+    
 
     public Cita() {
     }
@@ -270,19 +271,7 @@ public class Cita implements Serializable {
         this.fkProfesional = fkProfesional;
     }
 
-    /**
-     * @return the fkAleracionSueno
-     */
-    public PatronSueno getFkAleracionSueno() {
-        return fkAleracionSueno;
-    }
-
-    /**
-     * @param fkAleracionSueno the fkAleracionSueno to set
-     */
-    public void setFkAleracionSueno(PatronSueno fkAleracionSueno) {
-        this.fkAleracionSueno = fkAleracionSueno;
-    }
+    
 
     /**
      * @return the fkPatronCognitivo
@@ -310,6 +299,20 @@ public class Cita implements Serializable {
      */
     public void setFkCuidador(Cuidador fkCuidador) {
         this.fkCuidador = fkCuidador;
+    }
+
+    /**
+     * @return the fkAleracionDescanso
+     */
+    public PatronDescanso getFkAleracionDescanso() {
+        return fkAleracionDescanso;
+    }
+
+    /**
+     * @param fkAleracionDescanso the fkAleracionDescanso to set
+     */
+    public void setFkAleracionDescanso(PatronDescanso fkAleracionDescanso) {
+        this.fkAleracionDescanso = fkAleracionDescanso;
     }
     
 }

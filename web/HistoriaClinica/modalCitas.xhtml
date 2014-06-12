@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <rich:popupPanel id="popupCitas" modal="true" resizeable="false" onmaskclick="#{rich:component('popupCitas')}.hide()" autosized="true">
+        <f:facet name="header">
+            <h:outputText value="Citas Medicas" />
+        </f:facet>
+        <f:facet name="controls">
+            <h:outputLink value="#" onclick="#{rich:component('popupCitas')}.hide();
+                    return false;">
+                X
+            </h:outputLink>
+
+        </f:facet>
+        <a4j:repeat value="#{historiaClinicaBean.lstCitasConsulta}" var="cita">
+            <h:panelGrid columns="2" cellspacing="10">
+                <h:panelGroup rendered="#{cita.fecha!=null}">
+                    <h:outputLabel value="Fecha Cita:"></h:outputLabel>
+                    <h:outputText value="#{cita.fecha}"/>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{cita.convenio!=null}">
+                    <h:outputLabel value="Convenio:"></h:outputLabel>
+                    <h:outputText value="#{cita.convenio}"/>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{cita.epicrisis!=null}">
+                    <h:outputLabel value="Epicrisis:"></h:outputLabel>
+                    <h:outputText value="#{cita.epicrisis}"/>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{cita.ordenesMedicas!=null}">
+                    <h:outputLabel value="Orden Médica:"></h:outputLabel>
+                    <h:outputText value="#{cita.ordenesMedicas}"/>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{cita.enfermeraAuxiliar!=null}">
+                    <h:outputLabel value="Enfermera:"></h:outputLabel>
+                    <h:outputText value="#{cita.enfermeraAuxiliar}"/>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{cita.nombreMedico!=null}">
+                    <h:outputLabel value="Nombre medico:"></h:outputLabel>
+                    <h:outputText value="#{cita.nombreMedico}" />
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{cita.profesional.nombre !=null}">
+                    <h:outputLabel value="Profesional a cargo:"></h:outputLabel>
+                    <h:outputText value="#{cita.profesional.nombre}"/>  
+                </h:panelGroup>
+
+                <h:panelGroup>
+                    <h:outputLabel value="Alteración del sueño:"></h:outputLabel>
+                    <h:outputText value="si" rendered="#{cita.patrinDescanso.alteracion!=false}"/>  
+                    <h:outputText value="no" rendered="#{cita.patrinDescanso.alteracion!=true}"/>  
+                </h:panelGroup>
+
+
+
+            </h:panelGrid>
+
+
+        <br/>
+            <rich:dataTable id="ma" value="#{cita.consultaManejoSoporte}"
+                            var="manejo"
+                            style="width: 100%;"
+                            >
+                <f:facet name="header">
+                    <rich:columnGroup>
+                        <rich:column>
+                            <h:outputText value="Manejos" />
+                        </rich:column>
+                    </rich:columnGroup>
+                </f:facet>
+                <rich:column>
+                    <h:outputText value="#{manejo}" />
+                </rich:column>
+            </rich:dataTable>
+ <br/>
+            <rich:dataTable
+                value="#{cita.lstMedicamentosEnviados}"
+                var="medica"
+                style="width: 100%" id="me">
+                <f:facet name="header">
+                    <rich:columnGroup>
+                        <rich:column>
+                            <h:outputText value="Medicamento" />
+                        </rich:column>
+                        <rich:column rowspan="2">
+                            <h:outputText value="Via" />
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="Cantidad" />
+                        </rich:column>
+                    </rich:columnGroup>
+                </f:facet>
+                <rich:column>
+                    <h:outputText value="#{medica.nombreMedicamento}" />
+                </rich:column>
+
+                <rich:column>
+                    <h:outputText value="#{medica.via}" />
+                </rich:column>
+
+                <rich:column>
+                    <h:outputText value="#{medica.cantidad}" />
+                </rich:column>
+            </rich:dataTable>
+  <br/>
+            <rich:dataTable
+                value="#{cita.lstImpresionesDiagnostricasRealizadas}"
+                var="impresion" id="impdia"
+                style="width: 100%">
+                <f:facet name="header">
+                    <rich:columnGroup>
+                        <rich:column >
+                            <h:outputText value="Dx" />
+                        </rich:column>
+                    </rich:columnGroup>
+                </f:facet>
+                <rich:column>
+                    <h:outputText value="#{impresion.descripcion}" />
+                </rich:column>
+            </rich:dataTable>
+
+        </a4j:repeat>
+
+<!--<rich:dataTable id="ex" value="#{historiaClinicaBean.lstExamenesRealizados}"
+                var="ef"
+                style="width: 100%;"
+                >
+    <f:facet name="header">
+        <rich:columnGroup>
+            <rich:column>
+                <h:outputText value="Hora" />
+            </rich:column>
+            <rich:column>
+                <h:outputText value="Tensión arterial" />
+            </rich:column>
+            <rich:column>
+                <h:outputText value="F.C." />
+            </rich:column>
+            <rich:column>
+                <h:outputText value="F.R." />
+            </rich:column>
+            <rich:column>
+                <h:outputText value="T" />
+            </rich:column>
+            <rich:column>
+                <h:outputText value="SPO2" />
+            </rich:column>
+            <rich:column>
+                <h:outputText value="PESO" />
+            </rich:column>
+            <rich:column>
+                <h:outputText value="GLOSGOW" />
+            </rich:column>
+        </rich:columnGroup>
+    </f:facet>
+    <rich:column colspan="8">
+        <rich:collapsibleSubTableToggler for="sbtbl" />
+        <h:outputText value="Estado general:#{ef.estadoGeneral}" />
+    </rich:column>
+    <rich:collapsibleSubTable value="#{ef.detalleExamenFisicoCollection}" var="item" id="sbtbl" expandMode="client">
+        <rich:column>
+            <h:outputText value="#{item.hora}" />
+        </rich:column>
+        <rich:column>
+            <h:outputText  value="#{item.tensionArterial}"/>
+        </rich:column>
+        <rich:column>
+            <h:outputText  value="#{item.fc}"/>
+        </rich:column>
+        <rich:column>
+            <h:outputText  value="#{item.fr}" />
+        </rich:column>
+        <rich:column>
+            <h:outputText  value="#{item.t}" />
+        </rich:column>
+        <rich:column>
+            <h:outputText  value="#{item.spo2}"  />
+        </rich:column>
+        <rich:column>
+            <h:outputText  value="#{item.peso}" />
+        </rich:column>
+        <rich:column>
+            <h:outputText value="#{item.glasgow}" />
+        </rich:column>
+    </rich:collapsibleSubTable>
+</rich:dataTable>
+<br/>
+<center>
+    <rich:dataScroller for="ex" maxPages="5" />
+</center>-->
+    </rich:popupPanel>
+
+</html>

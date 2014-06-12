@@ -54,4 +54,9 @@ function cargarEditarDatosPersonales() {
 }
 
 
+function cargarCitas() {
+    var idPanelMensajes = $("form").attr("id") + ":popupCitas";
+    RichFaces.$(idPanelMensajes).show();
+}
+
 

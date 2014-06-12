@@ -10,11 +10,11 @@ and open the template in the editor.
 
     <h:panelGrid columns="4" cellspacing="10" id="id-patron-descanso">
         <h:outputLabel value="Alteración del sueño:" styleClass="label"/>
-        <h:selectOneRadio value="#{historiaClinicaBean.patronSueno.altercionSueno}">
+        <h:selectOneRadio value="#{historiaClinicaBean.patronSueno.alteracion}">
                 <f:selectItem itemLabel="SI" itemValue="true"></f:selectItem>
                 <f:selectItem itemLabel="NO" itemValue="false"></f:selectItem>
             </h:selectOneRadio>
         <h:outputLabel value="Tipo:"/>
-        <h:inputText id="id-tipo-alt-sueno" value="#{historiaClinicaBean.patronSueno.tipoAlteracion}" ></h:inputText>
+        <h:inputText  value="#{historiaClinicaBean.patronSueno.tipo}" ></h:inputText>
       </h:panelGrid>
 </html>
