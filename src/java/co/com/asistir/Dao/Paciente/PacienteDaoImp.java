@@ -27,16 +27,16 @@ public class PacienteDaoImp extends BaseDaoImplement implements PacienteDaoI {
 
     @Override
     public List<Cita> buscarPaciente(Integer documento) {
-        List<Cita> lstPacientes=null;
+        List<Cita> lstPacientes = null;
         Persona paciente = new Persona(documento);
         EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("AsistirPryPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
-            String q="SELECT c FROM Cita c WHERE c.fkPersona = :persona";
-            Query query=em.createQuery(q);
+            String q = "SELECT c FROM Cita c WHERE c.fkPersona = :persona";
+            Query query = em.createQuery(q);
             query.setParameter("persona", paciente);
-            lstPacientes=query.getResultList();
+            lstPacientes = query.getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,21 +47,21 @@ public class PacienteDaoImp extends BaseDaoImplement implements PacienteDaoI {
         return lstPacientes;
 
     }
-    
-    
+
     @Override
-      public void actualizarDatosPersonales(Persona persona){
-      EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("AsistirPryPU");
+    public void actualizarDatosPersonales(Persona persona) {
+        EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("AsistirPryPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        try{
-        em.merge(persona);
-        em.getTransaction().commit();
-        }catch (Exception e) {
+        try {
+            persona = em.find(Persona.class, persona);
+            em.merge(persona);
+            em.getTransaction().commit();
+        } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         } finally {
             em.close();
-}
-      }
+        }
+    }
 }

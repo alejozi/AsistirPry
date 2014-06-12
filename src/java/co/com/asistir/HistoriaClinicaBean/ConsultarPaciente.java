@@ -95,7 +95,7 @@ public class ConsultarPaciente {
         List<ConsultaCita> lstCitasConsulta=new ArrayList<ConsultaCita>();
         
 //        setLstExamenesRealizados(new ArrayList<ExamenFisicoConsulta>());
-//        setLstMedicamentosEnviados(new ArrayList<Medicamento>());
+          setLstMedicamentosEnviados(new ArrayList<Medicamento>());
 //        setLstImpresionesDiagnostricasRealizadas(new ArrayList<ImpresionDiagnostica>());
 //        setOrdenesMedicas(new ArrayList<String>());
 //        setEpicrisis(new ArrayList<String>());
@@ -124,8 +124,8 @@ public class ConsultarPaciente {
             consultaCita.setProfesional( citaConsultada.getFkProfesional());
             lstCitasConsulta.add(consultaCita);
            
-           /* getLstMedicamentosEnviados().addAll(citaConsultada.getMedicamentoCollection());
-            getLstImpresionesDiagnostricasRealizadas().addAll(citaConsultada.getImpresionDiagnosticaCollection());
+           getLstMedicamentosEnviados().addAll(citaConsultada.getMedicamentoCollection());
+           /* getLstImpresionesDiagnostricasRealizadas().addAll(citaConsultada.getImpresionDiagnosticaCollection());
             getLstExamenesRealizados().add(cargarE(citaConsultada.getFkExamen()));
             getOrdenesMedicas().add(citaConsultada.getOrdenesMedicas());
             getEpicrisis().add(citaConsultada.getEpicrisis());
@@ -135,10 +135,10 @@ public class ConsultarPaciente {
         
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstCita", lstCitasConsulta);
         
-
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstM", lstMedicamentosEnviados);
+        
       /*  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstE", lstExamenesRealizados);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstI", lstImpresionesDiagnostricasRealizadas);
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstM", lstMedicamentosEnviados);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstO", ordenesMedicas);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstEpi", epicrisis);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lstManejo", lstManejos);*/

@@ -59,4 +59,8 @@ function cargarCitas() {
     RichFaces.$(idPanelMensajes).show();
 }
 
+function  alerta(){
+    alert('HOLA');
+}
+
 

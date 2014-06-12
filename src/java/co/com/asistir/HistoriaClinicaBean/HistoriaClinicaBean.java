@@ -90,7 +90,7 @@ public class HistoriaClinicaBean {
         if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona") != null) {
 //            lstExamenesRealizados = (ArrayList<ExamenFisicoConsulta>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstE");
 //            lstImpresionesDiagnostricasRealizadas = (ArrayList<ImpresionDiagnostica>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstI");
-//            lstMedicamentosEnviados = (ArrayList<Medicamento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstM");
+            lstMedicamentosEnviados = (ArrayList<Medicamento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstM");
 //            ordenesMedicas = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstO");
 //            persona = (Persona) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("persona");
 //            lstEpicrisis = (ArrayList<String>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("lstEpi");
