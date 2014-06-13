@@ -318,41 +318,40 @@ public class HistoriaClinicaBean {
     public void registrarHistoriaClinica() {
         cargarManejos();
         try {
-            BaseDaoI b = new BaseDaoImplement();
-            b.guardar(fkAntecedente);
-            persona.setFkAnte(fkAntecedente);
-            b.guardar(persona);
+          registroHistoriaClinicaService.guardarAntecedente(fkAntecedente);
+          persona.setFkAnte(fkAntecedente);
+          registroHistoriaClinicaService.guardarPersona(persona);
             cita.setFkPersona(persona);
-            b.guardar(examenFisico);
+            registroHistoriaClinicaService.guardarExamenFisico(examenFisico);
             for (DetalleExamenFisico dt : examenFisicoList) {
                 if (dt.getHora() != 0) {
                     dt.setFkExamenFisico(examenFisico);
-                    b.guardar(dt);
+                    registroHistoriaClinicaService.guardarDetalleExamenFisico(dt);
                 }
             }
-            b.guardar(patronSueno);
-            b.guardar(profesional);
-            b.guardar(patronCog);
-            b.guardar(cuidador);
+            registroHistoriaClinicaService.guardarPatronDescanso(patronSueno);
+            registroHistoriaClinicaService.guardarProfesional(profesional);
+            registroHistoriaClinicaService.guardarPatronCognitivo(patronCog);
+            registroHistoriaClinicaService.guardarCuidador(cuidador);
             cita.setFkExamen(examenFisico);
             cita.setFkCuidador(cuidador);
             cita.setFkPatronCognitivo(patronCog);
             cita.setFkProfesional(profesional);
             cita.setFkAleracionDescanso(patronSueno);
-            b.guardar(cita);
+            registroHistoriaClinicaService.guardar(cita);
 
             manejoSoporte.setFkCita(cita);
-            b.guardar(manejoSoporte);
+            registroHistoriaClinicaService.guardarManejoSoporte(manejoSoporte);
             for (Medicamento medicamento : medicamentoList) {
                 if (!medicamento.getNombreMedicamento().equals("")) {
                     medicamento.setFkCita(cita);
-                    b.guardar(medicamento);
+                    registroHistoriaClinicaService.guardarMedicamento(medicamento);
                 }
             }
             for (ImpresionDiagnostica imp : impresionDiagnosticaList) {
                 if (imp.getDescripcion() != null) {
                     imp.setFkCita(cita);
-                    b.guardar(imp);
+                    registroHistoriaClinicaService.guardarImpresion(imp);
                 }
             }
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "La informacón se guardio con éxito", ""));
