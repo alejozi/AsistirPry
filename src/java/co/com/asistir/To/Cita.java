@@ -34,16 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "cita")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cita.findAll", query = "SELECT c FROM Cita c"),
-    @NamedQuery(name = "Cita.findById", query = "SELECT c FROM Cita c WHERE c.id = :id"),
-    @NamedQuery(name = "Cita.findByFecha", query = "SELECT c FROM Cita c WHERE c.fecha = :fecha"),
-    @NamedQuery(name = "Cita.findByConvenio", query = "SELECT c FROM Cita c WHERE c.convenio = :convenio"),
-    @NamedQuery(name = "Cita.findByCodServicio", query = "SELECT c FROM Cita c WHERE c.codServicio = :codServicio"),
-    @NamedQuery(name = "Cita.findByMovil", query = "SELECT c FROM Cita c WHERE c.movil = :movil"),
-    @NamedQuery(name = "Cita.findByEpicrisis", query = "SELECT c FROM Cita c WHERE c.epicrisis = :epicrisis"),
-    @NamedQuery(name = "Cita.findByOrdenesMedicas", query = "SELECT c FROM Cita c WHERE c.ordenesMedicas = :ordenesMedicas"),
-    @NamedQuery(name = "Cita.findByNombreMedico", query = "SELECT c FROM Cita c WHERE c.nombreMedico = :nombreMedico"),
-    @NamedQuery(name = "Cita.findByEnfermeraAuxiliar", query = "SELECT c FROM Cita c WHERE c.enfermeraAuxiliar = :enfermeraAuxiliar")})
+    @NamedQuery(name = "Cita.findAll", query = "SELECT c FROM Cita c")})
 public class Cita implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

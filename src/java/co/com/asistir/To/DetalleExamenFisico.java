@@ -7,7 +7,6 @@ package co.com.asistir.To;
 import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,17 +27,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "detalle_examen_fisico")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "DetalleExamenFisico.findAll", query = "SELECT d FROM DetalleExamenFisico d"),
-    @NamedQuery(name = "DetalleExamenFisico.findByIdDetalle", query = "SELECT d FROM DetalleExamenFisico d WHERE d.idDetalle = :idDetalle"),
-    @NamedQuery(name = "DetalleExamenFisico.findByHora", query = "SELECT d FROM DetalleExamenFisico d WHERE d.hora = :hora"),
-    @NamedQuery(name = "DetalleExamenFisico.findByTensionArterial", query = "SELECT d FROM DetalleExamenFisico d WHERE d.tensionArterial = :tensionArterial"),
-    @NamedQuery(name = "DetalleExamenFisico.findByFc", query = "SELECT d FROM DetalleExamenFisico d WHERE d.fc = :fc"),
-    @NamedQuery(name = "DetalleExamenFisico.findByFr", query = "SELECT d FROM DetalleExamenFisico d WHERE d.fr = :fr"),
-    @NamedQuery(name = "DetalleExamenFisico.findByT", query = "SELECT d FROM DetalleExamenFisico d WHERE d.t = :t"),
-    @NamedQuery(name = "DetalleExamenFisico.findBySpo2", query = "SELECT d FROM DetalleExamenFisico d WHERE d.spo2 = :spo2"),
-    @NamedQuery(name = "DetalleExamenFisico.findByPeso", query = "SELECT d FROM DetalleExamenFisico d WHERE d.peso = :peso"),
-    @NamedQuery(name = "DetalleExamenFisico.findByGlasgow", query = "SELECT d FROM DetalleExamenFisico d WHERE d.glasgow = :glasgow")})
 public class DetalleExamenFisico implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

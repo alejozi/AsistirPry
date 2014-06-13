@@ -27,13 +27,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "patron_cognitivo")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "PatronCognitivo.findAll", query = "SELECT p FROM PatronCognitivo p"),
-    @NamedQuery(name = "PatronCognitivo.findById", query = "SELECT p FROM PatronCognitivo p WHERE p.id = :id"),
-    @NamedQuery(name = "PatronCognitivo.findByAlteracionVisual", query = "SELECT p FROM PatronCognitivo p WHERE p.alteracionVisual = :alteracionVisual"),
-    @NamedQuery(name = "PatronCognitivo.findByTipoAlteracionVisual", query = "SELECT p FROM PatronCognitivo p WHERE p.tipoAlteracionVisual = :tipoAlteracionVisual"),
-    @NamedQuery(name = "PatronCognitivo.findByAlteracionAuditiva", query = "SELECT p FROM PatronCognitivo p WHERE p.alteracionAuditiva = :alteracionAuditiva"),
-    @NamedQuery(name = "PatronCognitivo.findByTipoAlteracionAuditiva", query = "SELECT p FROM PatronCognitivo p WHERE p.tipoAlteracionAuditiva = :tipoAlteracionAuditiva")})
 public class PatronCognitivo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

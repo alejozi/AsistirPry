@@ -54,7 +54,7 @@ public class PacienteDaoImp extends BaseDaoImplement implements PacienteDaoI {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
-            persona = em.find(Persona.class, persona);
+            persona = em.find(Persona.class, persona.getIdPersona());
             em.merge(persona);
             em.getTransaction().commit();
         } catch (Exception e) {

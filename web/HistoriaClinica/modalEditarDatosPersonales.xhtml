@@ -56,7 +56,7 @@
         
         </h:panelGrid>
         <center>
-            <a4j:commandButton value="Editar" action="#{historiaClinicaBean.editarDatosPersonales}" onclick="alerta();"></a4j:commandButton>
+            <a4j:commandButton value="Editar" action="#{historiaClinicaBean.editarDatosPersonales}" execute="@this" render="@this"></a4j:commandButton>
         </center>
 
     </rich:popupPanel>

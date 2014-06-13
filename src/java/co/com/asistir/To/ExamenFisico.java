@@ -31,22 +31,6 @@ import org.hibernate.annotations.CascadeType;
 @Entity
 @Table(name = "examen_fisico")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ExamenFisico.findAll", query = "SELECT e FROM ExamenFisico e"),
-    @NamedQuery(name = "ExamenFisico.findByIdEstadoFisico", query = "SELECT e FROM ExamenFisico e WHERE e.idEstadoFisico = :idEstadoFisico"),
-    @NamedQuery(name = "ExamenFisico.findByEstadoGeneral", query = "SELECT e FROM ExamenFisico e WHERE e.estadoGeneral = :estadoGeneral"),
-    @NamedQuery(name = "ExamenFisico.findByConciente", query = "SELECT e FROM ExamenFisico e WHERE e.conciente = :conciente"),
-    @NamedQuery(name = "ExamenFisico.findByAlerta", query = "SELECT e FROM ExamenFisico e WHERE e.alerta = :alerta"),
-    @NamedQuery(name = "ExamenFisico.findByOrientado", query = "SELECT e FROM ExamenFisico e WHERE e.orientado = :orientado"),
-    @NamedQuery(name = "ExamenFisico.findByOtro", query = "SELECT e FROM ExamenFisico e WHERE e.otro = :otro"),
-    @NamedQuery(name = "ExamenFisico.findByCabezaCuello", query = "SELECT e FROM ExamenFisico e WHERE e.cabezaCuello = :cabezaCuello"),
-    @NamedQuery(name = "ExamenFisico.findByAparatoCardiovascular", query = "SELECT e FROM ExamenFisico e WHERE e.aparatoCardiovascular = :aparatoCardiovascular"),
-    @NamedQuery(name = "ExamenFisico.findByAparatoRespiratorio", query = "SELECT e FROM ExamenFisico e WHERE e.aparatoRespiratorio = :aparatoRespiratorio"),
-    @NamedQuery(name = "ExamenFisico.findByAbdomen", query = "SELECT e FROM ExamenFisico e WHERE e.abdomen = :abdomen"),
-    @NamedQuery(name = "ExamenFisico.findByUrogenital", query = "SELECT e FROM ExamenFisico e WHERE e.urogenital = :urogenital"),
-    @NamedQuery(name = "ExamenFisico.findByGinecobtetrico", query = "SELECT e FROM ExamenFisico e WHERE e.ginecobtetrico = :ginecobtetrico"),
-    @NamedQuery(name = "ExamenFisico.findByExtremidades", query = "SELECT e FROM ExamenFisico e WHERE e.extremidades = :extremidades"),
-    @NamedQuery(name = "ExamenFisico.findBySistemaNervioso", query = "SELECT e FROM ExamenFisico e WHERE e.sistemaNervioso = :sistemaNervioso")})
 public class ExamenFisico implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

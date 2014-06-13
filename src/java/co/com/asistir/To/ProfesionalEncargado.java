@@ -30,14 +30,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "profesional_encargado")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ProfesionalEncargado.findAll", query = "SELECT p FROM ProfesionalEncargado p"),
-    @NamedQuery(name = "ProfesionalEncargado.findById", query = "SELECT p FROM ProfesionalEncargado p WHERE p.id = :id"),
-    @NamedQuery(name = "ProfesionalEncargado.findByNombre", query = "SELECT p FROM ProfesionalEncargado p WHERE p.nombre = :nombre"),
-    @NamedQuery(name = "ProfesionalEncargado.findByCargo", query = "SELECT p FROM ProfesionalEncargado p WHERE p.cargo = :cargo"),
-    @NamedQuery(name = "ProfesionalEncargado.findByFechaInclusion", query = "SELECT p FROM ProfesionalEncargado p WHERE p.fechaInclusion = :fechaInclusion"),
-    @NamedQuery(name = "ProfesionalEncargado.findByMotivoInclusion", query = "SELECT p FROM ProfesionalEncargado p WHERE p.motivoInclusion = :motivoInclusion"),
-    @NamedQuery(name = "ProfesionalEncargado.findByCuidadorPrincipal", query = "SELECT p FROM ProfesionalEncargado p WHERE p.cuidadorPrincipal = :cuidadorPrincipal")})
 public class ProfesionalEncargado implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

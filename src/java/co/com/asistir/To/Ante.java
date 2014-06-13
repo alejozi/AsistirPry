@@ -28,22 +28,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "ante")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Ante.findAll", query = "SELECT a FROM Ante a"),
-    @NamedQuery(name = "Ante.findByIdAntecedentes", query = "SELECT a FROM Ante a WHERE a.idAntecedentes = :idAntecedentes"),
-    @NamedQuery(name = "Ante.findByPatologicos", query = "SELECT a FROM Ante a WHERE a.patologicos = :patologicos"),
-    @NamedQuery(name = "Ante.findByFarmacologicos", query = "SELECT a FROM Ante a WHERE a.farmacologicos = :farmacologicos"),
-    @NamedQuery(name = "Ante.findByQuirurgicos", query = "SELECT a FROM Ante a WHERE a.quirurgicos = :quirurgicos"),
-    @NamedQuery(name = "Ante.findByAlergicos", query = "SELECT a FROM Ante a WHERE a.alergicos = :alergicos"),
-    @NamedQuery(name = "Ante.findByFamiliares", query = "SELECT a FROM Ante a WHERE a.familiares = :familiares"),
-    @NamedQuery(name = "Ante.findByMenarquia", query = "SELECT a FROM Ante a WHERE a.menarquia = :menarquia"),
-    @NamedQuery(name = "Ante.findByFur", query = "SELECT a FROM Ante a WHERE a.fur = :fur"),
-    @NamedQuery(name = "Ante.findByG", query = "SELECT a FROM Ante a WHERE a.g = :g"),
-    @NamedQuery(name = "Ante.findByP", query = "SELECT a FROM Ante a WHERE a.p = :p"),
-    @NamedQuery(name = "Ante.findByA", query = "SELECT a FROM Ante a WHERE a.a = :a"),
-    @NamedQuery(name = "Ante.findByV", query = "SELECT a FROM Ante a WHERE a.v = :v"),
-    @NamedQuery(name = "Ante.findByC", query = "SELECT a FROM Ante a WHERE a.c = :c"),
-    @NamedQuery(name = "Ante.findByM", query = "SELECT a FROM Ante a WHERE a.m = :m")})
 public class Ante implements Serializable {
     @OneToMany(mappedBy = "fkAnte")
     private Collection<Persona> personaCollection;

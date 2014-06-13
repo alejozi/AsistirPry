@@ -6,7 +6,6 @@ package co.com.asistir.To;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,12 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "medicamento")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Medicamento.findAll", query = "SELECT m FROM Medicamento m"),
-    @NamedQuery(name = "Medicamento.findById", query = "SELECT m FROM Medicamento m WHERE m.id = :id"),
-    @NamedQuery(name = "Medicamento.findByNombreMedicamento", query = "SELECT m FROM Medicamento m WHERE m.nombreMedicamento = :nombreMedicamento"),
-    @NamedQuery(name = "Medicamento.findByVia", query = "SELECT m FROM Medicamento m WHERE m.via = :via"),
-    @NamedQuery(name = "Medicamento.findByCantidad", query = "SELECT m FROM Medicamento m WHERE m.cantidad = :cantidad")})
 public class Medicamento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

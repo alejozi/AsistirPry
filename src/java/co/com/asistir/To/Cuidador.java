@@ -28,14 +28,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "cuidador")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Cuidador.findAll", query = "SELECT c FROM Cuidador c"),
-    @NamedQuery(name = "Cuidador.findByIds", query = "SELECT c FROM Cuidador c WHERE c.ids = :ids"),
-    @NamedQuery(name = "Cuidador.findByHigiene", query = "SELECT c FROM Cuidador c WHERE c.higiene = :higiene"),
-    @NamedQuery(name = "Cuidador.findByAlimentacion", query = "SELECT c FROM Cuidador c WHERE c.alimentacion = :alimentacion"),
-    @NamedQuery(name = "Cuidador.findByMovilizacion", query = "SELECT c FROM Cuidador c WHERE c.movilizacion = :movilizacion"),
-    @NamedQuery(name = "Cuidador.findByAdminMedicamento", query = "SELECT c FROM Cuidador c WHERE c.adminMedicamento = :adminMedicamento"),
-    @NamedQuery(name = "Cuidador.findByCargaCuidador", query = "SELECT c FROM Cuidador c WHERE c.cargaCuidador = :cargaCuidador")})
 public class Cuidador implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
